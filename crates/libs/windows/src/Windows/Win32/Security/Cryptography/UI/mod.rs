@@ -15,14 +15,14 @@ pub unsafe fn CryptUIDlgCertMgr(pcryptuicertmgr: *const CRYPTUI_CERT_MGR_STRUCT)
 #[doc = "*Required features: `\"Win32_Security_Cryptography_UI\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn CryptUIDlgSelectCertificateFromStore<P0, P1, P2, P3>(hcertstore: P0, hwnd: P1, pwsztitle: P2, pwszdisplaystring: P3, dwdontusecolumn: u32, dwflags: u32, pvreserved: *const ::core::ffi::c_void) -> *mut super::CERT_CONTEXT
+pub unsafe fn CryptUIDlgSelectCertificateFromStore<P0, P1, P2, P3>(hcertstore: P0, hwnd: P1, pwsztitle: P2, pwszdisplaystring: P3, dwdontusecolumn: u32, dwflags: u32, pvreserved: *const ::core::ffi::c_void) -> *const super::CERT_CONTEXT
 where
     P0: ::std::convert::Into<super::HCERTSTORE>,
     P1: ::std::convert::Into<super::super::super::Foundation::HWND>,
     P2: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
     P3: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
 {
-    ::windows::imp::link ! ( "cryptui.dll""system" fn CryptUIDlgSelectCertificateFromStore ( hcertstore : super:: HCERTSTORE , hwnd : super::super::super::Foundation:: HWND , pwsztitle : :: windows::core::PCWSTR , pwszdisplaystring : :: windows::core::PCWSTR , dwdontusecolumn : u32 , dwflags : u32 , pvreserved : *const ::core::ffi::c_void ) -> *mut super:: CERT_CONTEXT );
+    ::windows::imp::link ! ( "cryptui.dll""system" fn CryptUIDlgSelectCertificateFromStore ( hcertstore : super:: HCERTSTORE , hwnd : super::super::super::Foundation:: HWND , pwsztitle : :: windows::core::PCWSTR , pwszdisplaystring : :: windows::core::PCWSTR , dwdontusecolumn : u32 , dwflags : u32 , pvreserved : *const ::core::ffi::c_void ) -> *const super:: CERT_CONTEXT );
     CryptUIDlgSelectCertificateFromStore(hcertstore.into(), hwnd.into(), pwsztitle.into().abi(), pwszdisplaystring.into().abi(), dwdontusecolumn, dwflags, pvreserved)
 }
 #[doc = "*Required features: `\"Win32_Security_Cryptography_UI\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`, `\"Win32_Security_Cryptography_Catalog\"`, `\"Win32_Security_Cryptography_Sip\"`, `\"Win32_Security_WinTrust\"`, `\"Win32_UI_Controls\"`, `\"Win32_UI_WindowsAndMessaging\"`*"]

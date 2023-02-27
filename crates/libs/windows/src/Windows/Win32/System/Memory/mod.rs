@@ -215,8 +215,8 @@ pub unsafe fn GlobalHandle(pmem: *const ::core::ffi::c_void) -> isize {
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
 #[inline]
-pub unsafe fn GlobalLock(hmem: isize) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GlobalLock ( hmem : isize ) -> *mut ::core::ffi::c_void );
+pub unsafe fn GlobalLock(hmem: isize) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GlobalLock ( hmem : isize ) -> *const ::core::ffi::c_void );
     GlobalLock(hmem)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
@@ -240,11 +240,11 @@ pub unsafe fn GlobalUnlock(hmem: isize) -> super::super::Foundation::BOOL {
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
 #[inline]
-pub unsafe fn HeapAlloc<P0>(hheap: P0, dwflags: HEAP_FLAGS, dwbytes: usize) -> *mut ::core::ffi::c_void
+pub unsafe fn HeapAlloc<P0>(hheap: P0, dwflags: HEAP_FLAGS, dwbytes: usize) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<HeapHandle>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn HeapAlloc ( hheap : HeapHandle , dwflags : HEAP_FLAGS , dwbytes : usize ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn HeapAlloc ( hheap : HeapHandle , dwflags : HEAP_FLAGS , dwbytes : usize ) -> *const ::core::ffi::c_void );
     HeapAlloc(hheap.into(), dwflags, dwbytes)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
@@ -305,11 +305,11 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
 #[inline]
-pub unsafe fn HeapReAlloc<P0>(hheap: P0, dwflags: HEAP_FLAGS, lpmem: ::core::option::Option<*const ::core::ffi::c_void>, dwbytes: usize) -> *mut ::core::ffi::c_void
+pub unsafe fn HeapReAlloc<P0>(hheap: P0, dwflags: HEAP_FLAGS, lpmem: ::core::option::Option<*const ::core::ffi::c_void>, dwbytes: usize) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<HeapHandle>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn HeapReAlloc ( hheap : HeapHandle , dwflags : HEAP_FLAGS , lpmem : *const ::core::ffi::c_void , dwbytes : usize ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn HeapReAlloc ( hheap : HeapHandle , dwflags : HEAP_FLAGS , lpmem : *const ::core::ffi::c_void , dwbytes : usize ) -> *const ::core::ffi::c_void );
     HeapReAlloc(hheap.into(), dwflags, ::core::mem::transmute(lpmem.unwrap_or(::std::ptr::null())), dwbytes)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
@@ -438,8 +438,8 @@ pub unsafe fn LocalHandle(pmem: *const ::core::ffi::c_void) -> isize {
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
 #[inline]
-pub unsafe fn LocalLock(hmem: isize) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn LocalLock ( hmem : isize ) -> *mut ::core::ffi::c_void );
+pub unsafe fn LocalLock(hmem: isize) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn LocalLock ( hmem : isize ) -> *const ::core::ffi::c_void );
     LocalLock(hmem)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
@@ -478,74 +478,74 @@ pub unsafe fn MapUserPhysicalPagesScatter(virtualaddresses: *const *const ::core
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn MapViewOfFile<P0>(hfilemappingobject: P0, dwdesiredaccess: FILE_MAP, dwfileoffsethigh: u32, dwfileoffsetlow: u32, dwnumberofbytestomap: usize) -> *mut ::core::ffi::c_void
+pub unsafe fn MapViewOfFile<P0>(hfilemappingobject: P0, dwdesiredaccess: FILE_MAP, dwfileoffsethigh: u32, dwfileoffsetlow: u32, dwnumberofbytestomap: usize) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn MapViewOfFile ( hfilemappingobject : super::super::Foundation:: HANDLE , dwdesiredaccess : FILE_MAP , dwfileoffsethigh : u32 , dwfileoffsetlow : u32 , dwnumberofbytestomap : usize ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn MapViewOfFile ( hfilemappingobject : super::super::Foundation:: HANDLE , dwdesiredaccess : FILE_MAP , dwfileoffsethigh : u32 , dwfileoffsetlow : u32 , dwnumberofbytestomap : usize ) -> *const ::core::ffi::c_void );
     MapViewOfFile(hfilemappingobject.into(), dwdesiredaccess, dwfileoffsethigh, dwfileoffsetlow, dwnumberofbytestomap)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn MapViewOfFile3<P0, P1>(filemapping: P0, process: P1, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, offset: u64, viewsize: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, pageprotection: u32, extendedparameters: ::core::option::Option<&mut [MEM_EXTENDED_PARAMETER]>) -> *mut ::core::ffi::c_void
+pub unsafe fn MapViewOfFile3<P0, P1>(filemapping: P0, process: P1, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, offset: u64, viewsize: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, pageprotection: u32, extendedparameters: ::core::option::Option<&mut [MEM_EXTENDED_PARAMETER]>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
     P1: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-6.dll""system" fn MapViewOfFile3 ( filemapping : super::super::Foundation:: HANDLE , process : super::super::Foundation:: HANDLE , baseaddress : *const ::core::ffi::c_void , offset : u64 , viewsize : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , pageprotection : u32 , extendedparameters : *mut MEM_EXTENDED_PARAMETER , parametercount : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-6.dll""system" fn MapViewOfFile3 ( filemapping : super::super::Foundation:: HANDLE , process : super::super::Foundation:: HANDLE , baseaddress : *const ::core::ffi::c_void , offset : u64 , viewsize : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , pageprotection : u32 , extendedparameters : *mut MEM_EXTENDED_PARAMETER , parametercount : u32 ) -> *const ::core::ffi::c_void );
     MapViewOfFile3(filemapping.into(), process.into(), ::core::mem::transmute(baseaddress.unwrap_or(::std::ptr::null())), offset, viewsize, allocationtype, pageprotection, ::core::mem::transmute(extendedparameters.as_deref().map_or(::core::ptr::null(), |slice| slice.as_ptr())), extendedparameters.as_deref().map_or(0, |slice| slice.len() as _))
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn MapViewOfFile3FromApp<P0, P1>(filemapping: P0, process: P1, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, offset: u64, viewsize: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, pageprotection: u32, extendedparameters: ::core::option::Option<&mut [MEM_EXTENDED_PARAMETER]>) -> *mut ::core::ffi::c_void
+pub unsafe fn MapViewOfFile3FromApp<P0, P1>(filemapping: P0, process: P1, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, offset: u64, viewsize: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, pageprotection: u32, extendedparameters: ::core::option::Option<&mut [MEM_EXTENDED_PARAMETER]>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
     P1: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-6.dll""system" fn MapViewOfFile3FromApp ( filemapping : super::super::Foundation:: HANDLE , process : super::super::Foundation:: HANDLE , baseaddress : *const ::core::ffi::c_void , offset : u64 , viewsize : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , pageprotection : u32 , extendedparameters : *mut MEM_EXTENDED_PARAMETER , parametercount : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-6.dll""system" fn MapViewOfFile3FromApp ( filemapping : super::super::Foundation:: HANDLE , process : super::super::Foundation:: HANDLE , baseaddress : *const ::core::ffi::c_void , offset : u64 , viewsize : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , pageprotection : u32 , extendedparameters : *mut MEM_EXTENDED_PARAMETER , parametercount : u32 ) -> *const ::core::ffi::c_void );
     MapViewOfFile3FromApp(filemapping.into(), process.into(), ::core::mem::transmute(baseaddress.unwrap_or(::std::ptr::null())), offset, viewsize, allocationtype, pageprotection, ::core::mem::transmute(extendedparameters.as_deref().map_or(::core::ptr::null(), |slice| slice.as_ptr())), extendedparameters.as_deref().map_or(0, |slice| slice.len() as _))
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn MapViewOfFileEx<P0>(hfilemappingobject: P0, dwdesiredaccess: FILE_MAP, dwfileoffsethigh: u32, dwfileoffsetlow: u32, dwnumberofbytestomap: usize, lpbaseaddress: ::core::option::Option<*const ::core::ffi::c_void>) -> *mut ::core::ffi::c_void
+pub unsafe fn MapViewOfFileEx<P0>(hfilemappingobject: P0, dwdesiredaccess: FILE_MAP, dwfileoffsethigh: u32, dwfileoffsetlow: u32, dwnumberofbytestomap: usize, lpbaseaddress: ::core::option::Option<*const ::core::ffi::c_void>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn MapViewOfFileEx ( hfilemappingobject : super::super::Foundation:: HANDLE , dwdesiredaccess : FILE_MAP , dwfileoffsethigh : u32 , dwfileoffsetlow : u32 , dwnumberofbytestomap : usize , lpbaseaddress : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn MapViewOfFileEx ( hfilemappingobject : super::super::Foundation:: HANDLE , dwdesiredaccess : FILE_MAP , dwfileoffsethigh : u32 , dwfileoffsetlow : u32 , dwnumberofbytestomap : usize , lpbaseaddress : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
     MapViewOfFileEx(hfilemappingobject.into(), dwdesiredaccess, dwfileoffsethigh, dwfileoffsetlow, dwnumberofbytestomap, ::core::mem::transmute(lpbaseaddress.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn MapViewOfFileExNuma<P0>(hfilemappingobject: P0, dwdesiredaccess: FILE_MAP, dwfileoffsethigh: u32, dwfileoffsetlow: u32, dwnumberofbytestomap: usize, lpbaseaddress: ::core::option::Option<*const ::core::ffi::c_void>, nndpreferred: u32) -> *mut ::core::ffi::c_void
+pub unsafe fn MapViewOfFileExNuma<P0>(hfilemappingobject: P0, dwdesiredaccess: FILE_MAP, dwfileoffsethigh: u32, dwfileoffsetlow: u32, dwnumberofbytestomap: usize, lpbaseaddress: ::core::option::Option<*const ::core::ffi::c_void>, nndpreferred: u32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn MapViewOfFileExNuma ( hfilemappingobject : super::super::Foundation:: HANDLE , dwdesiredaccess : FILE_MAP , dwfileoffsethigh : u32 , dwfileoffsetlow : u32 , dwnumberofbytestomap : usize , lpbaseaddress : *const ::core::ffi::c_void , nndpreferred : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn MapViewOfFileExNuma ( hfilemappingobject : super::super::Foundation:: HANDLE , dwdesiredaccess : FILE_MAP , dwfileoffsethigh : u32 , dwfileoffsetlow : u32 , dwnumberofbytestomap : usize , lpbaseaddress : *const ::core::ffi::c_void , nndpreferred : u32 ) -> *const ::core::ffi::c_void );
     MapViewOfFileExNuma(hfilemappingobject.into(), dwdesiredaccess, dwfileoffsethigh, dwfileoffsetlow, dwnumberofbytestomap, ::core::mem::transmute(lpbaseaddress.unwrap_or(::std::ptr::null())), nndpreferred)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn MapViewOfFileFromApp<P0>(hfilemappingobject: P0, desiredaccess: FILE_MAP, fileoffset: u64, numberofbytestomap: usize) -> *mut ::core::ffi::c_void
+pub unsafe fn MapViewOfFileFromApp<P0>(hfilemappingobject: P0, desiredaccess: FILE_MAP, fileoffset: u64, numberofbytestomap: usize) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn MapViewOfFileFromApp ( hfilemappingobject : super::super::Foundation:: HANDLE , desiredaccess : FILE_MAP , fileoffset : u64 , numberofbytestomap : usize ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn MapViewOfFileFromApp ( hfilemappingobject : super::super::Foundation:: HANDLE , desiredaccess : FILE_MAP , fileoffset : u64 , numberofbytestomap : usize ) -> *const ::core::ffi::c_void );
     MapViewOfFileFromApp(hfilemappingobject.into(), desiredaccess, fileoffset, numberofbytestomap)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn MapViewOfFileNuma2<P0, P1>(filemappinghandle: P0, processhandle: P1, offset: u64, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, viewsize: usize, allocationtype: u32, pageprotection: u32, preferrednode: u32) -> *mut ::core::ffi::c_void
+pub unsafe fn MapViewOfFileNuma2<P0, P1>(filemappinghandle: P0, processhandle: P1, offset: u64, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, viewsize: usize, allocationtype: u32, pageprotection: u32, preferrednode: u32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
     P1: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-5.dll""system" fn MapViewOfFileNuma2 ( filemappinghandle : super::super::Foundation:: HANDLE , processhandle : super::super::Foundation:: HANDLE , offset : u64 , baseaddress : *const ::core::ffi::c_void , viewsize : usize , allocationtype : u32 , pageprotection : u32 , preferrednode : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-5.dll""system" fn MapViewOfFileNuma2 ( filemappinghandle : super::super::Foundation:: HANDLE , processhandle : super::super::Foundation:: HANDLE , offset : u64 , baseaddress : *const ::core::ffi::c_void , viewsize : usize , allocationtype : u32 , pageprotection : u32 , preferrednode : u32 ) -> *const ::core::ffi::c_void );
     MapViewOfFileNuma2(filemappinghandle.into(), processhandle.into(), offset, ::core::mem::transmute(baseaddress.unwrap_or(::std::ptr::null())), viewsize, allocationtype, pageprotection, preferrednode)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
@@ -649,8 +649,8 @@ pub unsafe fn ReclaimVirtualMemory(virtualaddress: &[u8]) -> u32 {
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
 #[inline]
-pub unsafe fn RegisterBadMemoryNotification(callback: PBAD_MEMORY_CALLBACK_ROUTINE) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn RegisterBadMemoryNotification ( callback : PBAD_MEMORY_CALLBACK_ROUTINE ) -> *mut ::core::ffi::c_void );
+pub unsafe fn RegisterBadMemoryNotification(callback: PBAD_MEMORY_CALLBACK_ROUTINE) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn RegisterBadMemoryNotification ( callback : PBAD_MEMORY_CALLBACK_ROUTINE ) -> *const ::core::ffi::c_void );
     RegisterBadMemoryNotification(callback)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
@@ -762,54 +762,54 @@ pub unsafe fn UnregisterBadMemoryNotification(registrationhandle: *const ::core:
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
 #[inline]
-pub unsafe fn VirtualAlloc(lpaddress: ::core::option::Option<*const ::core::ffi::c_void>, dwsize: usize, flallocationtype: VIRTUAL_ALLOCATION_TYPE, flprotect: PAGE_PROTECTION_FLAGS) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn VirtualAlloc ( lpaddress : *const ::core::ffi::c_void , dwsize : usize , flallocationtype : VIRTUAL_ALLOCATION_TYPE , flprotect : PAGE_PROTECTION_FLAGS ) -> *mut ::core::ffi::c_void );
+pub unsafe fn VirtualAlloc(lpaddress: ::core::option::Option<*const ::core::ffi::c_void>, dwsize: usize, flallocationtype: VIRTUAL_ALLOCATION_TYPE, flprotect: PAGE_PROTECTION_FLAGS) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn VirtualAlloc ( lpaddress : *const ::core::ffi::c_void , dwsize : usize , flallocationtype : VIRTUAL_ALLOCATION_TYPE , flprotect : PAGE_PROTECTION_FLAGS ) -> *const ::core::ffi::c_void );
     VirtualAlloc(::core::mem::transmute(lpaddress.unwrap_or(::std::ptr::null())), dwsize, flallocationtype, flprotect)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn VirtualAlloc2<P0>(process: P0, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, size: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, pageprotection: u32, extendedparameters: ::core::option::Option<&mut [MEM_EXTENDED_PARAMETER]>) -> *mut ::core::ffi::c_void
+pub unsafe fn VirtualAlloc2<P0>(process: P0, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, size: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, pageprotection: u32, extendedparameters: ::core::option::Option<&mut [MEM_EXTENDED_PARAMETER]>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-6.dll""system" fn VirtualAlloc2 ( process : super::super::Foundation:: HANDLE , baseaddress : *const ::core::ffi::c_void , size : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , pageprotection : u32 , extendedparameters : *mut MEM_EXTENDED_PARAMETER , parametercount : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-6.dll""system" fn VirtualAlloc2 ( process : super::super::Foundation:: HANDLE , baseaddress : *const ::core::ffi::c_void , size : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , pageprotection : u32 , extendedparameters : *mut MEM_EXTENDED_PARAMETER , parametercount : u32 ) -> *const ::core::ffi::c_void );
     VirtualAlloc2(process.into(), ::core::mem::transmute(baseaddress.unwrap_or(::std::ptr::null())), size, allocationtype, pageprotection, ::core::mem::transmute(extendedparameters.as_deref().map_or(::core::ptr::null(), |slice| slice.as_ptr())), extendedparameters.as_deref().map_or(0, |slice| slice.len() as _))
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn VirtualAlloc2FromApp<P0>(process: P0, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, size: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, pageprotection: u32, extendedparameters: ::core::option::Option<&mut [MEM_EXTENDED_PARAMETER]>) -> *mut ::core::ffi::c_void
+pub unsafe fn VirtualAlloc2FromApp<P0>(process: P0, baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, size: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, pageprotection: u32, extendedparameters: ::core::option::Option<&mut [MEM_EXTENDED_PARAMETER]>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-6.dll""system" fn VirtualAlloc2FromApp ( process : super::super::Foundation:: HANDLE , baseaddress : *const ::core::ffi::c_void , size : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , pageprotection : u32 , extendedparameters : *mut MEM_EXTENDED_PARAMETER , parametercount : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-6.dll""system" fn VirtualAlloc2FromApp ( process : super::super::Foundation:: HANDLE , baseaddress : *const ::core::ffi::c_void , size : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , pageprotection : u32 , extendedparameters : *mut MEM_EXTENDED_PARAMETER , parametercount : u32 ) -> *const ::core::ffi::c_void );
     VirtualAlloc2FromApp(process.into(), ::core::mem::transmute(baseaddress.unwrap_or(::std::ptr::null())), size, allocationtype, pageprotection, ::core::mem::transmute(extendedparameters.as_deref().map_or(::core::ptr::null(), |slice| slice.as_ptr())), extendedparameters.as_deref().map_or(0, |slice| slice.len() as _))
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn VirtualAllocEx<P0>(hprocess: P0, lpaddress: ::core::option::Option<*const ::core::ffi::c_void>, dwsize: usize, flallocationtype: VIRTUAL_ALLOCATION_TYPE, flprotect: PAGE_PROTECTION_FLAGS) -> *mut ::core::ffi::c_void
+pub unsafe fn VirtualAllocEx<P0>(hprocess: P0, lpaddress: ::core::option::Option<*const ::core::ffi::c_void>, dwsize: usize, flallocationtype: VIRTUAL_ALLOCATION_TYPE, flprotect: PAGE_PROTECTION_FLAGS) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn VirtualAllocEx ( hprocess : super::super::Foundation:: HANDLE , lpaddress : *const ::core::ffi::c_void , dwsize : usize , flallocationtype : VIRTUAL_ALLOCATION_TYPE , flprotect : PAGE_PROTECTION_FLAGS ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn VirtualAllocEx ( hprocess : super::super::Foundation:: HANDLE , lpaddress : *const ::core::ffi::c_void , dwsize : usize , flallocationtype : VIRTUAL_ALLOCATION_TYPE , flprotect : PAGE_PROTECTION_FLAGS ) -> *const ::core::ffi::c_void );
     VirtualAllocEx(hprocess.into(), ::core::mem::transmute(lpaddress.unwrap_or(::std::ptr::null())), dwsize, flallocationtype, flprotect)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn VirtualAllocExNuma<P0>(hprocess: P0, lpaddress: ::core::option::Option<*const ::core::ffi::c_void>, dwsize: usize, flallocationtype: VIRTUAL_ALLOCATION_TYPE, flprotect: u32, nndpreferred: u32) -> *mut ::core::ffi::c_void
+pub unsafe fn VirtualAllocExNuma<P0>(hprocess: P0, lpaddress: ::core::option::Option<*const ::core::ffi::c_void>, dwsize: usize, flallocationtype: VIRTUAL_ALLOCATION_TYPE, flprotect: u32, nndpreferred: u32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn VirtualAllocExNuma ( hprocess : super::super::Foundation:: HANDLE , lpaddress : *const ::core::ffi::c_void , dwsize : usize , flallocationtype : VIRTUAL_ALLOCATION_TYPE , flprotect : u32 , nndpreferred : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn VirtualAllocExNuma ( hprocess : super::super::Foundation:: HANDLE , lpaddress : *const ::core::ffi::c_void , dwsize : usize , flallocationtype : VIRTUAL_ALLOCATION_TYPE , flprotect : u32 , nndpreferred : u32 ) -> *const ::core::ffi::c_void );
     VirtualAllocExNuma(hprocess.into(), ::core::mem::transmute(lpaddress.unwrap_or(::std::ptr::null())), dwsize, flallocationtype, flprotect, nndpreferred)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`*"]
 #[inline]
-pub unsafe fn VirtualAllocFromApp(baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, size: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, protection: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-3.dll""system" fn VirtualAllocFromApp ( baseaddress : *const ::core::ffi::c_void , size : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , protection : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn VirtualAllocFromApp(baseaddress: ::core::option::Option<*const ::core::ffi::c_void>, size: usize, allocationtype: VIRTUAL_ALLOCATION_TYPE, protection: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "api-ms-win-core-memory-l1-1-3.dll""system" fn VirtualAllocFromApp ( baseaddress : *const ::core::ffi::c_void , size : usize , allocationtype : VIRTUAL_ALLOCATION_TYPE , protection : u32 ) -> *const ::core::ffi::c_void );
     VirtualAllocFromApp(::core::mem::transmute(baseaddress.unwrap_or(::std::ptr::null())), size, allocationtype, protection)
 }
 #[doc = "*Required features: `\"Win32_System_Memory\"`, `\"Win32_Foundation\"`*"]

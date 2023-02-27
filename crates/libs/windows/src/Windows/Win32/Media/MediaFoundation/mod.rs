@@ -1544,11 +1544,11 @@ pub unsafe fn MFGetWorkQueueMMCSSTaskId(dwworkqueueid: u32) -> ::windows::core::
 }
 #[doc = "*Required features: `\"Win32_Media_MediaFoundation\"`*"]
 #[inline]
-pub unsafe fn MFHeapAlloc<P0>(nsize: usize, dwflags: u32, pszfile: P0, line: i32, eat: EAllocationType) -> *mut ::core::ffi::c_void
+pub unsafe fn MFHeapAlloc<P0>(nsize: usize, dwflags: u32, pszfile: P0, line: i32, eat: EAllocationType) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
 {
-    ::windows::imp::link ! ( "mfplat.dll""system" fn MFHeapAlloc ( nsize : usize , dwflags : u32 , pszfile : :: windows::core::PCSTR , line : i32 , eat : EAllocationType ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "mfplat.dll""system" fn MFHeapAlloc ( nsize : usize , dwflags : u32 , pszfile : :: windows::core::PCSTR , line : i32 , eat : EAllocationType ) -> *const ::core::ffi::c_void );
     MFHeapAlloc(nsize, dwflags, pszfile.into().abi(), line, eat)
 }
 #[doc = "*Required features: `\"Win32_Media_MediaFoundation\"`*"]
@@ -9213,7 +9213,7 @@ impl IMFAsyncCallbackLogging {
     {
         (::windows::core::Vtable::vtable(self).base__.Invoke)(::windows::core::Vtable::as_raw(self), pasyncresult.into().abi()).ok()
     }
-    pub unsafe fn GetObjectPointer(&self) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetObjectPointer(&self) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).GetObjectPointer)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetObjectTag(&self) -> u32 {
@@ -9247,7 +9247,7 @@ unsafe impl ::windows::core::Interface for IMFAsyncCallbackLogging {
 #[doc(hidden)]
 pub struct IMFAsyncCallbackLogging_Vtbl {
     pub base__: IMFAsyncCallback_Vtbl,
-    pub GetObjectPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void,
+    pub GetObjectPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void,
     pub GetObjectTag: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> u32,
 }
 #[doc = "*Required features: `\"Win32_Media_MediaFoundation\"`*"]
@@ -9664,7 +9664,7 @@ impl IMFAudioMediaType {
     }
     #[doc = "*Required features: `\"Win32_Media_Audio\"`*"]
     #[cfg(feature = "Win32_Media_Audio")]
-    pub unsafe fn GetAudioFormat(&self) -> *mut super::Audio::WAVEFORMATEX {
+    pub unsafe fn GetAudioFormat(&self) -> *const super::Audio::WAVEFORMATEX {
         (::windows::core::Vtable::vtable(self).GetAudioFormat)(::windows::core::Vtable::as_raw(self))
     }
 }
@@ -9696,7 +9696,7 @@ unsafe impl ::windows::core::Interface for IMFAudioMediaType {
 pub struct IMFAudioMediaType_Vtbl {
     pub base__: IMFMediaType_Vtbl,
     #[cfg(feature = "Win32_Media_Audio")]
-    pub GetAudioFormat: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut super::Audio::WAVEFORMATEX,
+    pub GetAudioFormat: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const super::Audio::WAVEFORMATEX,
     #[cfg(not(feature = "Win32_Media_Audio"))]
     GetAudioFormat: usize,
 }
@@ -27012,7 +27012,7 @@ impl IMFVideoMediaType {
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn GetVideoFormat(&self) -> *mut MFVIDEOFORMAT {
+    pub unsafe fn GetVideoFormat(&self) -> *const MFVIDEOFORMAT {
         (::windows::core::Vtable::vtable(self).GetVideoFormat)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetVideoRepresentation(&self, guidrepresentation: ::windows::core::GUID, ppvrepresentation: *mut *mut ::core::ffi::c_void, lstride: i32) -> ::windows::core::Result<()> {
@@ -27047,7 +27047,7 @@ unsafe impl ::windows::core::Interface for IMFVideoMediaType {
 pub struct IMFVideoMediaType_Vtbl {
     pub base__: IMFMediaType_Vtbl,
     #[cfg(feature = "Win32_Foundation")]
-    pub GetVideoFormat: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut MFVIDEOFORMAT,
+    pub GetVideoFormat: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const MFVIDEOFORMAT,
     #[cfg(not(feature = "Win32_Foundation"))]
     GetVideoFormat: usize,
     pub GetVideoRepresentation: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, guidrepresentation: ::windows::core::GUID, ppvrepresentation: *mut *mut ::core::ffi::c_void, lstride: i32) -> ::windows::core::HRESULT,

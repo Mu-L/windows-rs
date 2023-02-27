@@ -397,7 +397,7 @@ pub trait IMLOperatorTensor_Impl: Sized {
     fn GetTensorDataType(&self) -> MLOperatorTensorDataType;
     fn IsCpuData(&self) -> bool;
     fn IsDataInterface(&self) -> bool;
-    fn GetData(&self) -> *mut ::core::ffi::c_void;
+    fn GetData(&self) -> *const ::core::ffi::c_void;
     fn GetDataInterface(&self, datainterface: *mut ::core::option::Option<::windows::core::IUnknown>) -> ();
 }
 impl ::windows::core::RuntimeName for IMLOperatorTensor {}
@@ -428,7 +428,7 @@ impl IMLOperatorTensor_Vtbl {
             let this = (*this).get_impl();
             this.IsDataInterface()
         }
-        unsafe extern "system" fn GetData<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMLOperatorTensor_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn GetData<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMLOperatorTensor_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetData()

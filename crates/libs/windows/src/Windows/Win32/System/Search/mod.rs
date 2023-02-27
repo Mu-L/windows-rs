@@ -1823,14 +1823,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_Search\"`*"]
 #[inline]
-pub unsafe fn dbprtypeA(param0: i32) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "odbcbcp.dll""system" fn dbprtypeA ( param0 : i32 ) -> :: windows::core::PSTR );
+pub unsafe fn dbprtypeA(param0: i32) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "odbcbcp.dll""system" fn dbprtypeA ( param0 : i32 ) -> :: windows::core::PCSTR );
     dbprtypeA(param0)
 }
 #[doc = "*Required features: `\"Win32_System_Search\"`*"]
 #[inline]
-pub unsafe fn dbprtypeW(param0: i32) -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "odbcbcp.dll""system" fn dbprtypeW ( param0 : i32 ) -> :: windows::core::PWSTR );
+pub unsafe fn dbprtypeW(param0: i32) -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "odbcbcp.dll""system" fn dbprtypeW ( param0 : i32 ) -> :: windows::core::PCWSTR );
     dbprtypeW(param0)
 }
 #[doc = "*Required features: `\"Win32_System_Search\"`*"]

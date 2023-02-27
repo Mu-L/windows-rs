@@ -1827,21 +1827,21 @@ pub unsafe fn RevertToPrinterSelf() -> super::super::Foundation::HANDLE {
 }
 #[doc = "*Required features: `\"Win32_Graphics_Printing\"`*"]
 #[inline]
-pub unsafe fn RouterAllocBidiMem(numbytes: usize) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "spoolss.dll""system" fn RouterAllocBidiMem ( numbytes : usize ) -> *mut ::core::ffi::c_void );
+pub unsafe fn RouterAllocBidiMem(numbytes: usize) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "spoolss.dll""system" fn RouterAllocBidiMem ( numbytes : usize ) -> *const ::core::ffi::c_void );
     RouterAllocBidiMem(numbytes)
 }
 #[doc = "*Required features: `\"Win32_Graphics_Printing\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn RouterAllocBidiResponseContainer(count: u32) -> *mut BIDI_RESPONSE_CONTAINER {
-    ::windows::imp::link ! ( "spoolss.dll""system" fn RouterAllocBidiResponseContainer ( count : u32 ) -> *mut BIDI_RESPONSE_CONTAINER );
+pub unsafe fn RouterAllocBidiResponseContainer(count: u32) -> *const BIDI_RESPONSE_CONTAINER {
+    ::windows::imp::link ! ( "spoolss.dll""system" fn RouterAllocBidiResponseContainer ( count : u32 ) -> *const BIDI_RESPONSE_CONTAINER );
     RouterAllocBidiResponseContainer(count)
 }
 #[doc = "*Required features: `\"Win32_Graphics_Printing\"`*"]
 #[inline]
-pub unsafe fn RouterAllocPrinterNotifyInfo(cprinternotifyinfodata: u32) -> *mut PRINTER_NOTIFY_INFO {
-    ::windows::imp::link ! ( "spoolss.dll""system" fn RouterAllocPrinterNotifyInfo ( cprinternotifyinfodata : u32 ) -> *mut PRINTER_NOTIFY_INFO );
+pub unsafe fn RouterAllocPrinterNotifyInfo(cprinternotifyinfodata: u32) -> *const PRINTER_NOTIFY_INFO {
+    ::windows::imp::link ! ( "spoolss.dll""system" fn RouterAllocPrinterNotifyInfo ( cprinternotifyinfodata : u32 ) -> *const PRINTER_NOTIFY_INFO );
     RouterAllocPrinterNotifyInfo(cprinternotifyinfodata)
 }
 #[doc = "*Required features: `\"Win32_Graphics_Printing\"`*"]

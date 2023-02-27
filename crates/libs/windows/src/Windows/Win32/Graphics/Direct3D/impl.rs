@@ -1,12 +1,12 @@
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D\"`, `\"implement\"`*"]
 pub trait ID3DBlob_Impl: Sized {
-    fn GetBufferPointer(&self) -> *mut ::core::ffi::c_void;
+    fn GetBufferPointer(&self) -> *const ::core::ffi::c_void;
     fn GetBufferSize(&self) -> usize;
 }
 impl ::windows::core::RuntimeName for ID3DBlob {}
 impl ID3DBlob_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3DBlob_Impl, const OFFSET: isize>() -> ID3DBlob_Vtbl {
-        unsafe extern "system" fn GetBufferPointer<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3DBlob_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn GetBufferPointer<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3DBlob_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetBufferPointer()

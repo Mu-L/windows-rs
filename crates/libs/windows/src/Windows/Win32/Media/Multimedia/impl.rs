@@ -264,7 +264,7 @@ impl IAVIStreaming_Vtbl {
 #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`, `\"implement\"`*"]
 #[cfg(feature = "Win32_Graphics_Gdi")]
 pub trait IGetFrame_Impl: Sized {
-    fn GetFrame(&self, lpos: i32) -> *mut ::core::ffi::c_void;
+    fn GetFrame(&self, lpos: i32) -> *const ::core::ffi::c_void;
     fn Begin(&self, lstart: i32, lend: i32, lrate: i32) -> ::windows::core::Result<()>;
     fn End(&self) -> ::windows::core::Result<()>;
     fn SetFormat(&self, lpbi: *const super::super::Graphics::Gdi::BITMAPINFOHEADER, lpbits: *const ::core::ffi::c_void, x: i32, y: i32, dx: i32, dy: i32) -> ::windows::core::Result<()>;
@@ -274,7 +274,7 @@ impl ::windows::core::RuntimeName for IGetFrame {}
 #[cfg(feature = "Win32_Graphics_Gdi")]
 impl IGetFrame_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetFrame_Impl, const OFFSET: isize>() -> IGetFrame_Vtbl {
-        unsafe extern "system" fn GetFrame<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetFrame_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lpos: i32) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn GetFrame<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetFrame_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lpos: i32) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetFrame(::core::mem::transmute_copy(&lpos))

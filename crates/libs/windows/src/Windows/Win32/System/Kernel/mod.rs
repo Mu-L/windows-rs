@@ -1,7 +1,7 @@
 #[doc = "*Required features: `\"Win32_System_Kernel\"`*"]
 #[inline]
-pub unsafe fn RtlFirstEntrySList(listhead: *const SLIST_HEADER) -> *mut SLIST_ENTRY {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlFirstEntrySList ( listhead : *const SLIST_HEADER ) -> *mut SLIST_ENTRY );
+pub unsafe fn RtlFirstEntrySList(listhead: *const SLIST_HEADER) -> *const SLIST_ENTRY {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlFirstEntrySList ( listhead : *const SLIST_HEADER ) -> *const SLIST_ENTRY );
     RtlFirstEntrySList(listhead)
 }
 #[doc = "*Required features: `\"Win32_System_Kernel\"`*"]
@@ -14,26 +14,26 @@ pub unsafe fn RtlInitializeSListHead() -> SLIST_HEADER {
 }
 #[doc = "*Required features: `\"Win32_System_Kernel\"`*"]
 #[inline]
-pub unsafe fn RtlInterlockedFlushSList(listhead: *mut SLIST_HEADER) -> *mut SLIST_ENTRY {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlInterlockedFlushSList ( listhead : *mut SLIST_HEADER ) -> *mut SLIST_ENTRY );
+pub unsafe fn RtlInterlockedFlushSList(listhead: *mut SLIST_HEADER) -> *const SLIST_ENTRY {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlInterlockedFlushSList ( listhead : *mut SLIST_HEADER ) -> *const SLIST_ENTRY );
     RtlInterlockedFlushSList(listhead)
 }
 #[doc = "*Required features: `\"Win32_System_Kernel\"`*"]
 #[inline]
-pub unsafe fn RtlInterlockedPopEntrySList(listhead: *mut SLIST_HEADER) -> *mut SLIST_ENTRY {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlInterlockedPopEntrySList ( listhead : *mut SLIST_HEADER ) -> *mut SLIST_ENTRY );
+pub unsafe fn RtlInterlockedPopEntrySList(listhead: *mut SLIST_HEADER) -> *const SLIST_ENTRY {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlInterlockedPopEntrySList ( listhead : *mut SLIST_HEADER ) -> *const SLIST_ENTRY );
     RtlInterlockedPopEntrySList(listhead)
 }
 #[doc = "*Required features: `\"Win32_System_Kernel\"`*"]
 #[inline]
-pub unsafe fn RtlInterlockedPushEntrySList(listhead: *mut SLIST_HEADER, listentry: *mut SLIST_ENTRY) -> *mut SLIST_ENTRY {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlInterlockedPushEntrySList ( listhead : *mut SLIST_HEADER , listentry : *mut SLIST_ENTRY ) -> *mut SLIST_ENTRY );
+pub unsafe fn RtlInterlockedPushEntrySList(listhead: *mut SLIST_HEADER, listentry: *mut SLIST_ENTRY) -> *const SLIST_ENTRY {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlInterlockedPushEntrySList ( listhead : *mut SLIST_HEADER , listentry : *mut SLIST_ENTRY ) -> *const SLIST_ENTRY );
     RtlInterlockedPushEntrySList(listhead, listentry)
 }
 #[doc = "*Required features: `\"Win32_System_Kernel\"`*"]
 #[inline]
-pub unsafe fn RtlInterlockedPushListSListEx(listhead: *mut SLIST_HEADER, list: *mut SLIST_ENTRY, listend: *mut SLIST_ENTRY, count: u32) -> *mut SLIST_ENTRY {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlInterlockedPushListSListEx ( listhead : *mut SLIST_HEADER , list : *mut SLIST_ENTRY , listend : *mut SLIST_ENTRY , count : u32 ) -> *mut SLIST_ENTRY );
+pub unsafe fn RtlInterlockedPushListSListEx(listhead: *mut SLIST_HEADER, list: *mut SLIST_ENTRY, listend: *mut SLIST_ENTRY, count: u32) -> *const SLIST_ENTRY {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlInterlockedPushListSListEx ( listhead : *mut SLIST_HEADER , list : *mut SLIST_ENTRY , listend : *mut SLIST_ENTRY , count : u32 ) -> *const SLIST_ENTRY );
     RtlInterlockedPushListSListEx(listhead, list, listend, count)
 }
 #[doc = "*Required features: `\"Win32_System_Kernel\"`*"]

@@ -1687,7 +1687,7 @@ pub trait IVssWriterImpl_Impl: Sized {
     fn Subscribe(&self, dwsubscribetimeout: u32, dweventflags: u32) -> ::windows::core::Result<()>;
     fn Unsubscribe(&self) -> ::windows::core::Result<()>;
     fn Uninitialize(&self);
-    fn GetCurrentVolumeArray(&self) -> *mut ::windows::core::PWSTR;
+    fn GetCurrentVolumeArray(&self) -> *const ::windows::core::PCWSTR;
     fn GetCurrentVolumeCount(&self) -> u32;
     fn GetSnapshotDeviceName(&self, wszoriginalvolume: &::windows::core::PCWSTR) -> ::windows::core::Result<::windows::core::PWSTR>;
     fn GetCurrentSnapshotSetId(&self) -> ::windows::core::GUID;
@@ -1701,7 +1701,7 @@ pub trait IVssWriterImpl_Impl: Sized {
     fn SetWriterFailure(&self, hr: ::windows::core::HRESULT) -> ::windows::core::Result<()>;
     fn IsPartialFileSupportEnabled(&self) -> bool;
     fn InstallAlternateWriter(&self, idwriter: &::windows::core::GUID, clsid: &::windows::core::GUID) -> ::windows::core::Result<()>;
-    fn GetIdentityInformation(&self) -> *mut IVssExamineWriterMetadata;
+    fn GetIdentityInformation(&self) -> *const IVssExamineWriterMetadata;
     fn SetWriterFailureEx(&self, hr: ::windows::core::HRESULT, hrapplication: ::windows::core::HRESULT, wszapplicationmessage: &::windows::core::PCWSTR) -> ::windows::core::Result<()>;
     fn GetSessionId(&self) -> ::windows::core::Result<::windows::core::GUID>;
     fn IsWriterShuttingDown(&self) -> bool;
@@ -1729,7 +1729,7 @@ impl IVssWriterImpl_Vtbl {
             let this = (*this).get_impl();
             this.Uninitialize()
         }
-        unsafe extern "system" fn GetCurrentVolumeArray<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IVssWriterImpl_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut ::windows::core::PWSTR {
+        unsafe extern "system" fn GetCurrentVolumeArray<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IVssWriterImpl_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const ::windows::core::PCWSTR {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetCurrentVolumeArray()
@@ -1805,7 +1805,7 @@ impl IVssWriterImpl_Vtbl {
             let this = (*this).get_impl();
             this.InstallAlternateWriter(::core::mem::transmute(&idwriter), ::core::mem::transmute(&clsid)).into()
         }
-        unsafe extern "system" fn GetIdentityInformation<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IVssWriterImpl_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut IVssExamineWriterMetadata {
+        unsafe extern "system" fn GetIdentityInformation<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IVssWriterImpl_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const IVssExamineWriterMetadata {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetIdentityInformation()

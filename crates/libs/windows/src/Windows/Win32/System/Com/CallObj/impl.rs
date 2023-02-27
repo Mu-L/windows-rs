@@ -4,7 +4,7 @@ pub trait ICallFrame_Impl: Sized {
     fn GetInfo(&self, pinfo: *mut CALLFRAMEINFO) -> ::windows::core::Result<()>;
     fn GetIIDAndMethod(&self, piid: *mut ::windows::core::GUID, pimethod: *mut u32) -> ::windows::core::Result<()>;
     fn GetNames(&self, pwszinterface: *mut ::windows::core::PWSTR, pwszmethod: *mut ::windows::core::PWSTR) -> ::windows::core::Result<()>;
-    fn GetStackLocation(&self) -> *mut ::core::ffi::c_void;
+    fn GetStackLocation(&self) -> *const ::core::ffi::c_void;
     fn SetStackLocation(&self, pvstack: *const ::core::ffi::c_void);
     fn SetReturnValue(&self, hr: ::windows::core::HRESULT);
     fn GetReturnValue(&self) -> ::windows::core::Result<()>;
@@ -41,7 +41,7 @@ impl ICallFrame_Vtbl {
             let this = (*this).get_impl();
             this.GetNames(::core::mem::transmute_copy(&pwszinterface), ::core::mem::transmute_copy(&pwszmethod)).into()
         }
-        unsafe extern "system" fn GetStackLocation<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ICallFrame_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn GetStackLocation<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ICallFrame_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetStackLocation()

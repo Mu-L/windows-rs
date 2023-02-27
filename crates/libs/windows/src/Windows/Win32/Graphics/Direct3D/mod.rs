@@ -6,7 +6,7 @@ pub mod Fxc;
 #[repr(transparent)]
 pub struct ID3DBlob(::windows::core::IUnknown);
 impl ID3DBlob {
-    pub unsafe fn GetBufferPointer(&self) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetBufferPointer(&self) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).GetBufferPointer)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetBufferSize(&self) -> usize {
@@ -42,7 +42,7 @@ unsafe impl ::windows::core::Interface for ID3DBlob {
 #[doc(hidden)]
 pub struct ID3DBlob_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
-    pub GetBufferPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void,
+    pub GetBufferPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void,
     pub GetBufferSize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> usize,
 }
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D\"`*"]

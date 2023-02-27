@@ -2589,7 +2589,7 @@ pub trait IBrowserService2_Impl: Sized + IBrowserService_Impl {
     fn CreateBrowserPropSheetExt(&self, riid: *const ::windows::core::GUID, ppv: *mut *mut ::core::ffi::c_void) -> ::windows::core::Result<()>;
     fn GetViewWindow(&self) -> ::windows::core::Result<super::super::Foundation::HWND>;
     fn GetBaseBrowserData(&self) -> ::windows::core::Result<*mut BASEBROWSERDATALH>;
-    fn PutBaseBrowserData(&self) -> *mut BASEBROWSERDATALH;
+    fn PutBaseBrowserData(&self) -> *const BASEBROWSERDATALH;
     fn InitializeTravelLog(&self, ptl: ::core::option::Option<&ITravelLog>, dw: u32) -> ::windows::core::Result<()>;
     fn SetTopBrowser(&self) -> ::windows::core::Result<()>;
     fn Offline(&self, icmd: i32) -> ::windows::core::Result<()>;
@@ -2624,7 +2624,7 @@ pub trait IBrowserService2_Impl: Sized + IBrowserService_Impl {
     fn ForwardViewMsg(&self, umsg: u32, wparam: super::super::Foundation::WPARAM, lparam: super::super::Foundation::LPARAM) -> super::super::Foundation::LRESULT;
     fn SetAcceleratorMenu(&self, hacc: super::WindowsAndMessaging::HACCEL) -> ::windows::core::Result<()>;
     fn _GetToolbarCount(&self) -> i32;
-    fn _GetToolbarItem(&self, itb: i32) -> *mut TOOLBARITEM;
+    fn _GetToolbarItem(&self, itb: i32) -> *const TOOLBARITEM;
     fn _SaveToolbars(&self, pstm: ::core::option::Option<&super::super::System::Com::IStream>) -> ::windows::core::Result<()>;
     fn _LoadToolbars(&self, pstm: ::core::option::Option<&super::super::System::Com::IStream>) -> ::windows::core::Result<()>;
     fn _CloseAndReleaseToolbars(&self, fclose: super::super::Foundation::BOOL) -> ::windows::core::Result<()>;
@@ -2745,7 +2745,7 @@ impl IBrowserService2_Vtbl {
                 ::core::result::Result::Err(err) => err.into(),
             }
         }
-        unsafe extern "system" fn PutBaseBrowserData<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IBrowserService2_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut BASEBROWSERDATALH {
+        unsafe extern "system" fn PutBaseBrowserData<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IBrowserService2_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const BASEBROWSERDATALH {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.PutBaseBrowserData()
@@ -2920,7 +2920,7 @@ impl IBrowserService2_Vtbl {
             let this = (*this).get_impl();
             this._GetToolbarCount()
         }
-        unsafe extern "system" fn _GetToolbarItem<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IBrowserService2_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, itb: i32) -> *mut TOOLBARITEM {
+        unsafe extern "system" fn _GetToolbarItem<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IBrowserService2_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, itb: i32) -> *const TOOLBARITEM {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this._GetToolbarItem(::core::mem::transmute_copy(&itb))

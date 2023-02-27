@@ -7,14 +7,14 @@ pub unsafe fn BRUSHOBJ_hGetColorTransform(pbo: *mut BRUSHOBJ) -> super::super::F
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
 #[inline]
-pub unsafe fn BRUSHOBJ_pvAllocRbrush(pbo: *mut BRUSHOBJ, cj: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn BRUSHOBJ_pvAllocRbrush ( pbo : *mut BRUSHOBJ , cj : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn BRUSHOBJ_pvAllocRbrush(pbo: *mut BRUSHOBJ, cj: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn BRUSHOBJ_pvAllocRbrush ( pbo : *mut BRUSHOBJ , cj : u32 ) -> *const ::core::ffi::c_void );
     BRUSHOBJ_pvAllocRbrush(pbo, cj)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
 #[inline]
-pub unsafe fn BRUSHOBJ_pvGetRbrush(pbo: *mut BRUSHOBJ) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn BRUSHOBJ_pvGetRbrush ( pbo : *mut BRUSHOBJ ) -> *mut ::core::ffi::c_void );
+pub unsafe fn BRUSHOBJ_pvGetRbrush(pbo: *mut BRUSHOBJ) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn BRUSHOBJ_pvGetRbrush ( pbo : *mut BRUSHOBJ ) -> *const ::core::ffi::c_void );
     BRUSHOBJ_pvGetRbrush(pbo)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
@@ -43,8 +43,8 @@ where
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn CLIPOBJ_ppoGetPath(pco: *mut CLIPOBJ) -> *mut PATHOBJ {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn CLIPOBJ_ppoGetPath ( pco : *mut CLIPOBJ ) -> *mut PATHOBJ );
+pub unsafe fn CLIPOBJ_ppoGetPath(pco: *mut CLIPOBJ) -> *const PATHOBJ {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn CLIPOBJ_ppoGetPath ( pco : *mut CLIPOBJ ) -> *const PATHOBJ );
     CLIPOBJ_ppoGetPath(pco)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
@@ -141,8 +141,8 @@ pub unsafe fn EngCheckAbort(pso: *mut SURFOBJ) -> super::super::Foundation::BOOL
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
 #[inline]
-pub unsafe fn EngComputeGlyphSet(ncodepage: i32, nfirstchar: i32, cchars: i32) -> *mut FD_GLYPHSET {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn EngComputeGlyphSet ( ncodepage : i32 , nfirstchar : i32 , cchars : i32 ) -> *mut FD_GLYPHSET );
+pub unsafe fn EngComputeGlyphSet(ncodepage: i32, nfirstchar: i32, cchars: i32) -> *const FD_GLYPHSET {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn EngComputeGlyphSet ( ncodepage : i32 , nfirstchar : i32 , cchars : i32 ) -> *const FD_GLYPHSET );
     EngComputeGlyphSet(ncodepage, nfirstchar, cchars)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
@@ -162,8 +162,8 @@ pub unsafe fn EngCreateBitmap(sizl: super::super::Foundation::SIZE, lwidth: i32,
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn EngCreateClip() -> *mut CLIPOBJ {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn EngCreateClip ( ) -> *mut CLIPOBJ );
+pub unsafe fn EngCreateClip() -> *const CLIPOBJ {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn EngCreateClip ( ) -> *const CLIPOBJ );
     EngCreateClip()
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"]
@@ -258,11 +258,11 @@ pub unsafe fn EngFillPath(pso: *mut SURFOBJ, ppo: *mut PATHOBJ, pco: *mut CLIPOB
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn EngFindResource<P0>(h: P0, iname: i32, itype: i32, pulsize: *mut u32) -> *mut ::core::ffi::c_void
+pub unsafe fn EngFindResource<P0>(h: P0, iname: i32, itype: i32, pulsize: *mut u32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn EngFindResource ( h : super::super::Foundation:: HANDLE , iname : i32 , itype : i32 , pulsize : *mut u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "gdi32.dll""system" fn EngFindResource ( h : super::super::Foundation:: HANDLE , iname : i32 , itype : i32 , pulsize : *mut u32 ) -> *const ::core::ffi::c_void );
     EngFindResource(h.into(), iname, itype, pulsize)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
@@ -283,20 +283,20 @@ pub unsafe fn EngGetCurrentCodePage(oemcodepage: *mut u16, ansicodepage: *mut u1
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
 #[inline]
-pub unsafe fn EngGetDriverName<P0>(hdev: P0) -> ::windows::core::PWSTR
+pub unsafe fn EngGetDriverName<P0>(hdev: P0) -> ::windows::core::PCWSTR
 where
     P0: ::std::convert::Into<HDEV>,
 {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn EngGetDriverName ( hdev : HDEV ) -> :: windows::core::PWSTR );
+    ::windows::imp::link ! ( "gdi32.dll""system" fn EngGetDriverName ( hdev : HDEV ) -> :: windows::core::PCWSTR );
     EngGetDriverName(hdev.into())
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
 #[inline]
-pub unsafe fn EngGetPrinterDataFileName<P0>(hdev: P0) -> ::windows::core::PWSTR
+pub unsafe fn EngGetPrinterDataFileName<P0>(hdev: P0) -> ::windows::core::PCWSTR
 where
     P0: ::std::convert::Into<HDEV>,
 {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn EngGetPrinterDataFileName ( hdev : HDEV ) -> :: windows::core::PWSTR );
+    ::windows::imp::link ! ( "gdi32.dll""system" fn EngGetPrinterDataFileName ( hdev : HDEV ) -> :: windows::core::PCWSTR );
     EngGetPrinterDataFileName(hdev.into())
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"]
@@ -326,11 +326,11 @@ where
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn EngLockSurface<P0>(hsurf: P0) -> *mut SURFOBJ
+pub unsafe fn EngLockSurface<P0>(hsurf: P0) -> *const SURFOBJ
 where
     P0: ::std::convert::Into<HSURF>,
 {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn EngLockSurface ( hsurf : HSURF ) -> *mut SURFOBJ );
+    ::windows::imp::link ! ( "gdi32.dll""system" fn EngLockSurface ( hsurf : HSURF ) -> *const SURFOBJ );
     EngLockSurface(hsurf.into())
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
@@ -480,36 +480,36 @@ pub unsafe fn FONTOBJ_cGetGlyphs(pfo: *mut FONTOBJ, imode: u32, cglyph: u32, phg
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn FONTOBJ_pQueryGlyphAttrs(pfo: *mut FONTOBJ, imode: u32) -> *mut FD_GLYPHATTR {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pQueryGlyphAttrs ( pfo : *mut FONTOBJ , imode : u32 ) -> *mut FD_GLYPHATTR );
+pub unsafe fn FONTOBJ_pQueryGlyphAttrs(pfo: *mut FONTOBJ, imode: u32) -> *const FD_GLYPHATTR {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pQueryGlyphAttrs ( pfo : *mut FONTOBJ , imode : u32 ) -> *const FD_GLYPHATTR );
     FONTOBJ_pQueryGlyphAttrs(pfo, imode)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn FONTOBJ_pfdg(pfo: *mut FONTOBJ) -> *mut FD_GLYPHSET {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pfdg ( pfo : *mut FONTOBJ ) -> *mut FD_GLYPHSET );
+pub unsafe fn FONTOBJ_pfdg(pfo: *mut FONTOBJ) -> *const FD_GLYPHSET {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pfdg ( pfo : *mut FONTOBJ ) -> *const FD_GLYPHSET );
     FONTOBJ_pfdg(pfo)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Graphics_Gdi"))]
 #[inline]
-pub unsafe fn FONTOBJ_pifi(pfo: *const FONTOBJ) -> *mut IFIMETRICS {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pifi ( pfo : *const FONTOBJ ) -> *mut IFIMETRICS );
+pub unsafe fn FONTOBJ_pifi(pfo: *const FONTOBJ) -> *const IFIMETRICS {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pifi ( pfo : *const FONTOBJ ) -> *const IFIMETRICS );
     FONTOBJ_pifi(pfo)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn FONTOBJ_pvTrueTypeFontFile(pfo: *mut FONTOBJ, pcjfile: *mut u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pvTrueTypeFontFile ( pfo : *mut FONTOBJ , pcjfile : *mut u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn FONTOBJ_pvTrueTypeFontFile(pfo: *mut FONTOBJ, pcjfile: *mut u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pvTrueTypeFontFile ( pfo : *mut FONTOBJ , pcjfile : *mut u32 ) -> *const ::core::ffi::c_void );
     FONTOBJ_pvTrueTypeFontFile(pfo, pcjfile)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn FONTOBJ_pxoGetXform(pfo: *const FONTOBJ) -> *mut XFORMOBJ {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pxoGetXform ( pfo : *const FONTOBJ ) -> *mut XFORMOBJ );
+pub unsafe fn FONTOBJ_pxoGetXform(pfo: *const FONTOBJ) -> *const XFORMOBJ {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn FONTOBJ_pxoGetXform ( pfo : *const FONTOBJ ) -> *const XFORMOBJ );
     FONTOBJ_pxoGetXform(pfo)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
@@ -961,8 +961,8 @@ pub unsafe fn XLATEOBJ_iXlate(pxlo: *mut XLATEOBJ, icolor: u32) -> u32 {
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
 #[inline]
-pub unsafe fn XLATEOBJ_piVector(pxlo: *mut XLATEOBJ) -> *mut u32 {
-    ::windows::imp::link ! ( "gdi32.dll""system" fn XLATEOBJ_piVector ( pxlo : *mut XLATEOBJ ) -> *mut u32 );
+pub unsafe fn XLATEOBJ_piVector(pxlo: *mut XLATEOBJ) -> *const u32 {
+    ::windows::imp::link ! ( "gdi32.dll""system" fn XLATEOBJ_piVector ( pxlo : *mut XLATEOBJ ) -> *const u32 );
     XLATEOBJ_piVector(pxlo)
 }
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
@@ -12179,7 +12179,7 @@ pub type PFN_DrvGetGlyphMode = ::core::option::Option<unsafe extern "system" fn(
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Graphics_Gdi"))]
 pub type PFN_DrvGetModes = ::core::option::Option<unsafe extern "system" fn(param0: super::super::Foundation::HANDLE, param1: u32, param2: *mut super::super::Graphics::Gdi::DEVMODEW) -> u32>;
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
-pub type PFN_DrvGetTrueTypeFile = ::core::option::Option<unsafe extern "system" fn(param0: usize, param1: *mut u32) -> *mut ::core::ffi::c_void>;
+pub type PFN_DrvGetTrueTypeFile = ::core::option::Option<unsafe extern "system" fn(param0: usize, param1: *mut u32) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Graphics_Gdi"))]
 pub type PFN_DrvGradientFill = ::core::option::Option<unsafe extern "system" fn(param0: *mut SURFOBJ, param1: *mut CLIPOBJ, param2: *mut XLATEOBJ, param3: *mut super::super::Graphics::Gdi::TRIVERTEX, param4: u32, param5: *mut ::core::ffi::c_void, param6: u32, param7: *mut super::super::Foundation::RECTL, param8: *mut super::super::Foundation::POINTL, param9: u32) -> super::super::Foundation::BOOL>;
@@ -12227,7 +12227,7 @@ pub type PFN_DrvQueryAdvanceWidths = ::core::option::Option<unsafe extern "syste
 pub type PFN_DrvQueryDeviceSupport = ::core::option::Option<unsafe extern "system" fn(param0: *mut SURFOBJ, param1: *mut XLATEOBJ, param2: *mut XFORMOBJ, param3: u32, param4: u32, param5: *mut ::core::ffi::c_void, param6: u32, param7: *mut ::core::ffi::c_void) -> super::super::Foundation::BOOL>;
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Graphics_Gdi"))]
-pub type PFN_DrvQueryFont = ::core::option::Option<unsafe extern "system" fn(param0: DHPDEV, param1: usize, param2: u32, param3: *mut usize) -> *mut IFIMETRICS>;
+pub type PFN_DrvQueryFont = ::core::option::Option<unsafe extern "system" fn(param0: DHPDEV, param1: usize, param2: u32, param3: *mut usize) -> *const IFIMETRICS>;
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
 pub type PFN_DrvQueryFontCaps = ::core::option::Option<unsafe extern "system" fn(param0: u32, param1: *mut u32) -> i32>;
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
@@ -12236,10 +12236,10 @@ pub type PFN_DrvQueryFontData = ::core::option::Option<unsafe extern "system" fn
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
 pub type PFN_DrvQueryFontFile = ::core::option::Option<unsafe extern "system" fn(param0: usize, param1: u32, param2: u32, param3: *mut u32) -> i32>;
 #[doc = "*Required features: `\"Win32_Devices_Display\"`*"]
-pub type PFN_DrvQueryFontTree = ::core::option::Option<unsafe extern "system" fn(param0: DHPDEV, param1: usize, param2: u32, param3: u32, param4: *mut usize) -> *mut ::core::ffi::c_void>;
+pub type PFN_DrvQueryFontTree = ::core::option::Option<unsafe extern "system" fn(param0: DHPDEV, param1: usize, param2: u32, param3: u32, param4: *mut usize) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
-pub type PFN_DrvQueryGlyphAttrs = ::core::option::Option<unsafe extern "system" fn(param0: *mut FONTOBJ, param1: u32) -> *mut FD_GLYPHATTR>;
+pub type PFN_DrvQueryGlyphAttrs = ::core::option::Option<unsafe extern "system" fn(param0: *mut FONTOBJ, param1: u32) -> *const FD_GLYPHATTR>;
 #[doc = "*Required features: `\"Win32_Devices_Display\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 pub type PFN_DrvQueryPerBandInfo = ::core::option::Option<unsafe extern "system" fn(param0: *mut SURFOBJ, param1: *mut PERBANDINFO) -> super::super::Foundation::BOOL>;

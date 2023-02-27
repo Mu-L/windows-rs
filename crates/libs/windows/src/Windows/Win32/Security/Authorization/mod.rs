@@ -648,8 +648,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_Security_Authorization\"`*"]
 #[inline]
-pub unsafe fn GetMultipleTrusteeA(ptrustee: ::core::option::Option<*const TRUSTEE_A>) -> *mut TRUSTEE_A {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn GetMultipleTrusteeA ( ptrustee : *const TRUSTEE_A ) -> *mut TRUSTEE_A );
+pub unsafe fn GetMultipleTrusteeA(ptrustee: ::core::option::Option<*const TRUSTEE_A>) -> *const TRUSTEE_A {
+    ::windows::imp::link ! ( "advapi32.dll""system" fn GetMultipleTrusteeA ( ptrustee : *const TRUSTEE_A ) -> *const TRUSTEE_A );
     GetMultipleTrusteeA(::core::mem::transmute(ptrustee.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_Security_Authorization\"`*"]
@@ -666,8 +666,8 @@ pub unsafe fn GetMultipleTrusteeOperationW(ptrustee: ::core::option::Option<*con
 }
 #[doc = "*Required features: `\"Win32_Security_Authorization\"`*"]
 #[inline]
-pub unsafe fn GetMultipleTrusteeW(ptrustee: ::core::option::Option<*const TRUSTEE_W>) -> *mut TRUSTEE_W {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn GetMultipleTrusteeW ( ptrustee : *const TRUSTEE_W ) -> *mut TRUSTEE_W );
+pub unsafe fn GetMultipleTrusteeW(ptrustee: ::core::option::Option<*const TRUSTEE_W>) -> *const TRUSTEE_W {
+    ::windows::imp::link ! ( "advapi32.dll""system" fn GetMultipleTrusteeW ( ptrustee : *const TRUSTEE_W ) -> *const TRUSTEE_W );
     GetMultipleTrusteeW(::core::mem::transmute(ptrustee.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_Security_Authorization\"`, `\"Win32_Foundation\"`*"]
@@ -714,14 +714,14 @@ pub unsafe fn GetTrusteeFormW(ptrustee: *const TRUSTEE_W) -> TRUSTEE_FORM {
 }
 #[doc = "*Required features: `\"Win32_Security_Authorization\"`*"]
 #[inline]
-pub unsafe fn GetTrusteeNameA(ptrustee: *const TRUSTEE_A) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn GetTrusteeNameA ( ptrustee : *const TRUSTEE_A ) -> :: windows::core::PSTR );
+pub unsafe fn GetTrusteeNameA(ptrustee: *const TRUSTEE_A) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "advapi32.dll""system" fn GetTrusteeNameA ( ptrustee : *const TRUSTEE_A ) -> :: windows::core::PCSTR );
     GetTrusteeNameA(ptrustee)
 }
 #[doc = "*Required features: `\"Win32_Security_Authorization\"`*"]
 #[inline]
-pub unsafe fn GetTrusteeNameW(ptrustee: *const TRUSTEE_W) -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn GetTrusteeNameW ( ptrustee : *const TRUSTEE_W ) -> :: windows::core::PWSTR );
+pub unsafe fn GetTrusteeNameW(ptrustee: *const TRUSTEE_W) -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "advapi32.dll""system" fn GetTrusteeNameW ( ptrustee : *const TRUSTEE_W ) -> :: windows::core::PCWSTR );
     GetTrusteeNameW(ptrustee)
 }
 #[doc = "*Required features: `\"Win32_Security_Authorization\"`*"]

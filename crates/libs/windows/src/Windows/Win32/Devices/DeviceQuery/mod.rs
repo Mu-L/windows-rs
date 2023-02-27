@@ -108,11 +108,11 @@ where
 #[doc = "*Required features: `\"Win32_Devices_DeviceQuery\"`, `\"Win32_Devices_Properties\"`*"]
 #[cfg(feature = "Win32_Devices_Properties")]
 #[inline]
-pub unsafe fn DevFindProperty<P0>(pkey: *const super::Properties::DEVPROPKEY, store: super::Properties::DEVPROPSTORE, pszlocalename: P0, pproperties: ::core::option::Option<&[super::Properties::DEVPROPERTY]>) -> *mut super::Properties::DEVPROPERTY
+pub unsafe fn DevFindProperty<P0>(pkey: *const super::Properties::DEVPROPKEY, store: super::Properties::DEVPROPSTORE, pszlocalename: P0, pproperties: ::core::option::Option<&[super::Properties::DEVPROPERTY]>) -> *const super::Properties::DEVPROPERTY
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
 {
-    ::windows::imp::link ! ( "api-ms-win-devices-query-l1-1-0.dll""system" fn DevFindProperty ( pkey : *const super::Properties:: DEVPROPKEY , store : super::Properties:: DEVPROPSTORE , pszlocalename : :: windows::core::PCWSTR , cproperties : u32 , pproperties : *const super::Properties:: DEVPROPERTY ) -> *mut super::Properties:: DEVPROPERTY );
+    ::windows::imp::link ! ( "api-ms-win-devices-query-l1-1-0.dll""system" fn DevFindProperty ( pkey : *const super::Properties:: DEVPROPKEY , store : super::Properties:: DEVPROPSTORE , pszlocalename : :: windows::core::PCWSTR , cproperties : u32 , pproperties : *const super::Properties:: DEVPROPERTY ) -> *const super::Properties:: DEVPROPERTY );
     DevFindProperty(pkey, store, pszlocalename.into().abi(), pproperties.as_deref().map_or(0, |slice| slice.len() as _), ::core::mem::transmute(pproperties.as_deref().map_or(::core::ptr::null(), |slice| slice.as_ptr())))
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceQuery\"`, `\"Win32_Devices_Properties\"`*"]

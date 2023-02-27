@@ -133,8 +133,8 @@ pub unsafe fn FtSubFt(ftminuend: super::super::Foundation::FILETIME, ftsubtrahen
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn FtgRegisterIdleRoutine(lpfnidle: PFNIDLE, lpvidleparam: *mut ::core::ffi::c_void, priidle: i16, csecidle: u32, iroidle: u16) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "mapi32.dll""system" fn FtgRegisterIdleRoutine ( lpfnidle : PFNIDLE , lpvidleparam : *mut ::core::ffi::c_void , priidle : i16 , csecidle : u32 , iroidle : u16 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn FtgRegisterIdleRoutine(lpfnidle: PFNIDLE, lpvidleparam: *mut ::core::ffi::c_void, priidle: i16, csecidle: u32, iroidle: u16) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "mapi32.dll""system" fn FtgRegisterIdleRoutine ( lpfnidle : PFNIDLE , lpvidleparam : *mut ::core::ffi::c_void , priidle : i16 , csecidle : u32 , iroidle : u16 ) -> *const ::core::ffi::c_void );
     FtgRegisterIdleRoutine(lpfnidle, lpvidleparam, priidle, csecidle, iroidle)
 }
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`*"]
@@ -228,8 +228,8 @@ pub unsafe fn LPropCompareProp(lpspropvaluea: *mut SPropValue, lpspropvalueb: *m
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`, `\"Win32_Foundation\"`, `\"Win32_System_Com\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Com"))]
 #[inline]
-pub unsafe fn LpValFindProp(ulproptag: u32, cvalues: u32, lpproparray: *mut SPropValue) -> *mut SPropValue {
-    ::windows::imp::link ! ( "mapi32.dll""system" fn LpValFindProp ( ulproptag : u32 , cvalues : u32 , lpproparray : *mut SPropValue ) -> *mut SPropValue );
+pub unsafe fn LpValFindProp(ulproptag: u32, cvalues: u32, lpproparray: *mut SPropValue) -> *const SPropValue {
+    ::windows::imp::link ! ( "mapi32.dll""system" fn LpValFindProp ( ulproptag : u32 , cvalues : u32 , lpproparray : *mut SPropValue ) -> *const SPropValue );
     LpValFindProp(ulproptag, cvalues, lpproparray)
 }
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`*"]
@@ -262,8 +262,8 @@ pub unsafe fn OpenStreamOnFile(lpallocatebuffer: LPALLOCATEBUFFER, lpfreebuffer:
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`, `\"Win32_Foundation\"`, `\"Win32_System_Com\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Com"))]
 #[inline]
-pub unsafe fn PpropFindProp(lpproparray: *mut SPropValue, cvalues: u32, ulproptag: u32) -> *mut SPropValue {
-    ::windows::imp::link ! ( "mapi32.dll""system" fn PpropFindProp ( lpproparray : *mut SPropValue , cvalues : u32 , ulproptag : u32 ) -> *mut SPropValue );
+pub unsafe fn PpropFindProp(lpproparray: *mut SPropValue, cvalues: u32, ulproptag: u32) -> *const SPropValue {
+    ::windows::imp::link ! ( "mapi32.dll""system" fn PpropFindProp ( lpproparray : *mut SPropValue , cvalues : u32 , ulproptag : u32 ) -> *const SPropValue );
     PpropFindProp(lpproparray, cvalues, ulproptag)
 }
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`, `\"Win32_Foundation\"`, `\"Win32_System_Com\"`*"]
@@ -364,20 +364,20 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`*"]
 #[inline]
-pub unsafe fn SzFindCh(lpsz: *mut i8, ch: u16) -> *mut i8 {
-    ::windows::imp::link ! ( "mapi32.dll""system" fn SzFindCh ( lpsz : *mut i8 , ch : u16 ) -> *mut i8 );
+pub unsafe fn SzFindCh(lpsz: *mut i8, ch: u16) -> *const i8 {
+    ::windows::imp::link ! ( "mapi32.dll""system" fn SzFindCh ( lpsz : *mut i8 , ch : u16 ) -> *const i8 );
     SzFindCh(lpsz, ch)
 }
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`*"]
 #[inline]
-pub unsafe fn SzFindLastCh(lpsz: *mut i8, ch: u16) -> *mut i8 {
-    ::windows::imp::link ! ( "mapi32.dll""system" fn SzFindLastCh ( lpsz : *mut i8 , ch : u16 ) -> *mut i8 );
+pub unsafe fn SzFindLastCh(lpsz: *mut i8, ch: u16) -> *const i8 {
+    ::windows::imp::link ! ( "mapi32.dll""system" fn SzFindLastCh ( lpsz : *mut i8 , ch : u16 ) -> *const i8 );
     SzFindLastCh(lpsz, ch)
 }
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`*"]
 #[inline]
-pub unsafe fn SzFindSz(lpsz: *mut i8, lpszkey: *mut i8) -> *mut i8 {
-    ::windows::imp::link ! ( "mapi32.dll""system" fn SzFindSz ( lpsz : *mut i8 , lpszkey : *mut i8 ) -> *mut i8 );
+pub unsafe fn SzFindSz(lpsz: *mut i8, lpszkey: *mut i8) -> *const i8 {
+    ::windows::imp::link ! ( "mapi32.dll""system" fn SzFindSz ( lpsz : *mut i8 , lpszkey : *mut i8 ) -> *const i8 );
     SzFindSz(lpsz, lpszkey)
 }
 #[doc = "*Required features: `\"Win32_System_AddressBook\"`*"]

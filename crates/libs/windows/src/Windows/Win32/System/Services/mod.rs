@@ -284,11 +284,11 @@ where
 #[doc = "*Required features: `\"Win32_System_Services\"`, `\"Win32_Security\"`*"]
 #[cfg(feature = "Win32_Security")]
 #[inline]
-pub unsafe fn LockServiceDatabase<P0>(hscmanager: P0) -> *mut ::core::ffi::c_void
+pub unsafe fn LockServiceDatabase<P0>(hscmanager: P0) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Security::SC_HANDLE>,
 {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn LockServiceDatabase ( hscmanager : super::super::Security:: SC_HANDLE ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "advapi32.dll""system" fn LockServiceDatabase ( hscmanager : super::super::Security:: SC_HANDLE ) -> *const ::core::ffi::c_void );
     LockServiceDatabase(hscmanager.into())
 }
 #[doc = "*Required features: `\"Win32_System_Services\"`, `\"Win32_Foundation\"`*"]

@@ -173,7 +173,7 @@ impl IAudioMediaType {
         let mut result__ = ::windows::core::zeroed::<u32>();
         (::windows::core::Vtable::vtable(self).IsEqual)(::windows::core::Vtable::as_raw(self), piaudiotype.into().abi(), &mut result__).from_abi(result__)
     }
-    pub unsafe fn GetAudioFormat(&self) -> *mut super::WAVEFORMATEX {
+    pub unsafe fn GetAudioFormat(&self) -> *const super::WAVEFORMATEX {
         (::windows::core::Vtable::vtable(self).GetAudioFormat)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetUncompressedAudioFormat(&self, puncompressedaudioformat: *mut UNCOMPRESSEDAUDIOFORMAT) -> ::windows::core::Result<()> {
@@ -212,7 +212,7 @@ pub struct IAudioMediaType_Vtbl {
     #[cfg(not(feature = "Win32_Foundation"))]
     IsCompressedFormat: usize,
     pub IsEqual: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, piaudiotype: *mut ::core::ffi::c_void, pdwflags: *mut u32) -> ::windows::core::HRESULT,
-    pub GetAudioFormat: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut super::WAVEFORMATEX,
+    pub GetAudioFormat: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const super::WAVEFORMATEX,
     pub GetUncompressedAudioFormat: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, puncompressedaudioformat: *mut UNCOMPRESSEDAUDIOFORMAT) -> ::windows::core::HRESULT,
 }
 #[doc = "*Required features: `\"Win32_Media_Audio_Apo\"`*"]

@@ -184,17 +184,17 @@ pub unsafe fn AdsTypeToPropVariant(padsvalues: *mut ADSVALUE, dwnumvalues: u32, 
 }
 #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"]
 #[inline]
-pub unsafe fn AllocADsMem(cb: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "activeds.dll""system" fn AllocADsMem ( cb : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn AllocADsMem(cb: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "activeds.dll""system" fn AllocADsMem ( cb : u32 ) -> *const ::core::ffi::c_void );
     AllocADsMem(cb)
 }
 #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"]
 #[inline]
-pub unsafe fn AllocADsStr<P0>(pstr: P0) -> ::windows::core::PWSTR
+pub unsafe fn AllocADsStr<P0>(pstr: P0) -> ::windows::core::PCWSTR
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
 {
-    ::windows::imp::link ! ( "activeds.dll""system" fn AllocADsStr ( pstr : :: windows::core::PCWSTR ) -> :: windows::core::PWSTR );
+    ::windows::imp::link ! ( "activeds.dll""system" fn AllocADsStr ( pstr : :: windows::core::PCWSTR ) -> :: windows::core::PCWSTR );
     AllocADsStr(pstr.into().abi())
 }
 #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`, `\"Win32_Foundation\"`, `\"Win32_Security\"`, `\"Win32_System_Com\"`, `\"Win32_System_Ole\"`*"]
@@ -1514,8 +1514,8 @@ pub unsafe fn PropVariantToAdsType(pvariant: *mut super::super::System::Com::VAR
 }
 #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"]
 #[inline]
-pub unsafe fn ReallocADsMem(poldmem: *mut ::core::ffi::c_void, cbold: u32, cbnew: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "activeds.dll""system" fn ReallocADsMem ( poldmem : *mut ::core::ffi::c_void , cbold : u32 , cbnew : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn ReallocADsMem(poldmem: *mut ::core::ffi::c_void, cbold: u32, cbnew: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "activeds.dll""system" fn ReallocADsMem ( poldmem : *mut ::core::ffi::c_void , cbold : u32 , cbnew : u32 ) -> *const ::core::ffi::c_void );
     ReallocADsMem(poldmem, cbold, cbnew)
 }
 #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`, `\"Win32_Foundation\"`*"]

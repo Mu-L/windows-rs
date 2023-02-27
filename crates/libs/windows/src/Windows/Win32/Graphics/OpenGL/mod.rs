@@ -762,8 +762,8 @@ pub unsafe fn glGetPolygonStipple(mask: *mut u8) {
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
 #[inline]
-pub unsafe fn glGetString(name: u32) -> *mut u8 {
-    ::windows::imp::link ! ( "opengl32.dll""system" fn glGetString ( name : u32 ) -> *mut u8 );
+pub unsafe fn glGetString(name: u32) -> *const u8 {
+    ::windows::imp::link ! ( "opengl32.dll""system" fn glGetString ( name : u32 ) -> *const u8 );
     glGetString(name)
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
@@ -2166,14 +2166,14 @@ pub unsafe fn gluEndTrim(nobj: *mut GLUnurbs) {
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
 #[inline]
-pub unsafe fn gluErrorString(errcode: u32) -> *mut u8 {
-    ::windows::imp::link ! ( "glu32.dll""system" fn gluErrorString ( errcode : u32 ) -> *mut u8 );
+pub unsafe fn gluErrorString(errcode: u32) -> *const u8 {
+    ::windows::imp::link ! ( "glu32.dll""system" fn gluErrorString ( errcode : u32 ) -> *const u8 );
     gluErrorString(errcode)
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
 #[inline]
-pub unsafe fn gluErrorUnicodeStringEXT(errcode: u32) -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "glu32.dll""system" fn gluErrorUnicodeStringEXT ( errcode : u32 ) -> :: windows::core::PWSTR );
+pub unsafe fn gluErrorUnicodeStringEXT(errcode: u32) -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "glu32.dll""system" fn gluErrorUnicodeStringEXT ( errcode : u32 ) -> :: windows::core::PCWSTR );
     gluErrorUnicodeStringEXT(errcode)
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
@@ -2184,8 +2184,8 @@ pub unsafe fn gluGetNurbsProperty(nobj: *mut GLUnurbs, property: u32, value: *mu
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
 #[inline]
-pub unsafe fn gluGetString(name: u32) -> *mut u8 {
-    ::windows::imp::link ! ( "glu32.dll""system" fn gluGetString ( name : u32 ) -> *mut u8 );
+pub unsafe fn gluGetString(name: u32) -> *const u8 {
+    ::windows::imp::link ! ( "glu32.dll""system" fn gluGetString ( name : u32 ) -> *const u8 );
     gluGetString(name)
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
@@ -2208,20 +2208,20 @@ pub unsafe fn gluLookAt(eyex: f64, eyey: f64, eyez: f64, centerx: f64, centery: 
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
 #[inline]
-pub unsafe fn gluNewNurbsRenderer() -> *mut GLUnurbs {
-    ::windows::imp::link ! ( "glu32.dll""system" fn gluNewNurbsRenderer ( ) -> *mut GLUnurbs );
+pub unsafe fn gluNewNurbsRenderer() -> *const GLUnurbs {
+    ::windows::imp::link ! ( "glu32.dll""system" fn gluNewNurbsRenderer ( ) -> *const GLUnurbs );
     gluNewNurbsRenderer()
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
 #[inline]
-pub unsafe fn gluNewQuadric() -> *mut GLUquadric {
-    ::windows::imp::link ! ( "glu32.dll""system" fn gluNewQuadric ( ) -> *mut GLUquadric );
+pub unsafe fn gluNewQuadric() -> *const GLUquadric {
+    ::windows::imp::link ! ( "glu32.dll""system" fn gluNewQuadric ( ) -> *const GLUquadric );
     gluNewQuadric()
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]
 #[inline]
-pub unsafe fn gluNewTess() -> *mut GLUtesselator {
-    ::windows::imp::link ! ( "glu32.dll""system" fn gluNewTess ( ) -> *mut GLUtesselator );
+pub unsafe fn gluNewTess() -> *const GLUtesselator {
+    ::windows::imp::link ! ( "glu32.dll""system" fn gluNewTess ( ) -> *const GLUtesselator );
     gluNewTess()
 }
 #[doc = "*Required features: `\"Win32_Graphics_OpenGL\"`*"]

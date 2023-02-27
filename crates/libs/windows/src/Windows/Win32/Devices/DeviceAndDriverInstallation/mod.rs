@@ -2006,14 +2006,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupCreateDiskSpaceListA(reserved1: ::core::option::Option<*const ::core::ffi::c_void>, reserved2: u32, flags: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupCreateDiskSpaceListA ( reserved1 : *const ::core::ffi::c_void , reserved2 : u32 , flags : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn SetupCreateDiskSpaceListA(reserved1: ::core::option::Option<*const ::core::ffi::c_void>, reserved2: u32, flags: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupCreateDiskSpaceListA ( reserved1 : *const ::core::ffi::c_void , reserved2 : u32 , flags : u32 ) -> *const ::core::ffi::c_void );
     SetupCreateDiskSpaceListA(::core::mem::transmute(reserved1.unwrap_or(::std::ptr::null())), reserved2, flags)
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupCreateDiskSpaceListW(reserved1: ::core::option::Option<*const ::core::ffi::c_void>, reserved2: u32, flags: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupCreateDiskSpaceListW ( reserved1 : *const ::core::ffi::c_void , reserved2 : u32 , flags : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn SetupCreateDiskSpaceListW(reserved1: ::core::option::Option<*const ::core::ffi::c_void>, reserved2: u32, flags: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupCreateDiskSpaceListW ( reserved1 : *const ::core::ffi::c_void , reserved2 : u32 , flags : u32 ) -> *const ::core::ffi::c_void );
     SetupCreateDiskSpaceListW(::core::mem::transmute(reserved1.unwrap_or(::std::ptr::null())), reserved2, flags)
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
@@ -3575,14 +3575,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupDuplicateDiskSpaceListA(diskspace: *const ::core::ffi::c_void, reserved1: ::core::option::Option<*const ::core::ffi::c_void>, reserved2: u32, flags: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupDuplicateDiskSpaceListA ( diskspace : *const ::core::ffi::c_void , reserved1 : *const ::core::ffi::c_void , reserved2 : u32 , flags : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn SetupDuplicateDiskSpaceListA(diskspace: *const ::core::ffi::c_void, reserved1: ::core::option::Option<*const ::core::ffi::c_void>, reserved2: u32, flags: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupDuplicateDiskSpaceListA ( diskspace : *const ::core::ffi::c_void , reserved1 : *const ::core::ffi::c_void , reserved2 : u32 , flags : u32 ) -> *const ::core::ffi::c_void );
     SetupDuplicateDiskSpaceListA(diskspace, ::core::mem::transmute(reserved1.unwrap_or(::std::ptr::null())), reserved2, flags)
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupDuplicateDiskSpaceListW(diskspace: *const ::core::ffi::c_void, reserved1: ::core::option::Option<*const ::core::ffi::c_void>, reserved2: u32, flags: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupDuplicateDiskSpaceListW ( diskspace : *const ::core::ffi::c_void , reserved1 : *const ::core::ffi::c_void , reserved2 : u32 , flags : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn SetupDuplicateDiskSpaceListW(diskspace: *const ::core::ffi::c_void, reserved1: ::core::option::Option<*const ::core::ffi::c_void>, reserved2: u32, flags: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupDuplicateDiskSpaceListW ( diskspace : *const ::core::ffi::c_void , reserved1 : *const ::core::ffi::c_void , reserved2 : u32 , flags : u32 ) -> *const ::core::ffi::c_void );
     SetupDuplicateDiskSpaceListW(diskspace, ::core::mem::transmute(reserved1.unwrap_or(::std::ptr::null())), reserved2, flags)
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`, `\"Win32_Foundation\"`*"]
@@ -4004,40 +4004,40 @@ pub unsafe fn SetupGetThreadLogToken() -> u64 {
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn SetupInitDefaultQueueCallback<P0>(ownerwindow: P0) -> *mut ::core::ffi::c_void
+pub unsafe fn SetupInitDefaultQueueCallback<P0>(ownerwindow: P0) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HWND>,
 {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupInitDefaultQueueCallback ( ownerwindow : super::super::Foundation:: HWND ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupInitDefaultQueueCallback ( ownerwindow : super::super::Foundation:: HWND ) -> *const ::core::ffi::c_void );
     SetupInitDefaultQueueCallback(ownerwindow.into())
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn SetupInitDefaultQueueCallbackEx<P0, P1>(ownerwindow: P0, alternateprogresswindow: P1, progressmessage: u32, reserved1: u32, reserved2: ::core::option::Option<*const ::core::ffi::c_void>) -> *mut ::core::ffi::c_void
+pub unsafe fn SetupInitDefaultQueueCallbackEx<P0, P1>(ownerwindow: P0, alternateprogresswindow: P1, progressmessage: u32, reserved1: u32, reserved2: ::core::option::Option<*const ::core::ffi::c_void>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HWND>,
     P1: ::std::convert::Into<super::super::Foundation::HWND>,
 {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupInitDefaultQueueCallbackEx ( ownerwindow : super::super::Foundation:: HWND , alternateprogresswindow : super::super::Foundation:: HWND , progressmessage : u32 , reserved1 : u32 , reserved2 : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupInitDefaultQueueCallbackEx ( ownerwindow : super::super::Foundation:: HWND , alternateprogresswindow : super::super::Foundation:: HWND , progressmessage : u32 , reserved1 : u32 , reserved2 : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
     SetupInitDefaultQueueCallbackEx(ownerwindow.into(), alternateprogresswindow.into(), progressmessage, reserved1, ::core::mem::transmute(reserved2.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupInitializeFileLogA<P0>(logfilename: P0, flags: u32) -> *mut ::core::ffi::c_void
+pub unsafe fn SetupInitializeFileLogA<P0>(logfilename: P0, flags: u32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
 {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupInitializeFileLogA ( logfilename : :: windows::core::PCSTR , flags : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupInitializeFileLogA ( logfilename : :: windows::core::PCSTR , flags : u32 ) -> *const ::core::ffi::c_void );
     SetupInitializeFileLogA(logfilename.into().abi(), flags)
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupInitializeFileLogW<P0>(logfilename: P0, flags: u32) -> *mut ::core::ffi::c_void
+pub unsafe fn SetupInitializeFileLogW<P0>(logfilename: P0, flags: u32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
 {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupInitializeFileLogW ( logfilename : :: windows::core::PCWSTR , flags : u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupInitializeFileLogW ( logfilename : :: windows::core::PCWSTR , flags : u32 ) -> *const ::core::ffi::c_void );
     SetupInitializeFileLogW(logfilename.into().abi(), flags)
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`, `\"Win32_Foundation\"`*"]
@@ -4272,28 +4272,28 @@ where
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupOpenFileQueue() -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupOpenFileQueue ( ) -> *mut ::core::ffi::c_void );
+pub unsafe fn SetupOpenFileQueue() -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupOpenFileQueue ( ) -> *const ::core::ffi::c_void );
     SetupOpenFileQueue()
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupOpenInfFileA<P0, P1>(filename: P0, infclass: P1, infstyle: u32, errorline: ::core::option::Option<*mut u32>) -> *mut ::core::ffi::c_void
+pub unsafe fn SetupOpenInfFileA<P0, P1>(filename: P0, infclass: P1, infstyle: u32, errorline: ::core::option::Option<*mut u32>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
     P1: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
 {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupOpenInfFileA ( filename : :: windows::core::PCSTR , infclass : :: windows::core::PCSTR , infstyle : u32 , errorline : *mut u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupOpenInfFileA ( filename : :: windows::core::PCSTR , infclass : :: windows::core::PCSTR , infstyle : u32 , errorline : *mut u32 ) -> *const ::core::ffi::c_void );
     SetupOpenInfFileA(filename.into().abi(), infclass.into().abi(), infstyle, ::core::mem::transmute(errorline.unwrap_or(::std::ptr::null_mut())))
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupOpenInfFileW<P0, P1>(filename: P0, infclass: P1, infstyle: u32, errorline: ::core::option::Option<*mut u32>) -> *mut ::core::ffi::c_void
+pub unsafe fn SetupOpenInfFileW<P0, P1>(filename: P0, infclass: P1, infstyle: u32, errorline: ::core::option::Option<*mut u32>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
     P1: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
 {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupOpenInfFileW ( filename : :: windows::core::PCWSTR , infclass : :: windows::core::PCWSTR , infstyle : u32 , errorline : *mut u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupOpenInfFileW ( filename : :: windows::core::PCWSTR , infclass : :: windows::core::PCWSTR , infstyle : u32 , errorline : *mut u32 ) -> *const ::core::ffi::c_void );
     SetupOpenInfFileW(filename.into().abi(), infclass.into().abi(), infstyle, ::core::mem::transmute(errorline.unwrap_or(::std::ptr::null_mut())))
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`, `\"Win32_Foundation\"`*"]
@@ -4308,8 +4308,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`*"]
 #[inline]
-pub unsafe fn SetupOpenMasterInf() -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupOpenMasterInf ( ) -> *mut ::core::ffi::c_void );
+pub unsafe fn SetupOpenMasterInf() -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "setupapi.dll""system" fn SetupOpenMasterInf ( ) -> *const ::core::ffi::c_void );
     SetupOpenMasterInf()
 }
 #[doc = "*Required features: `\"Win32_Devices_DeviceAndDriverInstallation\"`, `\"Win32_Foundation\"`*"]

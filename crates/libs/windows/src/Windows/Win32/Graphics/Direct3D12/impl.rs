@@ -3340,12 +3340,12 @@ impl ID3D12RootSignature_Vtbl {
 }
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D12\"`, `\"implement\"`*"]
 pub trait ID3D12RootSignatureDeserializer_Impl: Sized {
-    fn GetRootSignatureDesc(&self) -> *mut D3D12_ROOT_SIGNATURE_DESC;
+    fn GetRootSignatureDesc(&self) -> *const D3D12_ROOT_SIGNATURE_DESC;
 }
 impl ::windows::core::RuntimeName for ID3D12RootSignatureDeserializer {}
 impl ID3D12RootSignatureDeserializer_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3D12RootSignatureDeserializer_Impl, const OFFSET: isize>() -> ID3D12RootSignatureDeserializer_Vtbl {
-        unsafe extern "system" fn GetRootSignatureDesc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3D12RootSignatureDeserializer_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut D3D12_ROOT_SIGNATURE_DESC {
+        unsafe extern "system" fn GetRootSignatureDesc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3D12RootSignatureDeserializer_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const D3D12_ROOT_SIGNATURE_DESC {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetRootSignatureDesc()
@@ -3649,7 +3649,7 @@ pub trait ID3D12ShaderReflectionType_Impl: Sized {
     fn GetDesc(&self, pdesc: *mut D3D12_SHADER_TYPE_DESC) -> ::windows::core::Result<()>;
     fn GetMemberTypeByIndex(&self, index: u32) -> ::core::option::Option<ID3D12ShaderReflectionType>;
     fn GetMemberTypeByName(&self, name: &::windows::core::PCSTR) -> ::core::option::Option<ID3D12ShaderReflectionType>;
-    fn GetMemberTypeName(&self, index: u32) -> ::windows::core::PSTR;
+    fn GetMemberTypeName(&self, index: u32) -> ::windows::core::PCSTR;
     fn IsEqual(&self, ptype: ::core::option::Option<&ID3D12ShaderReflectionType>) -> ::windows::core::Result<()>;
     fn GetSubType(&self) -> ::core::option::Option<ID3D12ShaderReflectionType>;
     fn GetBaseClass(&self) -> ::core::option::Option<ID3D12ShaderReflectionType>;
@@ -3676,7 +3676,7 @@ impl ID3D12ShaderReflectionType_Vtbl {
             let this = &*((*this).this as *const Impl);
             this.GetMemberTypeByName(::core::mem::transmute(&name))
         }
-        unsafe extern "system" fn GetMemberTypeName<Impl: ID3D12ShaderReflectionType_Impl>(this: *mut ::core::ffi::c_void, index: u32) -> ::windows::core::PSTR {
+        unsafe extern "system" fn GetMemberTypeName<Impl: ID3D12ShaderReflectionType_Impl>(this: *mut ::core::ffi::c_void, index: u32) -> ::windows::core::PCSTR {
             let this = (this as *mut *mut ::core::ffi::c_void) as *const ::windows::core::ScopedHeap;
             let this = &*((*this).this as *const Impl);
             this.GetMemberTypeName(::core::mem::transmute_copy(&index))
@@ -3848,7 +3848,7 @@ impl ID3D12StateObject_Vtbl {
 }
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D12\"`, `\"implement\"`*"]
 pub trait ID3D12StateObjectProperties_Impl: Sized {
-    fn GetShaderIdentifier(&self, pexportname: &::windows::core::PCWSTR) -> *mut ::core::ffi::c_void;
+    fn GetShaderIdentifier(&self, pexportname: &::windows::core::PCWSTR) -> *const ::core::ffi::c_void;
     fn GetShaderStackSize(&self, pexportname: &::windows::core::PCWSTR) -> u64;
     fn GetPipelineStackSize(&self) -> u64;
     fn SetPipelineStackSize(&self, pipelinestacksizeinbytes: u64);
@@ -3856,7 +3856,7 @@ pub trait ID3D12StateObjectProperties_Impl: Sized {
 impl ::windows::core::RuntimeName for ID3D12StateObjectProperties {}
 impl ID3D12StateObjectProperties_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3D12StateObjectProperties_Impl, const OFFSET: isize>() -> ID3D12StateObjectProperties_Vtbl {
-        unsafe extern "system" fn GetShaderIdentifier<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3D12StateObjectProperties_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pexportname: ::windows::core::PCWSTR) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn GetShaderIdentifier<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3D12StateObjectProperties_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pexportname: ::windows::core::PCWSTR) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetShaderIdentifier(::core::mem::transmute(&pexportname))
@@ -3967,7 +3967,7 @@ impl ID3D12Tools_Vtbl {
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D12\"`, `\"implement\"`*"]
 pub trait ID3D12VersionedRootSignatureDeserializer_Impl: Sized {
     fn GetRootSignatureDescAtVersion(&self, converttoversion: D3D_ROOT_SIGNATURE_VERSION) -> ::windows::core::Result<*mut D3D12_VERSIONED_ROOT_SIGNATURE_DESC>;
-    fn GetUnconvertedRootSignatureDesc(&self) -> *mut D3D12_VERSIONED_ROOT_SIGNATURE_DESC;
+    fn GetUnconvertedRootSignatureDesc(&self) -> *const D3D12_VERSIONED_ROOT_SIGNATURE_DESC;
 }
 impl ::windows::core::RuntimeName for ID3D12VersionedRootSignatureDeserializer {}
 impl ID3D12VersionedRootSignatureDeserializer_Vtbl {
@@ -3983,7 +3983,7 @@ impl ID3D12VersionedRootSignatureDeserializer_Vtbl {
                 ::core::result::Result::Err(err) => err.into(),
             }
         }
-        unsafe extern "system" fn GetUnconvertedRootSignatureDesc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3D12VersionedRootSignatureDeserializer_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut D3D12_VERSIONED_ROOT_SIGNATURE_DESC {
+        unsafe extern "system" fn GetUnconvertedRootSignatureDesc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: ID3D12VersionedRootSignatureDeserializer_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const D3D12_VERSIONED_ROOT_SIGNATURE_DESC {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetUnconvertedRootSignatureDesc()

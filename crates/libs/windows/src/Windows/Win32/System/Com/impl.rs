@@ -2444,8 +2444,8 @@ impl IMachineGlobalObjectTable_Vtbl {
 }
 #[doc = "*Required features: `\"Win32_System_Com\"`, `\"implement\"`*"]
 pub trait IMalloc_Impl: Sized {
-    fn Alloc(&self, cb: usize) -> *mut ::core::ffi::c_void;
-    fn Realloc(&self, pv: *const ::core::ffi::c_void, cb: usize) -> *mut ::core::ffi::c_void;
+    fn Alloc(&self, cb: usize) -> *const ::core::ffi::c_void;
+    fn Realloc(&self, pv: *const ::core::ffi::c_void, cb: usize) -> *const ::core::ffi::c_void;
     fn Free(&self, pv: *const ::core::ffi::c_void);
     fn GetSize(&self, pv: *const ::core::ffi::c_void) -> usize;
     fn DidAlloc(&self, pv: *const ::core::ffi::c_void) -> i32;
@@ -2454,12 +2454,12 @@ pub trait IMalloc_Impl: Sized {
 impl ::windows::core::RuntimeName for IMalloc {}
 impl IMalloc_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMalloc_Impl, const OFFSET: isize>() -> IMalloc_Vtbl {
-        unsafe extern "system" fn Alloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMalloc_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, cb: usize) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn Alloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMalloc_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, cb: usize) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.Alloc(::core::mem::transmute_copy(&cb))
         }
-        unsafe extern "system" fn Realloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMalloc_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pv: *const ::core::ffi::c_void, cb: usize) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn Realloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMalloc_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pv: *const ::core::ffi::c_void, cb: usize) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.Realloc(::core::mem::transmute_copy(&pv), ::core::mem::transmute_copy(&cb))
@@ -2502,14 +2502,14 @@ impl IMalloc_Vtbl {
 #[cfg(feature = "Win32_Foundation")]
 pub trait IMallocSpy_Impl: Sized {
     fn PreAlloc(&self, cbrequest: usize) -> usize;
-    fn PostAlloc(&self, pactual: *const ::core::ffi::c_void) -> *mut ::core::ffi::c_void;
-    fn PreFree(&self, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void;
+    fn PostAlloc(&self, pactual: *const ::core::ffi::c_void) -> *const ::core::ffi::c_void;
+    fn PreFree(&self, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void;
     fn PostFree(&self, fspyed: super::super::Foundation::BOOL);
     fn PreRealloc(&self, prequest: *const ::core::ffi::c_void, cbrequest: usize, ppnewrequest: *mut *mut ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> usize;
-    fn PostRealloc(&self, pactual: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void;
-    fn PreGetSize(&self, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void;
+    fn PostRealloc(&self, pactual: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void;
+    fn PreGetSize(&self, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void;
     fn PostGetSize(&self, cbactual: usize, fspyed: super::super::Foundation::BOOL) -> usize;
-    fn PreDidAlloc(&self, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void;
+    fn PreDidAlloc(&self, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void;
     fn PostDidAlloc(&self, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL, factual: i32) -> i32;
     fn PreHeapMinimize(&self);
     fn PostHeapMinimize(&self);
@@ -2524,12 +2524,12 @@ impl IMallocSpy_Vtbl {
             let this = (*this).get_impl();
             this.PreAlloc(::core::mem::transmute_copy(&cbrequest))
         }
-        unsafe extern "system" fn PostAlloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pactual: *const ::core::ffi::c_void) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn PostAlloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pactual: *const ::core::ffi::c_void) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.PostAlloc(::core::mem::transmute_copy(&pactual))
         }
-        unsafe extern "system" fn PreFree<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn PreFree<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.PreFree(::core::mem::transmute_copy(&prequest), ::core::mem::transmute_copy(&fspyed))
@@ -2544,12 +2544,12 @@ impl IMallocSpy_Vtbl {
             let this = (*this).get_impl();
             this.PreRealloc(::core::mem::transmute_copy(&prequest), ::core::mem::transmute_copy(&cbrequest), ::core::mem::transmute_copy(&ppnewrequest), ::core::mem::transmute_copy(&fspyed))
         }
-        unsafe extern "system" fn PostRealloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pactual: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn PostRealloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pactual: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.PostRealloc(::core::mem::transmute_copy(&pactual), ::core::mem::transmute_copy(&fspyed))
         }
-        unsafe extern "system" fn PreGetSize<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn PreGetSize<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.PreGetSize(::core::mem::transmute_copy(&prequest), ::core::mem::transmute_copy(&fspyed))
@@ -2559,7 +2559,7 @@ impl IMallocSpy_Vtbl {
             let this = (*this).get_impl();
             this.PostGetSize(::core::mem::transmute_copy(&cbactual), ::core::mem::transmute_copy(&fspyed))
         }
-        unsafe extern "system" fn PreDidAlloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn PreDidAlloc<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMallocSpy_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.PreDidAlloc(::core::mem::transmute_copy(&prequest), ::core::mem::transmute_copy(&fspyed))

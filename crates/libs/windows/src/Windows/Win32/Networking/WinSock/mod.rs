@@ -181,8 +181,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn InetNtopW(family: i32, paddr: *const ::core::ffi::c_void, pstringbuf: &mut [u16]) -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn InetNtopW ( family : i32 , paddr : *const ::core::ffi::c_void , pstringbuf : :: windows::core::PWSTR , stringbufsize : usize ) -> :: windows::core::PWSTR );
+pub unsafe fn InetNtopW(family: i32, paddr: *const ::core::ffi::c_void, pstringbuf: &mut [u16]) -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn InetNtopW ( family : i32 , paddr : *const ::core::ffi::c_void , pstringbuf : :: windows::core::PWSTR , stringbufsize : usize ) -> :: windows::core::PCWSTR );
     InetNtopW(family, paddr, ::core::mem::transmute(pstringbuf.as_ptr()), pstringbuf.len() as _)
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
@@ -206,14 +206,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn RtlEthernetAddressToStringA(addr: *const DL_EUI48, s: &mut [u8; 18]) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlEthernetAddressToStringA ( addr : *const DL_EUI48 , s : :: windows::core::PSTR ) -> :: windows::core::PSTR );
+pub unsafe fn RtlEthernetAddressToStringA(addr: *const DL_EUI48, s: &mut [u8; 18]) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlEthernetAddressToStringA ( addr : *const DL_EUI48 , s : :: windows::core::PSTR ) -> :: windows::core::PCSTR );
     RtlEthernetAddressToStringA(addr, ::core::mem::transmute(s.as_ptr()))
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn RtlEthernetAddressToStringW(addr: *const DL_EUI48, s: &mut [u16; 18]) -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlEthernetAddressToStringW ( addr : *const DL_EUI48 , s : :: windows::core::PWSTR ) -> :: windows::core::PWSTR );
+pub unsafe fn RtlEthernetAddressToStringW(addr: *const DL_EUI48, s: &mut [u16; 18]) -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlEthernetAddressToStringW ( addr : *const DL_EUI48 , s : :: windows::core::PWSTR ) -> :: windows::core::PCWSTR );
     RtlEthernetAddressToStringW(addr, ::core::mem::transmute(s.as_ptr()))
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
@@ -236,8 +236,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn RtlIpv4AddressToStringA(addr: *const IN_ADDR, s: &mut [u8; 16]) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlIpv4AddressToStringA ( addr : *const IN_ADDR , s : :: windows::core::PSTR ) -> :: windows::core::PSTR );
+pub unsafe fn RtlIpv4AddressToStringA(addr: *const IN_ADDR, s: &mut [u8; 16]) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlIpv4AddressToStringA ( addr : *const IN_ADDR , s : :: windows::core::PSTR ) -> :: windows::core::PCSTR );
     RtlIpv4AddressToStringA(addr, ::core::mem::transmute(s.as_ptr()))
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
@@ -254,8 +254,8 @@ pub unsafe fn RtlIpv4AddressToStringExW(address: *const IN_ADDR, port: u16, addr
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn RtlIpv4AddressToStringW(addr: *const IN_ADDR, s: &mut [u16; 16]) -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlIpv4AddressToStringW ( addr : *const IN_ADDR , s : :: windows::core::PWSTR ) -> :: windows::core::PWSTR );
+pub unsafe fn RtlIpv4AddressToStringW(addr: *const IN_ADDR, s: &mut [u16; 16]) -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlIpv4AddressToStringW ( addr : *const IN_ADDR , s : :: windows::core::PWSTR ) -> :: windows::core::PCWSTR );
     RtlIpv4AddressToStringW(addr, ::core::mem::transmute(s.as_ptr()))
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`, `\"Win32_Foundation\"`*"]
@@ -304,8 +304,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn RtlIpv6AddressToStringA(addr: *const IN6_ADDR, s: &mut [u8; 46]) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlIpv6AddressToStringA ( addr : *const IN6_ADDR , s : :: windows::core::PSTR ) -> :: windows::core::PSTR );
+pub unsafe fn RtlIpv6AddressToStringA(addr: *const IN6_ADDR, s: &mut [u8; 46]) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlIpv6AddressToStringA ( addr : *const IN6_ADDR , s : :: windows::core::PSTR ) -> :: windows::core::PCSTR );
     RtlIpv6AddressToStringA(addr, ::core::mem::transmute(s.as_ptr()))
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
@@ -322,8 +322,8 @@ pub unsafe fn RtlIpv6AddressToStringExW(address: *const IN6_ADDR, scopeid: u32, 
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn RtlIpv6AddressToStringW(addr: *const IN6_ADDR, s: &mut [u16; 46]) -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlIpv6AddressToStringW ( addr : *const IN6_ADDR , s : :: windows::core::PWSTR ) -> :: windows::core::PWSTR );
+pub unsafe fn RtlIpv6AddressToStringW(addr: *const IN6_ADDR, s: &mut [u16; 46]) -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "ntdll.dll""system" fn RtlIpv6AddressToStringW ( addr : *const IN6_ADDR , s : :: windows::core::PWSTR ) -> :: windows::core::PCWSTR );
     RtlIpv6AddressToStringW(addr, ::core::mem::transmute(s.as_ptr()))
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
@@ -1514,17 +1514,17 @@ where
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn gethostbyaddr(addr: &[u8], r#type: i32) -> *mut HOSTENT {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn gethostbyaddr ( addr : :: windows::core::PCSTR , len : i32 , r#type : i32 ) -> *mut HOSTENT );
+pub unsafe fn gethostbyaddr(addr: &[u8], r#type: i32) -> *const HOSTENT {
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn gethostbyaddr ( addr : :: windows::core::PCSTR , len : i32 , r#type : i32 ) -> *const HOSTENT );
     gethostbyaddr(::core::mem::transmute(addr.as_ptr()), addr.len() as _, r#type)
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn gethostbyname<P0>(name: P0) -> *mut HOSTENT
+pub unsafe fn gethostbyname<P0>(name: P0) -> *const HOSTENT
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
 {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn gethostbyname ( name : :: windows::core::PCSTR ) -> *mut HOSTENT );
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn gethostbyname ( name : :: windows::core::PCSTR ) -> *const HOSTENT );
     gethostbyname(name.into().abi())
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
@@ -1552,36 +1552,36 @@ where
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn getprotobyname<P0>(name: P0) -> *mut PROTOENT
+pub unsafe fn getprotobyname<P0>(name: P0) -> *const PROTOENT
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
 {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn getprotobyname ( name : :: windows::core::PCSTR ) -> *mut PROTOENT );
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn getprotobyname ( name : :: windows::core::PCSTR ) -> *const PROTOENT );
     getprotobyname(name.into().abi())
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn getprotobynumber(number: i32) -> *mut PROTOENT {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn getprotobynumber ( number : i32 ) -> *mut PROTOENT );
+pub unsafe fn getprotobynumber(number: i32) -> *const PROTOENT {
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn getprotobynumber ( number : i32 ) -> *const PROTOENT );
     getprotobynumber(number)
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn getservbyname<P0, P1>(name: P0, proto: P1) -> *mut SERVENT
+pub unsafe fn getservbyname<P0, P1>(name: P0, proto: P1) -> *const SERVENT
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
     P1: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
 {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn getservbyname ( name : :: windows::core::PCSTR , proto : :: windows::core::PCSTR ) -> *mut SERVENT );
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn getservbyname ( name : :: windows::core::PCSTR , proto : :: windows::core::PCSTR ) -> *const SERVENT );
     getservbyname(name.into().abi(), proto.into().abi())
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn getservbyport<P0>(port: i32, proto: P0) -> *mut SERVENT
+pub unsafe fn getservbyport<P0>(port: i32, proto: P0) -> *const SERVENT
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
 {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn getservbyport ( port : i32 , proto : :: windows::core::PCSTR ) -> *mut SERVENT );
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn getservbyport ( port : i32 , proto : :: windows::core::PCSTR ) -> *const SERVENT );
     getservbyport(port, proto.into().abi())
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`, `\"Win32_Foundation\"`*"]
@@ -1626,14 +1626,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn inet_ntoa(r#in: IN_ADDR) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn inet_ntoa ( r#in : IN_ADDR ) -> :: windows::core::PSTR );
+pub unsafe fn inet_ntoa(r#in: IN_ADDR) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn inet_ntoa ( r#in : IN_ADDR ) -> :: windows::core::PCSTR );
     inet_ntoa(::core::mem::transmute(r#in))
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 #[inline]
-pub unsafe fn inet_ntop(family: i32, paddr: *const ::core::ffi::c_void, pstringbuf: &mut [u8]) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "ws2_32.dll""system" fn inet_ntop ( family : i32 , paddr : *const ::core::ffi::c_void , pstringbuf : :: windows::core::PSTR , stringbufsize : usize ) -> :: windows::core::PSTR );
+pub unsafe fn inet_ntop(family: i32, paddr: *const ::core::ffi::c_void, pstringbuf: &mut [u8]) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "ws2_32.dll""system" fn inet_ntop ( family : i32 , paddr : *const ::core::ffi::c_void , pstringbuf : :: windows::core::PSTR , stringbufsize : usize ) -> :: windows::core::PCSTR );
     inet_ntop(family, paddr, ::core::mem::transmute(pstringbuf.as_ptr()), pstringbuf.len() as _)
 }
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
@@ -17217,9 +17217,9 @@ pub type LPFN_NSPAPI = ::core::option::Option<unsafe extern "system" fn() -> u32
 pub type LPFN_RIOCLOSECOMPLETIONQUEUE = ::core::option::Option<unsafe extern "system" fn(cq: *const RIO_CQ_t) -> ()>;
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
-pub type LPFN_RIOCREATECOMPLETIONQUEUE = ::core::option::Option<unsafe extern "system" fn(queuesize: u32, notificationcompletion: *const RIO_NOTIFICATION_COMPLETION) -> *mut RIO_CQ_t>;
+pub type LPFN_RIOCREATECOMPLETIONQUEUE = ::core::option::Option<unsafe extern "system" fn(queuesize: u32, notificationcompletion: *const RIO_NOTIFICATION_COMPLETION) -> *const RIO_CQ_t>;
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
-pub type LPFN_RIOCREATEREQUESTQUEUE = ::core::option::Option<unsafe extern "system" fn(socket: SOCKET, maxoutstandingreceive: u32, maxreceivedatabuffers: u32, maxoutstandingsend: u32, maxsenddatabuffers: u32, receivecq: *const RIO_CQ_t, sendcq: *const RIO_CQ_t, socketcontext: *const ::core::ffi::c_void) -> *mut RIO_RQ_t>;
+pub type LPFN_RIOCREATEREQUESTQUEUE = ::core::option::Option<unsafe extern "system" fn(socket: SOCKET, maxoutstandingreceive: u32, maxreceivedatabuffers: u32, maxoutstandingsend: u32, maxsenddatabuffers: u32, receivecq: *const RIO_CQ_t, sendcq: *const RIO_CQ_t, socketcontext: *const ::core::ffi::c_void) -> *const RIO_RQ_t>;
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 pub type LPFN_RIODEQUEUECOMPLETION = ::core::option::Option<unsafe extern "system" fn(cq: *const RIO_CQ_t, array: *mut RIORESULT, arraysize: u32) -> u32>;
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
@@ -17232,7 +17232,7 @@ pub type LPFN_RIORECEIVE = ::core::option::Option<unsafe extern "system" fn(sock
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
 pub type LPFN_RIORECEIVEEX = ::core::option::Option<unsafe extern "system" fn(socketqueue: *const RIO_RQ_t, pdata: *const RIO_BUF, databuffercount: u32, plocaladdress: *const RIO_BUF, premoteaddress: *const RIO_BUF, pcontrolcontext: *const RIO_BUF, pflags: *const RIO_BUF, flags: u32, requestcontext: *const ::core::ffi::c_void) -> i32>;
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`*"]
-pub type LPFN_RIOREGISTERBUFFER = ::core::option::Option<unsafe extern "system" fn(databuffer: ::windows::core::PCSTR, datalength: u32) -> *mut RIO_BUFFERID_t>;
+pub type LPFN_RIOREGISTERBUFFER = ::core::option::Option<unsafe extern "system" fn(databuffer: ::windows::core::PCSTR, datalength: u32) -> *const RIO_BUFFERID_t>;
 #[doc = "*Required features: `\"Win32_Networking_WinSock\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 pub type LPFN_RIORESIZECOMPLETIONQUEUE = ::core::option::Option<unsafe extern "system" fn(cq: *const RIO_CQ_t, queuesize: u32) -> super::super::Foundation::BOOL>;

@@ -243,8 +243,8 @@ pub unsafe fn GetCurrentPackagePath2(packagepathtype: PackagePathType, pathlengt
 }
 #[doc = "*Required features: `\"Win32_Storage_Packaging_Appx\"`*"]
 #[inline]
-pub unsafe fn GetCurrentPackageVirtualizationContext() -> *mut PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE__ {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GetCurrentPackageVirtualizationContext ( ) -> *mut PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE__ );
+pub unsafe fn GetCurrentPackageVirtualizationContext() -> *const PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE__ {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GetCurrentPackageVirtualizationContext ( ) -> *const PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE__ );
     GetCurrentPackageVirtualizationContext()
 }
 #[doc = "*Required features: `\"Win32_Storage_Packaging_Appx\"`*"]

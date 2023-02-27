@@ -7427,7 +7427,7 @@ impl IEnroll {
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn getCertContextFromPKCS7(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *mut super::CERT_CONTEXT {
+    pub unsafe fn getCertContextFromPKCS7(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *const super::CERT_CONTEXT {
         (::windows::core::Vtable::vtable(self).getCertContextFromPKCS7)(::windows::core::Vtable::as_raw(self), pblobpkcs7)
     }
     pub unsafe fn getMyStore(&self) -> super::HCERTSTORE {
@@ -7747,7 +7747,7 @@ pub struct IEnroll_Vtbl {
     pub createPKCS10WStr: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, dnname: ::windows::core::PCWSTR, usage: ::windows::core::PCWSTR, ppkcs10blob: *mut super::CRYPT_INTEGER_BLOB) -> ::windows::core::HRESULT,
     pub acceptPKCS7Blob: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> ::windows::core::HRESULT,
     #[cfg(feature = "Win32_Foundation")]
-    pub getCertContextFromPKCS7: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *mut super::CERT_CONTEXT,
+    pub getCertContextFromPKCS7: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *const super::CERT_CONTEXT,
     #[cfg(not(feature = "Win32_Foundation"))]
     getCertContextFromPKCS7: usize,
     pub getMyStore: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> super::HCERTSTORE,
@@ -7888,7 +7888,7 @@ impl IEnroll2 {
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn getCertContextFromPKCS7(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *mut super::CERT_CONTEXT {
+    pub unsafe fn getCertContextFromPKCS7(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *const super::CERT_CONTEXT {
         (::windows::core::Vtable::vtable(self).base__.getCertContextFromPKCS7)(::windows::core::Vtable::as_raw(self), pblobpkcs7)
     }
     pub unsafe fn getMyStore(&self) -> super::HCERTSTORE {
@@ -8366,7 +8366,7 @@ impl IEnroll4 {
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn getCertContextFromPKCS7(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *mut super::CERT_CONTEXT {
+    pub unsafe fn getCertContextFromPKCS7(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *const super::CERT_CONTEXT {
         (::windows::core::Vtable::vtable(self).base__.base__.getCertContextFromPKCS7)(::windows::core::Vtable::as_raw(self), pblobpkcs7)
     }
     pub unsafe fn getMyStore(&self) -> super::HCERTSTORE {
@@ -8759,7 +8759,7 @@ impl IEnroll4 {
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn GetPrivateKeyArchiveCertificate(&self) -> *mut super::CERT_CONTEXT {
+    pub unsafe fn GetPrivateKeyArchiveCertificate(&self) -> *const super::CERT_CONTEXT {
         (::windows::core::Vtable::vtable(self).GetPrivateKeyArchiveCertificate)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn binaryBlobToString(&self, flags: i32, pblobbinary: *mut super::CRYPT_INTEGER_BLOB, ppwszstring: *mut ::windows::core::PWSTR) -> ::windows::core::Result<()> {
@@ -8943,7 +8943,7 @@ pub struct IEnroll4_Vtbl {
     #[cfg(not(feature = "Win32_Foundation"))]
     SetPrivateKeyArchiveCertificate: usize,
     #[cfg(feature = "Win32_Foundation")]
-    pub GetPrivateKeyArchiveCertificate: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut super::CERT_CONTEXT,
+    pub GetPrivateKeyArchiveCertificate: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const super::CERT_CONTEXT,
     #[cfg(not(feature = "Win32_Foundation"))]
     GetPrivateKeyArchiveCertificate: usize,
     pub binaryBlobToString: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, flags: i32, pblobbinary: *mut super::CRYPT_INTEGER_BLOB, ppwszstring: *mut ::windows::core::PWSTR) -> ::windows::core::HRESULT,

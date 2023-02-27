@@ -94,7 +94,7 @@ impl IAudioDeviceModulesClient_Vtbl {
 pub trait IAudioMediaType_Impl: Sized {
     fn IsCompressedFormat(&self) -> ::windows::core::Result<super::super::super::Foundation::BOOL>;
     fn IsEqual(&self, piaudiotype: ::core::option::Option<&IAudioMediaType>) -> ::windows::core::Result<u32>;
-    fn GetAudioFormat(&self) -> *mut super::WAVEFORMATEX;
+    fn GetAudioFormat(&self) -> *const super::WAVEFORMATEX;
     fn GetUncompressedAudioFormat(&self, puncompressedaudioformat: *mut UNCOMPRESSEDAUDIOFORMAT) -> ::windows::core::Result<()>;
 }
 #[cfg(feature = "Win32_Foundation")]
@@ -124,7 +124,7 @@ impl IAudioMediaType_Vtbl {
                 ::core::result::Result::Err(err) => err.into(),
             }
         }
-        unsafe extern "system" fn GetAudioFormat<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IAudioMediaType_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut super::WAVEFORMATEX {
+        unsafe extern "system" fn GetAudioFormat<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IAudioMediaType_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const super::WAVEFORMATEX {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetAudioFormat()

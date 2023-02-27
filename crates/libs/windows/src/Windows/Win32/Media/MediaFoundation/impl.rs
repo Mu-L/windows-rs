@@ -3639,13 +3639,13 @@ impl IMFAsyncCallback_Vtbl {
 }
 #[doc = "*Required features: `\"Win32_Media_MediaFoundation\"`, `\"implement\"`*"]
 pub trait IMFAsyncCallbackLogging_Impl: Sized + IMFAsyncCallback_Impl {
-    fn GetObjectPointer(&self) -> *mut ::core::ffi::c_void;
+    fn GetObjectPointer(&self) -> *const ::core::ffi::c_void;
     fn GetObjectTag(&self) -> u32;
 }
 impl ::windows::core::RuntimeName for IMFAsyncCallbackLogging {}
 impl IMFAsyncCallbackLogging_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFAsyncCallbackLogging_Impl, const OFFSET: isize>() -> IMFAsyncCallbackLogging_Vtbl {
-        unsafe extern "system" fn GetObjectPointer<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFAsyncCallbackLogging_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn GetObjectPointer<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFAsyncCallbackLogging_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetObjectPointer()
@@ -4016,14 +4016,14 @@ impl IMFAttributes_Vtbl {
 #[doc = "*Required features: `\"Win32_Media_MediaFoundation\"`, `\"Win32_Foundation\"`, `\"Win32_Media_Audio\"`, `\"Win32_System_Com_StructuredStorage\"`, `\"implement\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Media_Audio", feature = "Win32_System_Com_StructuredStorage"))]
 pub trait IMFAudioMediaType_Impl: Sized + IMFMediaType_Impl {
-    fn GetAudioFormat(&self) -> *mut super::Audio::WAVEFORMATEX;
+    fn GetAudioFormat(&self) -> *const super::Audio::WAVEFORMATEX;
 }
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Media_Audio", feature = "Win32_System_Com_StructuredStorage"))]
 impl ::windows::core::RuntimeName for IMFAudioMediaType {}
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Media_Audio", feature = "Win32_System_Com_StructuredStorage"))]
 impl IMFAudioMediaType_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFAudioMediaType_Impl, const OFFSET: isize>() -> IMFAudioMediaType_Vtbl {
-        unsafe extern "system" fn GetAudioFormat<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFAudioMediaType_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut super::Audio::WAVEFORMATEX {
+        unsafe extern "system" fn GetAudioFormat<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFAudioMediaType_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const super::Audio::WAVEFORMATEX {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetAudioFormat()
@@ -17408,7 +17408,7 @@ impl IMFVideoDisplayControl_Vtbl {
 #[doc = "*Required features: `\"Win32_Media_MediaFoundation\"`, `\"Win32_Foundation\"`, `\"Win32_System_Com_StructuredStorage\"`, `\"implement\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Com_StructuredStorage"))]
 pub trait IMFVideoMediaType_Impl: Sized + IMFMediaType_Impl {
-    fn GetVideoFormat(&self) -> *mut MFVIDEOFORMAT;
+    fn GetVideoFormat(&self) -> *const MFVIDEOFORMAT;
     fn GetVideoRepresentation(&self, guidrepresentation: &::windows::core::GUID, ppvrepresentation: *mut *mut ::core::ffi::c_void, lstride: i32) -> ::windows::core::Result<()>;
 }
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Com_StructuredStorage"))]
@@ -17416,7 +17416,7 @@ impl ::windows::core::RuntimeName for IMFVideoMediaType {}
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Com_StructuredStorage"))]
 impl IMFVideoMediaType_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFVideoMediaType_Impl, const OFFSET: isize>() -> IMFVideoMediaType_Vtbl {
-        unsafe extern "system" fn GetVideoFormat<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFVideoMediaType_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut MFVIDEOFORMAT {
+        unsafe extern "system" fn GetVideoFormat<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IMFVideoMediaType_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const MFVIDEOFORMAT {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetVideoFormat()

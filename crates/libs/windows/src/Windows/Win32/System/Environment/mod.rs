@@ -11,11 +11,11 @@ where
 #[doc = "*Required features: `\"Win32_System_Environment\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn CreateEnclave<P0>(hprocess: P0, lpaddress: ::core::option::Option<*const ::core::ffi::c_void>, dwsize: usize, dwinitialcommitment: usize, flenclavetype: u32, lpenclaveinformation: *const ::core::ffi::c_void, dwinfolength: u32, lpenclaveerror: ::core::option::Option<*mut u32>) -> *mut ::core::ffi::c_void
+pub unsafe fn CreateEnclave<P0>(hprocess: P0, lpaddress: ::core::option::Option<*const ::core::ffi::c_void>, dwsize: usize, dwinitialcommitment: usize, flenclavetype: u32, lpenclaveinformation: *const ::core::ffi::c_void, dwinfolength: u32, lpenclaveerror: ::core::option::Option<*mut u32>) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateEnclave ( hprocess : super::super::Foundation:: HANDLE , lpaddress : *const ::core::ffi::c_void , dwsize : usize , dwinitialcommitment : usize , flenclavetype : u32 , lpenclaveinformation : *const ::core::ffi::c_void , dwinfolength : u32 , lpenclaveerror : *mut u32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateEnclave ( hprocess : super::super::Foundation:: HANDLE , lpaddress : *const ::core::ffi::c_void , dwsize : usize , dwinitialcommitment : usize , flenclavetype : u32 , lpenclaveinformation : *const ::core::ffi::c_void , dwinfolength : u32 , lpenclaveerror : *mut u32 ) -> *const ::core::ffi::c_void );
     CreateEnclave(hprocess.into(), ::core::mem::transmute(lpaddress.unwrap_or(::std::ptr::null())), dwsize, dwinitialcommitment, flenclavetype, lpenclaveinformation, dwinfolength, ::core::mem::transmute(lpenclaveerror.unwrap_or(::std::ptr::null_mut())))
 }
 #[doc = "*Required features: `\"Win32_System_Environment\"`, `\"Win32_Foundation\"`*"]
@@ -135,14 +135,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_Environment\"`*"]
 #[inline]
-pub unsafe fn GetCommandLineA() -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GetCommandLineA ( ) -> :: windows::core::PSTR );
+pub unsafe fn GetCommandLineA() -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GetCommandLineA ( ) -> :: windows::core::PCSTR );
     GetCommandLineA()
 }
 #[doc = "*Required features: `\"Win32_System_Environment\"`*"]
 #[inline]
-pub unsafe fn GetCommandLineW() -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GetCommandLineW ( ) -> :: windows::core::PWSTR );
+pub unsafe fn GetCommandLineW() -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GetCommandLineW ( ) -> :: windows::core::PCWSTR );
     GetCommandLineW()
 }
 #[doc = "*Required features: `\"Win32_System_Environment\"`*"]
@@ -159,14 +159,14 @@ pub unsafe fn GetCurrentDirectoryW(lpbuffer: ::core::option::Option<&mut [u16]>)
 }
 #[doc = "*Required features: `\"Win32_System_Environment\"`*"]
 #[inline]
-pub unsafe fn GetEnvironmentStrings() -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GetEnvironmentStrings ( ) -> :: windows::core::PSTR );
+pub unsafe fn GetEnvironmentStrings() -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GetEnvironmentStrings ( ) -> :: windows::core::PCSTR );
     GetEnvironmentStrings()
 }
 #[doc = "*Required features: `\"Win32_System_Environment\"`*"]
 #[inline]
-pub unsafe fn GetEnvironmentStringsW() -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GetEnvironmentStringsW ( ) -> :: windows::core::PWSTR );
+pub unsafe fn GetEnvironmentStringsW() -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GetEnvironmentStringsW ( ) -> :: windows::core::PCWSTR );
     GetEnvironmentStringsW()
 }
 #[doc = "*Required features: `\"Win32_System_Environment\"`*"]

@@ -408,8 +408,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_Com_Urlmon\"`*"]
 #[inline]
-pub unsafe fn IEGetUserPrivateNamespaceName() -> ::windows::core::PWSTR {
-    ::windows::imp::link ! ( "urlmon.dll""system" fn IEGetUserPrivateNamespaceName ( ) -> :: windows::core::PWSTR );
+pub unsafe fn IEGetUserPrivateNamespaceName() -> ::windows::core::PCWSTR {
+    ::windows::imp::link ! ( "urlmon.dll""system" fn IEGetUserPrivateNamespaceName ( ) -> :: windows::core::PCWSTR );
     IEGetUserPrivateNamespaceName()
 }
 #[doc = "*Required features: `\"Win32_System_Com_Urlmon\"`*"]

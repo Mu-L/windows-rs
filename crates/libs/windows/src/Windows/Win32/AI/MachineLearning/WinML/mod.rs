@@ -516,7 +516,7 @@ impl IMLOperatorTensor {
     pub unsafe fn IsDataInterface(&self) -> bool {
         (::windows::core::Vtable::vtable(self).IsDataInterface)(::windows::core::Vtable::as_raw(self))
     }
-    pub unsafe fn GetData(&self) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetData(&self) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).GetData)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetDataInterface(&self) -> ::windows::core::Result<::windows::core::IUnknown> {
@@ -557,7 +557,7 @@ pub struct IMLOperatorTensor_Vtbl {
     pub GetTensorDataType: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> MLOperatorTensorDataType,
     pub IsCpuData: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> bool,
     pub IsDataInterface: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> bool,
-    pub GetData: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void,
+    pub GetData: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void,
     pub GetDataInterface: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, datainterface: *mut *mut ::core::ffi::c_void),
 }
 #[doc = "*Required features: `\"Win32_AI_MachineLearning_WinML\"`*"]

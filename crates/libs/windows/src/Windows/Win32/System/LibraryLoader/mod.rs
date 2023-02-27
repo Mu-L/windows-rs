@@ -1,10 +1,10 @@
 #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`*"]
 #[inline]
-pub unsafe fn AddDllDirectory<P0>(newdirectory: P0) -> *mut ::core::ffi::c_void
+pub unsafe fn AddDllDirectory<P0>(newdirectory: P0) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn AddDllDirectory ( newdirectory : :: windows::core::PCWSTR ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn AddDllDirectory ( newdirectory : :: windows::core::PCWSTR ) -> *const ::core::ffi::c_void );
     AddDllDirectory(newdirectory.into().abi())
 }
 #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`, `\"Win32_Foundation\"`*"]
@@ -436,8 +436,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`*"]
 #[inline]
-pub unsafe fn LockResource(hresdata: isize) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn LockResource ( hresdata : isize ) -> *mut ::core::ffi::c_void );
+pub unsafe fn LockResource(hresdata: isize) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn LockResource ( hresdata : isize ) -> *const ::core::ffi::c_void );
     LockResource(hresdata)
 }
 #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`, `\"Win32_Foundation\"`*"]

@@ -12847,7 +12847,7 @@ pub struct ID3D12RootSignature_Vtbl {
 #[repr(transparent)]
 pub struct ID3D12RootSignatureDeserializer(::windows::core::IUnknown);
 impl ID3D12RootSignatureDeserializer {
-    pub unsafe fn GetRootSignatureDesc(&self) -> *mut D3D12_ROOT_SIGNATURE_DESC {
+    pub unsafe fn GetRootSignatureDesc(&self) -> *const D3D12_ROOT_SIGNATURE_DESC {
         (::windows::core::Vtable::vtable(self).GetRootSignatureDesc)(::windows::core::Vtable::as_raw(self))
     }
 }
@@ -12880,7 +12880,7 @@ unsafe impl ::windows::core::Interface for ID3D12RootSignatureDeserializer {
 #[doc(hidden)]
 pub struct ID3D12RootSignatureDeserializer_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
-    pub GetRootSignatureDesc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut D3D12_ROOT_SIGNATURE_DESC,
+    pub GetRootSignatureDesc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const D3D12_ROOT_SIGNATURE_DESC,
 }
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D12\"`*"]
 #[repr(transparent)]
@@ -13289,7 +13289,7 @@ impl ID3D12ShaderReflectionType {
     {
         (::windows::core::Vtable::vtable(self).GetMemberTypeByName)(::windows::core::Vtable::as_raw(self), name.into().abi())
     }
-    pub unsafe fn GetMemberTypeName(&self, index: u32) -> ::windows::core::PSTR {
+    pub unsafe fn GetMemberTypeName(&self, index: u32) -> ::windows::core::PCSTR {
         (::windows::core::Vtable::vtable(self).GetMemberTypeName)(::windows::core::Vtable::as_raw(self), index)
     }
     pub unsafe fn IsEqual<P0>(&self, ptype: P0) -> ::windows::core::Result<()>
@@ -13353,7 +13353,7 @@ pub struct ID3D12ShaderReflectionType_Vtbl {
     GetDesc: usize,
     pub GetMemberTypeByIndex: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, index: u32) -> ::core::option::Option<ID3D12ShaderReflectionType>,
     pub GetMemberTypeByName: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, name: ::windows::core::PCSTR) -> ::core::option::Option<ID3D12ShaderReflectionType>,
-    pub GetMemberTypeName: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, index: u32) -> ::windows::core::PSTR,
+    pub GetMemberTypeName: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, index: u32) -> ::windows::core::PCSTR,
     pub IsEqual: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, ptype: *mut ::core::ffi::c_void) -> ::windows::core::HRESULT,
     pub GetSubType: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::core::option::Option<ID3D12ShaderReflectionType>,
     pub GetBaseClass: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::core::option::Option<ID3D12ShaderReflectionType>,
@@ -13534,7 +13534,7 @@ pub struct ID3D12StateObject_Vtbl {
 #[repr(transparent)]
 pub struct ID3D12StateObjectProperties(::windows::core::IUnknown);
 impl ID3D12StateObjectProperties {
-    pub unsafe fn GetShaderIdentifier<P0>(&self, pexportname: P0) -> *mut ::core::ffi::c_void
+    pub unsafe fn GetShaderIdentifier<P0>(&self, pexportname: P0) -> *const ::core::ffi::c_void
     where
         P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
     {
@@ -13582,7 +13582,7 @@ unsafe impl ::windows::core::Interface for ID3D12StateObjectProperties {
 #[doc(hidden)]
 pub struct ID3D12StateObjectProperties_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
-    pub GetShaderIdentifier: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pexportname: ::windows::core::PCWSTR) -> *mut ::core::ffi::c_void,
+    pub GetShaderIdentifier: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pexportname: ::windows::core::PCWSTR) -> *const ::core::ffi::c_void,
     pub GetShaderStackSize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pexportname: ::windows::core::PCWSTR) -> u64,
     pub GetPipelineStackSize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> u64,
     pub SetPipelineStackSize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pipelinestacksizeinbytes: u64),
@@ -13717,7 +13717,7 @@ impl ID3D12VersionedRootSignatureDeserializer {
         let mut result__ = ::windows::core::zeroed::<*mut D3D12_VERSIONED_ROOT_SIGNATURE_DESC>();
         (::windows::core::Vtable::vtable(self).GetRootSignatureDescAtVersion)(::windows::core::Vtable::as_raw(self), converttoversion, &mut result__).from_abi(result__)
     }
-    pub unsafe fn GetUnconvertedRootSignatureDesc(&self) -> *mut D3D12_VERSIONED_ROOT_SIGNATURE_DESC {
+    pub unsafe fn GetUnconvertedRootSignatureDesc(&self) -> *const D3D12_VERSIONED_ROOT_SIGNATURE_DESC {
         (::windows::core::Vtable::vtable(self).GetUnconvertedRootSignatureDesc)(::windows::core::Vtable::as_raw(self))
     }
 }
@@ -13751,7 +13751,7 @@ unsafe impl ::windows::core::Interface for ID3D12VersionedRootSignatureDeseriali
 pub struct ID3D12VersionedRootSignatureDeserializer_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
     pub GetRootSignatureDescAtVersion: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, converttoversion: D3D_ROOT_SIGNATURE_VERSION, ppdesc: *mut *mut D3D12_VERSIONED_ROOT_SIGNATURE_DESC) -> ::windows::core::HRESULT,
-    pub GetUnconvertedRootSignatureDesc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut D3D12_VERSIONED_ROOT_SIGNATURE_DESC,
+    pub GetUnconvertedRootSignatureDesc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const D3D12_VERSIONED_ROOT_SIGNATURE_DESC,
 }
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D12\"`*"]
 #[repr(transparent)]

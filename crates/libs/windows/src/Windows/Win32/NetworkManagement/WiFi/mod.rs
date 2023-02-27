@@ -63,8 +63,8 @@ pub unsafe fn WFDUpdateDeviceVisibility(pdeviceaddress: *const *const u8) -> u32
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_WiFi\"`*"]
 #[inline]
-pub unsafe fn WlanAllocateMemory(dwmemorysize: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "wlanapi.dll""system" fn WlanAllocateMemory ( dwmemorysize : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn WlanAllocateMemory(dwmemorysize: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "wlanapi.dll""system" fn WlanAllocateMemory ( dwmemorysize : u32 ) -> *const ::core::ffi::c_void );
     WlanAllocateMemory(dwmemorysize)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_WiFi\"`, `\"Win32_Foundation\"`*"]

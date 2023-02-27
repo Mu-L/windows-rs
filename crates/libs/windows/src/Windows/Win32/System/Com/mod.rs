@@ -628,8 +628,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_Com\"`*"]
 #[inline]
-pub unsafe fn CoTaskMemAlloc(cb: usize) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "ole32.dll""system" fn CoTaskMemAlloc ( cb : usize ) -> *mut ::core::ffi::c_void );
+pub unsafe fn CoTaskMemAlloc(cb: usize) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "ole32.dll""system" fn CoTaskMemAlloc ( cb : usize ) -> *const ::core::ffi::c_void );
     CoTaskMemAlloc(cb)
 }
 #[doc = "*Required features: `\"Win32_System_Com\"`*"]
@@ -640,8 +640,8 @@ pub unsafe fn CoTaskMemFree(pv: ::core::option::Option<*const ::core::ffi::c_voi
 }
 #[doc = "*Required features: `\"Win32_System_Com\"`*"]
 #[inline]
-pub unsafe fn CoTaskMemRealloc(pv: ::core::option::Option<*const ::core::ffi::c_void>, cb: usize) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "ole32.dll""system" fn CoTaskMemRealloc ( pv : *const ::core::ffi::c_void , cb : usize ) -> *mut ::core::ffi::c_void );
+pub unsafe fn CoTaskMemRealloc(pv: ::core::option::Option<*const ::core::ffi::c_void>, cb: usize) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "ole32.dll""system" fn CoTaskMemRealloc ( pv : *const ::core::ffi::c_void , cb : usize ) -> *const ::core::ffi::c_void );
     CoTaskMemRealloc(::core::mem::transmute(pv.unwrap_or(::std::ptr::null())), cb)
 }
 #[doc = "*Required features: `\"Win32_System_Com\"`*"]
@@ -3954,10 +3954,10 @@ pub struct IMachineGlobalObjectTable_Vtbl {
 #[repr(transparent)]
 pub struct IMalloc(::windows::core::IUnknown);
 impl IMalloc {
-    pub unsafe fn Alloc(&self, cb: usize) -> *mut ::core::ffi::c_void {
+    pub unsafe fn Alloc(&self, cb: usize) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).Alloc)(::windows::core::Vtable::as_raw(self), cb)
     }
-    pub unsafe fn Realloc(&self, pv: ::core::option::Option<*const ::core::ffi::c_void>, cb: usize) -> *mut ::core::ffi::c_void {
+    pub unsafe fn Realloc(&self, pv: ::core::option::Option<*const ::core::ffi::c_void>, cb: usize) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).Realloc)(::windows::core::Vtable::as_raw(self), ::core::mem::transmute(pv.unwrap_or(::std::ptr::null())), cb)
     }
     pub unsafe fn Free(&self, pv: ::core::option::Option<*const ::core::ffi::c_void>) {
@@ -4000,8 +4000,8 @@ unsafe impl ::windows::core::Interface for IMalloc {
 #[doc(hidden)]
 pub struct IMalloc_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
-    pub Alloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, cb: usize) -> *mut ::core::ffi::c_void,
-    pub Realloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pv: *const ::core::ffi::c_void, cb: usize) -> *mut ::core::ffi::c_void,
+    pub Alloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, cb: usize) -> *const ::core::ffi::c_void,
+    pub Realloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pv: *const ::core::ffi::c_void, cb: usize) -> *const ::core::ffi::c_void,
     pub Free: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pv: *const ::core::ffi::c_void),
     pub GetSize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pv: *const ::core::ffi::c_void) -> usize,
     pub DidAlloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pv: *const ::core::ffi::c_void) -> i32,
@@ -4014,12 +4014,12 @@ impl IMallocSpy {
     pub unsafe fn PreAlloc(&self, cbrequest: usize) -> usize {
         (::windows::core::Vtable::vtable(self).PreAlloc)(::windows::core::Vtable::as_raw(self), cbrequest)
     }
-    pub unsafe fn PostAlloc(&self, pactual: *const ::core::ffi::c_void) -> *mut ::core::ffi::c_void {
+    pub unsafe fn PostAlloc(&self, pactual: *const ::core::ffi::c_void) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).PostAlloc)(::windows::core::Vtable::as_raw(self), pactual)
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn PreFree<P0>(&self, prequest: *const ::core::ffi::c_void, fspyed: P0) -> *mut ::core::ffi::c_void
+    pub unsafe fn PreFree<P0>(&self, prequest: *const ::core::ffi::c_void, fspyed: P0) -> *const ::core::ffi::c_void
     where
         P0: ::std::convert::Into<super::super::Foundation::BOOL>,
     {
@@ -4043,7 +4043,7 @@ impl IMallocSpy {
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn PostRealloc<P0>(&self, pactual: *const ::core::ffi::c_void, fspyed: P0) -> *mut ::core::ffi::c_void
+    pub unsafe fn PostRealloc<P0>(&self, pactual: *const ::core::ffi::c_void, fspyed: P0) -> *const ::core::ffi::c_void
     where
         P0: ::std::convert::Into<super::super::Foundation::BOOL>,
     {
@@ -4051,7 +4051,7 @@ impl IMallocSpy {
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn PreGetSize<P0>(&self, prequest: *const ::core::ffi::c_void, fspyed: P0) -> *mut ::core::ffi::c_void
+    pub unsafe fn PreGetSize<P0>(&self, prequest: *const ::core::ffi::c_void, fspyed: P0) -> *const ::core::ffi::c_void
     where
         P0: ::std::convert::Into<super::super::Foundation::BOOL>,
     {
@@ -4067,7 +4067,7 @@ impl IMallocSpy {
     }
     #[doc = "*Required features: `\"Win32_Foundation\"`*"]
     #[cfg(feature = "Win32_Foundation")]
-    pub unsafe fn PreDidAlloc<P0>(&self, prequest: *const ::core::ffi::c_void, fspyed: P0) -> *mut ::core::ffi::c_void
+    pub unsafe fn PreDidAlloc<P0>(&self, prequest: *const ::core::ffi::c_void, fspyed: P0) -> *const ::core::ffi::c_void
     where
         P0: ::std::convert::Into<super::super::Foundation::BOOL>,
     {
@@ -4116,9 +4116,9 @@ unsafe impl ::windows::core::Interface for IMallocSpy {
 pub struct IMallocSpy_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
     pub PreAlloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, cbrequest: usize) -> usize,
-    pub PostAlloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pactual: *const ::core::ffi::c_void) -> *mut ::core::ffi::c_void,
+    pub PostAlloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pactual: *const ::core::ffi::c_void) -> *const ::core::ffi::c_void,
     #[cfg(feature = "Win32_Foundation")]
-    pub PreFree: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void,
+    pub PreFree: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void,
     #[cfg(not(feature = "Win32_Foundation"))]
     PreFree: usize,
     #[cfg(feature = "Win32_Foundation")]
@@ -4130,11 +4130,11 @@ pub struct IMallocSpy_Vtbl {
     #[cfg(not(feature = "Win32_Foundation"))]
     PreRealloc: usize,
     #[cfg(feature = "Win32_Foundation")]
-    pub PostRealloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pactual: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void,
+    pub PostRealloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pactual: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void,
     #[cfg(not(feature = "Win32_Foundation"))]
     PostRealloc: usize,
     #[cfg(feature = "Win32_Foundation")]
-    pub PreGetSize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void,
+    pub PreGetSize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void,
     #[cfg(not(feature = "Win32_Foundation"))]
     PreGetSize: usize,
     #[cfg(feature = "Win32_Foundation")]
@@ -4142,7 +4142,7 @@ pub struct IMallocSpy_Vtbl {
     #[cfg(not(feature = "Win32_Foundation"))]
     PostGetSize: usize,
     #[cfg(feature = "Win32_Foundation")]
-    pub PreDidAlloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *mut ::core::ffi::c_void,
+    pub PreDidAlloc: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, prequest: *const ::core::ffi::c_void, fspyed: super::super::Foundation::BOOL) -> *const ::core::ffi::c_void,
     #[cfg(not(feature = "Win32_Foundation"))]
     PreDidAlloc: usize,
     #[cfg(feature = "Win32_Foundation")]

@@ -573,21 +573,21 @@ where
 #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Foundation\"`, `\"Win32_Globalization\"`, `\"Win32_Graphics_Gdi\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Globalization", feature = "Win32_Graphics_Gdi"))]
 #[inline]
-pub unsafe fn ImmLockIMC<P0>(param0: P0) -> *mut INPUTCONTEXT
+pub unsafe fn ImmLockIMC<P0>(param0: P0) -> *const INPUTCONTEXT
 where
     P0: ::std::convert::Into<super::super::super::Globalization::HIMC>,
 {
-    ::windows::imp::link ! ( "imm32.dll""system" fn ImmLockIMC ( param0 : super::super::super::Globalization:: HIMC ) -> *mut INPUTCONTEXT );
+    ::windows::imp::link ! ( "imm32.dll""system" fn ImmLockIMC ( param0 : super::super::super::Globalization:: HIMC ) -> *const INPUTCONTEXT );
     ImmLockIMC(param0.into())
 }
 #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Globalization\"`*"]
 #[cfg(feature = "Win32_Globalization")]
 #[inline]
-pub unsafe fn ImmLockIMCC<P0>(param0: P0) -> *mut ::core::ffi::c_void
+pub unsafe fn ImmLockIMCC<P0>(param0: P0) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::super::super::Globalization::HIMCC>,
 {
-    ::windows::imp::link ! ( "imm32.dll""system" fn ImmLockIMCC ( param0 : super::super::super::Globalization:: HIMCC ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "imm32.dll""system" fn ImmLockIMCC ( param0 : super::super::super::Globalization:: HIMCC ) -> *const ::core::ffi::c_void );
     ImmLockIMCC(param0.into())
 }
 #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Foundation\"`, `\"Win32_Globalization\"`*"]

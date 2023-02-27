@@ -225,11 +225,11 @@ where
 }
 #[doc = "*Required features: `\"Win32_UI_Controls\"`*"]
 #[inline]
-pub unsafe fn DPA_DeletePtr<P0>(hdpa: P0, i: i32) -> *mut ::core::ffi::c_void
+pub unsafe fn DPA_DeletePtr<P0>(hdpa: P0, i: i32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<HDPA>,
 {
-    ::windows::imp::link ! ( "comctl32.dll""system" fn DPA_DeletePtr ( hdpa : HDPA , i : i32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "comctl32.dll""system" fn DPA_DeletePtr ( hdpa : HDPA , i : i32 ) -> *const ::core::ffi::c_void );
     DPA_DeletePtr(hdpa.into(), i)
 }
 #[doc = "*Required features: `\"Win32_UI_Controls\"`, `\"Win32_Foundation\"`*"]
@@ -262,11 +262,11 @@ where
 }
 #[doc = "*Required features: `\"Win32_UI_Controls\"`*"]
 #[inline]
-pub unsafe fn DPA_GetPtr<P0>(hdpa: P0, i: isize) -> *mut ::core::ffi::c_void
+pub unsafe fn DPA_GetPtr<P0>(hdpa: P0, i: isize) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<HDPA>,
 {
-    ::windows::imp::link ! ( "comctl32.dll""system" fn DPA_GetPtr ( hdpa : HDPA , i : isize ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "comctl32.dll""system" fn DPA_GetPtr ( hdpa : HDPA , i : isize ) -> *const ::core::ffi::c_void );
     DPA_GetPtr(hdpa.into(), i)
 }
 #[doc = "*Required features: `\"Win32_UI_Controls\"`*"]
@@ -446,11 +446,11 @@ where
 }
 #[doc = "*Required features: `\"Win32_UI_Controls\"`*"]
 #[inline]
-pub unsafe fn DSA_GetItemPtr<P0>(hdsa: P0, i: i32) -> *mut ::core::ffi::c_void
+pub unsafe fn DSA_GetItemPtr<P0>(hdsa: P0, i: i32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<HDSA>,
 {
-    ::windows::imp::link ! ( "comctl32.dll""system" fn DSA_GetItemPtr ( hdsa : HDSA , i : i32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "comctl32.dll""system" fn DSA_GetItemPtr ( hdsa : HDSA , i : i32 ) -> *const ::core::ffi::c_void );
     DSA_GetItemPtr(hdsa.into(), i)
 }
 #[doc = "*Required features: `\"Win32_UI_Controls\"`*"]
@@ -29351,10 +29351,10 @@ pub type PFNDAENUMCALLBACK = ::core::option::Option<unsafe extern "system" fn(p:
 pub type PFNDAENUMCALLBACKCONST = ::core::option::Option<unsafe extern "system" fn(p: *const ::core::ffi::c_void, pdata: *const ::core::ffi::c_void) -> i32>;
 #[doc = "*Required features: `\"Win32_UI_Controls\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
-pub type PFNDPAMERGE = ::core::option::Option<unsafe extern "system" fn(umsg: DPAMM_MESSAGE, pvdest: *const ::core::ffi::c_void, pvsrc: *const ::core::ffi::c_void, lparam: super::super::Foundation::LPARAM) -> *mut ::core::ffi::c_void>;
+pub type PFNDPAMERGE = ::core::option::Option<unsafe extern "system" fn(umsg: DPAMM_MESSAGE, pvdest: *const ::core::ffi::c_void, pvsrc: *const ::core::ffi::c_void, lparam: super::super::Foundation::LPARAM) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_UI_Controls\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
-pub type PFNDPAMERGECONST = ::core::option::Option<unsafe extern "system" fn(umsg: DPAMM_MESSAGE, pvdest: *const ::core::ffi::c_void, pvsrc: *const ::core::ffi::c_void, lparam: super::super::Foundation::LPARAM) -> *mut ::core::ffi::c_void>;
+pub type PFNDPAMERGECONST = ::core::option::Option<unsafe extern "system" fn(umsg: DPAMM_MESSAGE, pvdest: *const ::core::ffi::c_void, pvsrc: *const ::core::ffi::c_void, lparam: super::super::Foundation::LPARAM) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_UI_Controls\"`, `\"Win32_System_Com\"`*"]
 #[cfg(feature = "Win32_System_Com")]
 pub type PFNDPASTREAM = ::core::option::Option<unsafe extern "system" fn(pinfo: *const DPASTREAMINFO, pstream: ::core::option::Option<super::super::System::Com::IStream>, pvinstdata: *const ::core::ffi::c_void) -> ::windows::core::HRESULT>;

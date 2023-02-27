@@ -138,14 +138,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_Devices_Usb\"`*"]
 #[inline]
-pub unsafe fn WinUsb_ParseConfigurationDescriptor(configurationdescriptor: *const USB_CONFIGURATION_DESCRIPTOR, startposition: *const ::core::ffi::c_void, interfacenumber: i32, alternatesetting: i32, interfaceclass: i32, interfacesubclass: i32, interfaceprotocol: i32) -> *mut USB_INTERFACE_DESCRIPTOR {
-    ::windows::imp::link ! ( "winusb.dll""system" fn WinUsb_ParseConfigurationDescriptor ( configurationdescriptor : *const USB_CONFIGURATION_DESCRIPTOR , startposition : *const ::core::ffi::c_void , interfacenumber : i32 , alternatesetting : i32 , interfaceclass : i32 , interfacesubclass : i32 , interfaceprotocol : i32 ) -> *mut USB_INTERFACE_DESCRIPTOR );
+pub unsafe fn WinUsb_ParseConfigurationDescriptor(configurationdescriptor: *const USB_CONFIGURATION_DESCRIPTOR, startposition: *const ::core::ffi::c_void, interfacenumber: i32, alternatesetting: i32, interfaceclass: i32, interfacesubclass: i32, interfaceprotocol: i32) -> *const USB_INTERFACE_DESCRIPTOR {
+    ::windows::imp::link ! ( "winusb.dll""system" fn WinUsb_ParseConfigurationDescriptor ( configurationdescriptor : *const USB_CONFIGURATION_DESCRIPTOR , startposition : *const ::core::ffi::c_void , interfacenumber : i32 , alternatesetting : i32 , interfaceclass : i32 , interfacesubclass : i32 , interfaceprotocol : i32 ) -> *const USB_INTERFACE_DESCRIPTOR );
     WinUsb_ParseConfigurationDescriptor(configurationdescriptor, startposition, interfacenumber, alternatesetting, interfaceclass, interfacesubclass, interfaceprotocol)
 }
 #[doc = "*Required features: `\"Win32_Devices_Usb\"`*"]
 #[inline]
-pub unsafe fn WinUsb_ParseDescriptors(descriptorbuffer: *const ::core::ffi::c_void, totallength: u32, startposition: *const ::core::ffi::c_void, descriptortype: i32) -> *mut USB_COMMON_DESCRIPTOR {
-    ::windows::imp::link ! ( "winusb.dll""system" fn WinUsb_ParseDescriptors ( descriptorbuffer : *const ::core::ffi::c_void , totallength : u32 , startposition : *const ::core::ffi::c_void , descriptortype : i32 ) -> *mut USB_COMMON_DESCRIPTOR );
+pub unsafe fn WinUsb_ParseDescriptors(descriptorbuffer: *const ::core::ffi::c_void, totallength: u32, startposition: *const ::core::ffi::c_void, descriptortype: i32) -> *const USB_COMMON_DESCRIPTOR {
+    ::windows::imp::link ! ( "winusb.dll""system" fn WinUsb_ParseDescriptors ( descriptorbuffer : *const ::core::ffi::c_void , totallength : u32 , startposition : *const ::core::ffi::c_void , descriptortype : i32 ) -> *const USB_COMMON_DESCRIPTOR );
     WinUsb_ParseDescriptors(descriptorbuffer, totallength, startposition, descriptortype)
 }
 #[doc = "*Required features: `\"Win32_Devices_Usb\"`, `\"Win32_Foundation\"`*"]

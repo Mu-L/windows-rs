@@ -32,7 +32,7 @@ impl ICallFrame {
     pub unsafe fn GetNames(&self, pwszinterface: *mut ::windows::core::PWSTR, pwszmethod: *mut ::windows::core::PWSTR) -> ::windows::core::Result<()> {
         (::windows::core::Vtable::vtable(self).GetNames)(::windows::core::Vtable::as_raw(self), pwszinterface, pwszmethod).ok()
     }
-    pub unsafe fn GetStackLocation(&self) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetStackLocation(&self) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).GetStackLocation)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn SetStackLocation(&self, pvstack: *const ::core::ffi::c_void) {
@@ -148,7 +148,7 @@ pub struct ICallFrame_Vtbl {
     GetInfo: usize,
     pub GetIIDAndMethod: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, piid: *mut ::windows::core::GUID, pimethod: *mut u32) -> ::windows::core::HRESULT,
     pub GetNames: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pwszinterface: *mut ::windows::core::PWSTR, pwszmethod: *mut ::windows::core::PWSTR) -> ::windows::core::HRESULT,
-    pub GetStackLocation: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void,
+    pub GetStackLocation: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void,
     pub SetStackLocation: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, pvstack: *const ::core::ffi::c_void),
     pub SetReturnValue: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, hr: ::windows::core::HRESULT),
     pub GetReturnValue: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::windows::core::HRESULT,

@@ -65,7 +65,7 @@ pub struct IDxcAssembler_Vtbl {
 #[repr(transparent)]
 pub struct IDxcBlob(::windows::core::IUnknown);
 impl IDxcBlob {
-    pub unsafe fn GetBufferPointer(&self) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetBufferPointer(&self) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).GetBufferPointer)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetBufferSize(&self) -> usize {
@@ -99,14 +99,14 @@ unsafe impl ::windows::core::Interface for IDxcBlob {
 #[doc(hidden)]
 pub struct IDxcBlob_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
-    pub GetBufferPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void,
+    pub GetBufferPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void,
     pub GetBufferSize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> usize,
 }
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D_Dxc\"`*"]
 #[repr(transparent)]
 pub struct IDxcBlobEncoding(::windows::core::IUnknown);
 impl IDxcBlobEncoding {
-    pub unsafe fn GetBufferPointer(&self) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetBufferPointer(&self) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).base__.GetBufferPointer)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetBufferSize(&self) -> usize {
@@ -154,7 +154,7 @@ pub struct IDxcBlobEncoding_Vtbl {
 #[repr(transparent)]
 pub struct IDxcBlobUtf16(::windows::core::IUnknown);
 impl IDxcBlobUtf16 {
-    pub unsafe fn GetBufferPointer(&self) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetBufferPointer(&self) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).base__.base__.GetBufferPointer)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetBufferSize(&self) -> usize {
@@ -165,7 +165,7 @@ impl IDxcBlobUtf16 {
     pub unsafe fn GetEncoding(&self, pknown: *mut super::super::super::Foundation::BOOL, pcodepage: *mut DXC_CP) -> ::windows::core::Result<()> {
         (::windows::core::Vtable::vtable(self).base__.GetEncoding)(::windows::core::Vtable::as_raw(self), pknown, pcodepage).ok()
     }
-    pub unsafe fn GetStringPointer(&self) -> ::windows::core::PWSTR {
+    pub unsafe fn GetStringPointer(&self) -> ::windows::core::PCWSTR {
         (::windows::core::Vtable::vtable(self).GetStringPointer)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetStringLength(&self) -> usize {
@@ -199,14 +199,14 @@ unsafe impl ::windows::core::Interface for IDxcBlobUtf16 {
 #[doc(hidden)]
 pub struct IDxcBlobUtf16_Vtbl {
     pub base__: IDxcBlobEncoding_Vtbl,
-    pub GetStringPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::windows::core::PWSTR,
+    pub GetStringPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::windows::core::PCWSTR,
     pub GetStringLength: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> usize,
 }
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D_Dxc\"`*"]
 #[repr(transparent)]
 pub struct IDxcBlobUtf8(::windows::core::IUnknown);
 impl IDxcBlobUtf8 {
-    pub unsafe fn GetBufferPointer(&self) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetBufferPointer(&self) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).base__.base__.GetBufferPointer)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetBufferSize(&self) -> usize {
@@ -217,7 +217,7 @@ impl IDxcBlobUtf8 {
     pub unsafe fn GetEncoding(&self, pknown: *mut super::super::super::Foundation::BOOL, pcodepage: *mut DXC_CP) -> ::windows::core::Result<()> {
         (::windows::core::Vtable::vtable(self).base__.GetEncoding)(::windows::core::Vtable::as_raw(self), pknown, pcodepage).ok()
     }
-    pub unsafe fn GetStringPointer(&self) -> ::windows::core::PSTR {
+    pub unsafe fn GetStringPointer(&self) -> ::windows::core::PCSTR {
         (::windows::core::Vtable::vtable(self).GetStringPointer)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetStringLength(&self) -> usize {
@@ -251,7 +251,7 @@ unsafe impl ::windows::core::Interface for IDxcBlobUtf8 {
 #[doc(hidden)]
 pub struct IDxcBlobUtf8_Vtbl {
     pub base__: IDxcBlobEncoding_Vtbl,
-    pub GetStringPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::windows::core::PSTR,
+    pub GetStringPointer: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::windows::core::PCSTR,
     pub GetStringLength: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> usize,
 }
 #[doc = "*Required features: `\"Win32_Graphics_Direct3D_Dxc\"`*"]
@@ -457,7 +457,7 @@ pub struct IDxcCompiler3_Vtbl {
 #[repr(transparent)]
 pub struct IDxcCompilerArgs(::windows::core::IUnknown);
 impl IDxcCompilerArgs {
-    pub unsafe fn GetArguments(&self) -> *mut ::windows::core::PWSTR {
+    pub unsafe fn GetArguments(&self) -> *const ::windows::core::PCWSTR {
         (::windows::core::Vtable::vtable(self).GetArguments)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetCount(&self) -> u32 {
@@ -500,7 +500,7 @@ unsafe impl ::windows::core::Interface for IDxcCompilerArgs {
 #[doc(hidden)]
 pub struct IDxcCompilerArgs_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
-    pub GetArguments: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut ::windows::core::PWSTR,
+    pub GetArguments: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const ::windows::core::PCWSTR,
     pub GetCount: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> u32,
     pub AddArguments: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, parguments: *const ::windows::core::PCWSTR, argcount: u32) -> ::windows::core::HRESULT,
     pub AddArgumentsUTF8: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, parguments: *const ::windows::core::PCSTR, argcount: u32) -> ::windows::core::HRESULT,

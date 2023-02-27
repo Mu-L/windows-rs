@@ -772,8 +772,8 @@ pub unsafe fn GlobalUnfix(hmem: isize) {
 }
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
 #[inline]
-pub unsafe fn GlobalWire(hmem: isize) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GlobalWire ( hmem : isize ) -> *mut ::core::ffi::c_void );
+pub unsafe fn GlobalWire(hmem: isize) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GlobalWire ( hmem : isize ) -> *const ::core::ffi::c_void );
     GlobalWire(hmem)
 }
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`, `\"Win32_Foundation\"`*"]
@@ -2069,15 +2069,15 @@ pub unsafe fn uaw_lstrlenW(string: *const u16) -> i32 {
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 #[inline]
-pub unsafe fn uaw_wcschr(string: *const u16, character: u16) -> *mut u16 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn uaw_wcschr ( string : *const u16 , character : u16 ) -> *mut u16 );
+pub unsafe fn uaw_wcschr(string: *const u16, character: u16) -> *const u16 {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn uaw_wcschr ( string : *const u16 , character : u16 ) -> *const u16 );
     uaw_wcschr(string, character)
 }
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 #[inline]
-pub unsafe fn uaw_wcscpy(destination: *mut u16, source: *const u16) -> *mut u16 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn uaw_wcscpy ( destination : *mut u16 , source : *const u16 ) -> *mut u16 );
+pub unsafe fn uaw_wcscpy(destination: *mut u16, source: *const u16) -> *const u16 {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn uaw_wcscpy ( destination : *mut u16 , source : *const u16 ) -> *const u16 );
     uaw_wcscpy(destination, source)
 }
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
@@ -2097,8 +2097,8 @@ pub unsafe fn uaw_wcslen(string: *const u16) -> usize {
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 #[inline]
-pub unsafe fn uaw_wcsrchr(string: *const u16, character: u16) -> *mut u16 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn uaw_wcsrchr ( string : *const u16 , character : u16 ) -> *mut u16 );
+pub unsafe fn uaw_wcsrchr(string: *const u16, character: u16) -> *const u16 {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn uaw_wcsrchr ( string : *const u16 , character : u16 ) -> *const u16 );
     uaw_wcsrchr(string, character)
 }
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
@@ -7309,11 +7309,11 @@ pub type APPLICATION_RECOVERY_CALLBACK = ::core::option::Option<unsafe extern "s
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
 pub type ENUM_CALLBACK = ::core::option::Option<unsafe extern "system" fn(lpsurfaceinfo: *mut DCISURFACEINFO, lpcontext: *mut ::core::ffi::c_void) -> ()>;
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
-pub type PDELAYLOAD_FAILURE_DLL_CALLBACK = ::core::option::Option<unsafe extern "system" fn(notificationreason: u32, delayloadinfo: *const DELAYLOAD_INFO) -> *mut ::core::ffi::c_void>;
+pub type PDELAYLOAD_FAILURE_DLL_CALLBACK = ::core::option::Option<unsafe extern "system" fn(notificationreason: u32, delayloadinfo: *const DELAYLOAD_INFO) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
 pub type PFEATURE_STATE_CHANGE_CALLBACK = ::core::option::Option<unsafe extern "system" fn(context: *const ::core::ffi::c_void) -> ()>;
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
-pub type PFIBER_CALLOUT_ROUTINE = ::core::option::Option<unsafe extern "system" fn(lpparameter: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void>;
+pub type PFIBER_CALLOUT_ROUTINE = ::core::option::Option<unsafe extern "system" fn(lpparameter: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 pub type PIO_APC_ROUTINE = ::core::option::Option<unsafe extern "system" fn(apccontext: *mut ::core::ffi::c_void, iostatusblock: *mut IO_STATUS_BLOCK, reserved: u32) -> ()>;

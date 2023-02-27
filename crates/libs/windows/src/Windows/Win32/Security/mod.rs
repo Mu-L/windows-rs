@@ -590,11 +590,11 @@ pub unsafe fn FindFirstFreeAce(pacl: *const ACL, pace: *mut *mut ::core::ffi::c_
 #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn FreeSid<P0>(psid: P0) -> *mut ::core::ffi::c_void
+pub unsafe fn FreeSid<P0>(psid: P0) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<super::Foundation::PSID>,
 {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn FreeSid ( psid : super::Foundation:: PSID ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "advapi32.dll""system" fn FreeSid ( psid : super::Foundation:: PSID ) -> *const ::core::ffi::c_void );
     FreeSid(psid.into())
 }
 #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"]
@@ -746,11 +746,11 @@ where
 #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn GetSidIdentifierAuthority<P0>(psid: P0) -> *mut SID_IDENTIFIER_AUTHORITY
+pub unsafe fn GetSidIdentifierAuthority<P0>(psid: P0) -> *const SID_IDENTIFIER_AUTHORITY
 where
     P0: ::std::convert::Into<super::Foundation::PSID>,
 {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn GetSidIdentifierAuthority ( psid : super::Foundation:: PSID ) -> *mut SID_IDENTIFIER_AUTHORITY );
+    ::windows::imp::link ! ( "advapi32.dll""system" fn GetSidIdentifierAuthority ( psid : super::Foundation:: PSID ) -> *const SID_IDENTIFIER_AUTHORITY );
     GetSidIdentifierAuthority(psid.into())
 }
 #[doc = "*Required features: `\"Win32_Security\"`*"]
@@ -762,21 +762,21 @@ pub unsafe fn GetSidLengthRequired(nsubauthoritycount: u8) -> u32 {
 #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn GetSidSubAuthority<P0>(psid: P0, nsubauthority: u32) -> *mut u32
+pub unsafe fn GetSidSubAuthority<P0>(psid: P0, nsubauthority: u32) -> *const u32
 where
     P0: ::std::convert::Into<super::Foundation::PSID>,
 {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn GetSidSubAuthority ( psid : super::Foundation:: PSID , nsubauthority : u32 ) -> *mut u32 );
+    ::windows::imp::link ! ( "advapi32.dll""system" fn GetSidSubAuthority ( psid : super::Foundation:: PSID , nsubauthority : u32 ) -> *const u32 );
     GetSidSubAuthority(psid.into(), nsubauthority)
 }
 #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn GetSidSubAuthorityCount<P0>(psid: P0) -> *mut u8
+pub unsafe fn GetSidSubAuthorityCount<P0>(psid: P0) -> *const u8
 where
     P0: ::std::convert::Into<super::Foundation::PSID>,
 {
-    ::windows::imp::link ! ( "advapi32.dll""system" fn GetSidSubAuthorityCount ( psid : super::Foundation:: PSID ) -> *mut u8 );
+    ::windows::imp::link ! ( "advapi32.dll""system" fn GetSidSubAuthorityCount ( psid : super::Foundation:: PSID ) -> *const u8 );
     GetSidSubAuthorityCount(psid.into())
 }
 #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"]

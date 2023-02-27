@@ -224,11 +224,11 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_HostComputeSystem\"`*"]
 #[inline]
-pub unsafe fn HcsGetOperationContext<P0>(operation: P0) -> *mut ::core::ffi::c_void
+pub unsafe fn HcsGetOperationContext<P0>(operation: P0) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<HCS_OPERATION>,
 {
-    ::windows::imp::link ! ( "computecore.dll""system" fn HcsGetOperationContext ( operation : HCS_OPERATION ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "computecore.dll""system" fn HcsGetOperationContext ( operation : HCS_OPERATION ) -> *const ::core::ffi::c_void );
     HcsGetOperationContext(operation.into())
 }
 #[doc = "*Required features: `\"Win32_System_HostComputeSystem\"`*"]

@@ -285,14 +285,14 @@ pub unsafe fn ConvertFiberToThread() -> super::super::Foundation::BOOL {
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn ConvertThreadToFiber(lpparameter: ::core::option::Option<*const ::core::ffi::c_void>) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn ConvertThreadToFiber ( lpparameter : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+pub unsafe fn ConvertThreadToFiber(lpparameter: ::core::option::Option<*const ::core::ffi::c_void>) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn ConvertThreadToFiber ( lpparameter : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
     ConvertThreadToFiber(::core::mem::transmute(lpparameter.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn ConvertThreadToFiberEx(lpparameter: ::core::option::Option<*const ::core::ffi::c_void>, dwflags: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn ConvertThreadToFiberEx ( lpparameter : *const ::core::ffi::c_void , dwflags : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn ConvertThreadToFiberEx(lpparameter: ::core::option::Option<*const ::core::ffi::c_void>, dwflags: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn ConvertThreadToFiberEx ( lpparameter : *const ::core::ffi::c_void , dwflags : u32 ) -> *const ::core::ffi::c_void );
     ConvertThreadToFiberEx(::core::mem::transmute(lpparameter.unwrap_or(::std::ptr::null())), dwflags)
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
@@ -364,14 +364,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn CreateFiber(dwstacksize: usize, lpstartaddress: LPFIBER_START_ROUTINE, lpparameter: ::core::option::Option<*const ::core::ffi::c_void>) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateFiber ( dwstacksize : usize , lpstartaddress : LPFIBER_START_ROUTINE , lpparameter : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+pub unsafe fn CreateFiber(dwstacksize: usize, lpstartaddress: LPFIBER_START_ROUTINE, lpparameter: ::core::option::Option<*const ::core::ffi::c_void>) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateFiber ( dwstacksize : usize , lpstartaddress : LPFIBER_START_ROUTINE , lpparameter : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
     CreateFiber(dwstacksize, lpstartaddress, ::core::mem::transmute(lpparameter.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn CreateFiberEx(dwstackcommitsize: usize, dwstackreservesize: usize, dwflags: u32, lpstartaddress: LPFIBER_START_ROUTINE, lpparameter: ::core::option::Option<*const ::core::ffi::c_void>) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateFiberEx ( dwstackcommitsize : usize , dwstackreservesize : usize , dwflags : u32 , lpstartaddress : LPFIBER_START_ROUTINE , lpparameter : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+pub unsafe fn CreateFiberEx(dwstackcommitsize: usize, dwstackreservesize: usize, dwflags: u32, lpstartaddress: LPFIBER_START_ROUTINE, lpparameter: ::core::option::Option<*const ::core::ffi::c_void>) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateFiberEx ( dwstackcommitsize : usize , dwstackreservesize : usize , dwflags : u32 , lpstartaddress : LPFIBER_START_ROUTINE , lpparameter : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
     CreateFiberEx(dwstackcommitsize, dwstackreservesize, dwflags, lpstartaddress, ::core::mem::transmute(lpparameter.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_Foundation\"`, `\"Win32_Security\"`*"]
@@ -607,29 +607,29 @@ pub unsafe fn CreateThreadpoolCleanupGroup() -> isize {
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn CreateThreadpoolIo<P0>(fl: P0, pfnio: PTP_WIN32_IO_CALLBACK, pv: ::core::option::Option<*mut ::core::ffi::c_void>, pcbe: ::core::option::Option<*const TP_CALLBACK_ENVIRON_V3>) -> *mut TP_IO
+pub unsafe fn CreateThreadpoolIo<P0>(fl: P0, pfnio: PTP_WIN32_IO_CALLBACK, pv: ::core::option::Option<*mut ::core::ffi::c_void>, pcbe: ::core::option::Option<*const TP_CALLBACK_ENVIRON_V3>) -> *const TP_IO
 where
     P0: ::std::convert::Into<super::super::Foundation::HANDLE>,
 {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateThreadpoolIo ( fl : super::super::Foundation:: HANDLE , pfnio : PTP_WIN32_IO_CALLBACK , pv : *mut ::core::ffi::c_void , pcbe : *const TP_CALLBACK_ENVIRON_V3 ) -> *mut TP_IO );
+    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateThreadpoolIo ( fl : super::super::Foundation:: HANDLE , pfnio : PTP_WIN32_IO_CALLBACK , pv : *mut ::core::ffi::c_void , pcbe : *const TP_CALLBACK_ENVIRON_V3 ) -> *const TP_IO );
     CreateThreadpoolIo(fl.into(), pfnio, ::core::mem::transmute(pv.unwrap_or(::std::ptr::null_mut())), ::core::mem::transmute(pcbe.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn CreateThreadpoolTimer(pfnti: PTP_TIMER_CALLBACK, pv: ::core::option::Option<*mut ::core::ffi::c_void>, pcbe: ::core::option::Option<*const TP_CALLBACK_ENVIRON_V3>) -> *mut TP_TIMER {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateThreadpoolTimer ( pfnti : PTP_TIMER_CALLBACK , pv : *mut ::core::ffi::c_void , pcbe : *const TP_CALLBACK_ENVIRON_V3 ) -> *mut TP_TIMER );
+pub unsafe fn CreateThreadpoolTimer(pfnti: PTP_TIMER_CALLBACK, pv: ::core::option::Option<*mut ::core::ffi::c_void>, pcbe: ::core::option::Option<*const TP_CALLBACK_ENVIRON_V3>) -> *const TP_TIMER {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateThreadpoolTimer ( pfnti : PTP_TIMER_CALLBACK , pv : *mut ::core::ffi::c_void , pcbe : *const TP_CALLBACK_ENVIRON_V3 ) -> *const TP_TIMER );
     CreateThreadpoolTimer(pfnti, ::core::mem::transmute(pv.unwrap_or(::std::ptr::null_mut())), ::core::mem::transmute(pcbe.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn CreateThreadpoolWait(pfnwa: PTP_WAIT_CALLBACK, pv: ::core::option::Option<*mut ::core::ffi::c_void>, pcbe: ::core::option::Option<*const TP_CALLBACK_ENVIRON_V3>) -> *mut TP_WAIT {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateThreadpoolWait ( pfnwa : PTP_WAIT_CALLBACK , pv : *mut ::core::ffi::c_void , pcbe : *const TP_CALLBACK_ENVIRON_V3 ) -> *mut TP_WAIT );
+pub unsafe fn CreateThreadpoolWait(pfnwa: PTP_WAIT_CALLBACK, pv: ::core::option::Option<*mut ::core::ffi::c_void>, pcbe: ::core::option::Option<*const TP_CALLBACK_ENVIRON_V3>) -> *const TP_WAIT {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateThreadpoolWait ( pfnwa : PTP_WAIT_CALLBACK , pv : *mut ::core::ffi::c_void , pcbe : *const TP_CALLBACK_ENVIRON_V3 ) -> *const TP_WAIT );
     CreateThreadpoolWait(pfnwa, ::core::mem::transmute(pv.unwrap_or(::std::ptr::null_mut())), ::core::mem::transmute(pcbe.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn CreateThreadpoolWork(pfnwk: PTP_WORK_CALLBACK, pv: ::core::option::Option<*mut ::core::ffi::c_void>, pcbe: ::core::option::Option<*const TP_CALLBACK_ENVIRON_V3>) -> *mut TP_WORK {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateThreadpoolWork ( pfnwk : PTP_WORK_CALLBACK , pv : *mut ::core::ffi::c_void , pcbe : *const TP_CALLBACK_ENVIRON_V3 ) -> *mut TP_WORK );
+pub unsafe fn CreateThreadpoolWork(pfnwk: PTP_WORK_CALLBACK, pv: ::core::option::Option<*mut ::core::ffi::c_void>, pcbe: ::core::option::Option<*const TP_CALLBACK_ENVIRON_V3>) -> *const TP_WORK {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn CreateThreadpoolWork ( pfnwk : PTP_WORK_CALLBACK , pv : *mut ::core::ffi::c_void , pcbe : *const TP_CALLBACK_ENVIRON_V3 ) -> *const TP_WORK );
     CreateThreadpoolWork(pfnwk, ::core::mem::transmute(pv.unwrap_or(::std::ptr::null_mut())), ::core::mem::transmute(pcbe.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_Foundation\"`*"]
@@ -837,8 +837,8 @@ pub unsafe fn FlsFree(dwflsindex: u32) -> super::super::Foundation::BOOL {
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn FlsGetValue(dwflsindex: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn FlsGetValue ( dwflsindex : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn FlsGetValue(dwflsindex: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn FlsGetValue ( dwflsindex : u32 ) -> *const ::core::ffi::c_void );
     FlsGetValue(dwflsindex)
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_Foundation\"`*"]
@@ -925,8 +925,8 @@ pub unsafe fn GetCurrentThreadStackLimits(lowlimit: *mut usize, highlimit: *mut 
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn GetCurrentUmsThread() -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GetCurrentUmsThread ( ) -> *mut ::core::ffi::c_void );
+pub unsafe fn GetCurrentUmsThread() -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GetCurrentUmsThread ( ) -> *const ::core::ffi::c_void );
     GetCurrentUmsThread()
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_Foundation\"`*"]
@@ -980,8 +980,8 @@ pub unsafe fn GetMaximumProcessorGroupCount() -> u16 {
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn GetNextUmsListItem(umscontext: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn GetNextUmsListItem ( umscontext : *mut ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+pub unsafe fn GetNextUmsListItem(umscontext: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn GetNextUmsListItem ( umscontext : *mut ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
     GetNextUmsListItem(umscontext)
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_Foundation\"`*"]
@@ -1468,29 +1468,29 @@ pub unsafe fn InitializeSynchronizationBarrier(lpbarrier: *mut RTL_BARRIER, ltot
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_System_Kernel\"`*"]
 #[cfg(feature = "Win32_System_Kernel")]
 #[inline]
-pub unsafe fn InterlockedFlushSList(listhead: *mut super::Kernel::SLIST_HEADER) -> *mut super::Kernel::SLIST_ENTRY {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn InterlockedFlushSList ( listhead : *mut super::Kernel:: SLIST_HEADER ) -> *mut super::Kernel:: SLIST_ENTRY );
+pub unsafe fn InterlockedFlushSList(listhead: *mut super::Kernel::SLIST_HEADER) -> *const super::Kernel::SLIST_ENTRY {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn InterlockedFlushSList ( listhead : *mut super::Kernel:: SLIST_HEADER ) -> *const super::Kernel:: SLIST_ENTRY );
     InterlockedFlushSList(listhead)
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_System_Kernel\"`*"]
 #[cfg(feature = "Win32_System_Kernel")]
 #[inline]
-pub unsafe fn InterlockedPopEntrySList(listhead: *mut super::Kernel::SLIST_HEADER) -> *mut super::Kernel::SLIST_ENTRY {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn InterlockedPopEntrySList ( listhead : *mut super::Kernel:: SLIST_HEADER ) -> *mut super::Kernel:: SLIST_ENTRY );
+pub unsafe fn InterlockedPopEntrySList(listhead: *mut super::Kernel::SLIST_HEADER) -> *const super::Kernel::SLIST_ENTRY {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn InterlockedPopEntrySList ( listhead : *mut super::Kernel:: SLIST_HEADER ) -> *const super::Kernel:: SLIST_ENTRY );
     InterlockedPopEntrySList(listhead)
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_System_Kernel\"`*"]
 #[cfg(feature = "Win32_System_Kernel")]
 #[inline]
-pub unsafe fn InterlockedPushEntrySList(listhead: *mut super::Kernel::SLIST_HEADER, listentry: *mut super::Kernel::SLIST_ENTRY) -> *mut super::Kernel::SLIST_ENTRY {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn InterlockedPushEntrySList ( listhead : *mut super::Kernel:: SLIST_HEADER , listentry : *mut super::Kernel:: SLIST_ENTRY ) -> *mut super::Kernel:: SLIST_ENTRY );
+pub unsafe fn InterlockedPushEntrySList(listhead: *mut super::Kernel::SLIST_HEADER, listentry: *mut super::Kernel::SLIST_ENTRY) -> *const super::Kernel::SLIST_ENTRY {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn InterlockedPushEntrySList ( listhead : *mut super::Kernel:: SLIST_HEADER , listentry : *mut super::Kernel:: SLIST_ENTRY ) -> *const super::Kernel:: SLIST_ENTRY );
     InterlockedPushEntrySList(listhead, listentry)
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_System_Kernel\"`*"]
 #[cfg(feature = "Win32_System_Kernel")]
 #[inline]
-pub unsafe fn InterlockedPushListSListEx(listhead: *mut super::Kernel::SLIST_HEADER, list: *mut super::Kernel::SLIST_ENTRY, listend: *mut super::Kernel::SLIST_ENTRY, count: u32) -> *mut super::Kernel::SLIST_ENTRY {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn InterlockedPushListSListEx ( listhead : *mut super::Kernel:: SLIST_HEADER , list : *mut super::Kernel:: SLIST_ENTRY , listend : *mut super::Kernel:: SLIST_ENTRY , count : u32 ) -> *mut super::Kernel:: SLIST_ENTRY );
+pub unsafe fn InterlockedPushListSListEx(listhead: *mut super::Kernel::SLIST_HEADER, list: *mut super::Kernel::SLIST_ENTRY, listend: *mut super::Kernel::SLIST_ENTRY, count: u32) -> *const super::Kernel::SLIST_ENTRY {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn InterlockedPushListSListEx ( listhead : *mut super::Kernel:: SLIST_HEADER , list : *mut super::Kernel:: SLIST_ENTRY , listend : *mut super::Kernel:: SLIST_ENTRY , count : u32 ) -> *const super::Kernel:: SLIST_ENTRY );
     InterlockedPushListSListEx(listhead, list, listend, count)
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_Foundation\"`*"]
@@ -2386,8 +2386,8 @@ pub unsafe fn TlsFree(dwtlsindex: u32) -> super::super::Foundation::BOOL {
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`*"]
 #[inline]
-pub unsafe fn TlsGetValue(dwtlsindex: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "kernel32.dll""system" fn TlsGetValue ( dwtlsindex : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn TlsGetValue(dwtlsindex: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "kernel32.dll""system" fn TlsGetValue ( dwtlsindex : u32 ) -> *const ::core::ffi::c_void );
     TlsGetValue(dwtlsindex)
 }
 #[doc = "*Required features: `\"Win32_System_Threading\"`, `\"Win32_Foundation\"`*"]

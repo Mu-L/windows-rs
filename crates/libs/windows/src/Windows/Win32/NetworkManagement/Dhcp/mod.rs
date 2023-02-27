@@ -848,8 +848,8 @@ where
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dhcp\"`*"]
 #[inline]
-pub unsafe fn DhcpHlprFindV4DhcpProperty(propertyarray: *const DHCP_PROPERTY_ARRAY, id: DHCP_PROPERTY_ID, r#type: DHCP_PROPERTY_TYPE) -> *mut DHCP_PROPERTY {
-    ::windows::imp::link ! ( "dhcpsapi.dll""system" fn DhcpHlprFindV4DhcpProperty ( propertyarray : *const DHCP_PROPERTY_ARRAY , id : DHCP_PROPERTY_ID , r#type : DHCP_PROPERTY_TYPE ) -> *mut DHCP_PROPERTY );
+pub unsafe fn DhcpHlprFindV4DhcpProperty(propertyarray: *const DHCP_PROPERTY_ARRAY, id: DHCP_PROPERTY_ID, r#type: DHCP_PROPERTY_TYPE) -> *const DHCP_PROPERTY {
+    ::windows::imp::link ! ( "dhcpsapi.dll""system" fn DhcpHlprFindV4DhcpProperty ( propertyarray : *const DHCP_PROPERTY_ARRAY , id : DHCP_PROPERTY_ID , r#type : DHCP_PROPERTY_TYPE ) -> *const DHCP_PROPERTY );
     DhcpHlprFindV4DhcpProperty(propertyarray, id, r#type)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dhcp\"`*"]

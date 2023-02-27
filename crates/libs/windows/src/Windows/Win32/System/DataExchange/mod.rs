@@ -62,11 +62,11 @@ where
 }
 #[doc = "*Required features: `\"Win32_System_DataExchange\"`*"]
 #[inline]
-pub unsafe fn DdeAccessData<P0>(hdata: P0, pcbdatasize: ::core::option::Option<*mut u32>) -> *mut u8
+pub unsafe fn DdeAccessData<P0>(hdata: P0, pcbdatasize: ::core::option::Option<*mut u32>) -> *const u8
 where
     P0: ::std::convert::Into<HDDEDATA>,
 {
-    ::windows::imp::link ! ( "user32.dll""system" fn DdeAccessData ( hdata : HDDEDATA , pcbdatasize : *mut u32 ) -> *mut u8 );
+    ::windows::imp::link ! ( "user32.dll""system" fn DdeAccessData ( hdata : HDDEDATA , pcbdatasize : *mut u32 ) -> *const u8 );
     DdeAccessData(hdata.into(), ::core::mem::transmute(pcbdatasize.unwrap_or(::std::ptr::null_mut())))
 }
 #[doc = "*Required features: `\"Win32_System_DataExchange\"`*"]

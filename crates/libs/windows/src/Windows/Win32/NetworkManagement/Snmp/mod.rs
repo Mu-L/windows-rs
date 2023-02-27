@@ -220,12 +220,12 @@ pub unsafe fn SnmpMgrOidToStr(oid: *mut AsnObjectIdentifier, string: ::core::opt
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`*"]
 #[inline]
-pub unsafe fn SnmpMgrOpen<P0, P1>(lpagentaddress: P0, lpagentcommunity: P1, ntimeout: i32, nretries: i32) -> *mut ::core::ffi::c_void
+pub unsafe fn SnmpMgrOpen<P0, P1>(lpagentaddress: P0, lpagentcommunity: P1, ntimeout: i32, nretries: i32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
     P1: ::std::convert::Into<::windows::core::InParam<::windows::core::PCSTR>>,
 {
-    ::windows::imp::link ! ( "mgmtapi.dll""system" fn SnmpMgrOpen ( lpagentaddress : :: windows::core::PCSTR , lpagentcommunity : :: windows::core::PCSTR , ntimeout : i32 , nretries : i32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "mgmtapi.dll""system" fn SnmpMgrOpen ( lpagentaddress : :: windows::core::PCSTR , lpagentcommunity : :: windows::core::PCSTR , ntimeout : i32 , nretries : i32 ) -> *const ::core::ffi::c_void );
     SnmpMgrOpen(lpagentaddress.into().abi(), lpagentcommunity.into().abi(), ntimeout, nretries)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`, `\"Win32_Foundation\"`*"]
@@ -419,14 +419,14 @@ where
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`*"]
 #[inline]
-pub unsafe fn SnmpUtilIdsToA(ids: *mut u32, idlength: u32) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "snmpapi.dll""system" fn SnmpUtilIdsToA ( ids : *mut u32 , idlength : u32 ) -> :: windows::core::PSTR );
+pub unsafe fn SnmpUtilIdsToA(ids: *mut u32, idlength: u32) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "snmpapi.dll""system" fn SnmpUtilIdsToA ( ids : *mut u32 , idlength : u32 ) -> :: windows::core::PCSTR );
     SnmpUtilIdsToA(ids, idlength)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`*"]
 #[inline]
-pub unsafe fn SnmpUtilMemAlloc(nbytes: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "snmpapi.dll""system" fn SnmpUtilMemAlloc ( nbytes : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn SnmpUtilMemAlloc(nbytes: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "snmpapi.dll""system" fn SnmpUtilMemAlloc ( nbytes : u32 ) -> *const ::core::ffi::c_void );
     SnmpUtilMemAlloc(nbytes)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`*"]
@@ -437,8 +437,8 @@ pub unsafe fn SnmpUtilMemFree(pmem: *mut ::core::ffi::c_void) {
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`*"]
 #[inline]
-pub unsafe fn SnmpUtilMemReAlloc(pmem: *mut ::core::ffi::c_void, nbytes: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "snmpapi.dll""system" fn SnmpUtilMemReAlloc ( pmem : *mut ::core::ffi::c_void , nbytes : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn SnmpUtilMemReAlloc(pmem: *mut ::core::ffi::c_void, nbytes: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "snmpapi.dll""system" fn SnmpUtilMemReAlloc ( pmem : *mut ::core::ffi::c_void , nbytes : u32 ) -> *const ::core::ffi::c_void );
     SnmpUtilMemReAlloc(pmem, nbytes)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`, `\"Win32_Foundation\"`*"]
@@ -501,8 +501,8 @@ pub unsafe fn SnmpUtilOidNCmp(poid1: *mut AsnObjectIdentifier, poid2: *mut AsnOb
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`*"]
 #[inline]
-pub unsafe fn SnmpUtilOidToA(oid: *mut AsnObjectIdentifier) -> ::windows::core::PSTR {
-    ::windows::imp::link ! ( "snmpapi.dll""system" fn SnmpUtilOidToA ( oid : *mut AsnObjectIdentifier ) -> :: windows::core::PSTR );
+pub unsafe fn SnmpUtilOidToA(oid: *mut AsnObjectIdentifier) -> ::windows::core::PCSTR {
+    ::windows::imp::link ! ( "snmpapi.dll""system" fn SnmpUtilOidToA ( oid : *mut AsnObjectIdentifier ) -> :: windows::core::PCSTR );
     SnmpUtilOidToA(oid)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Snmp\"`, `\"Win32_Foundation\"`*"]

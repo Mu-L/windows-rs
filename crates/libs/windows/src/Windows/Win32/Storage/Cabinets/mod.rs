@@ -13,8 +13,8 @@ where
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn FCICreate(perf: *const ERF, pfnfcifp: PFNFCIFILEPLACED, pfna: PFNFCIALLOC, pfnf: PFNFCIFREE, pfnopen: PFNFCIOPEN, pfnread: PFNFCIREAD, pfnwrite: PFNFCIWRITE, pfnclose: PFNFCICLOSE, pfnseek: PFNFCISEEK, pfndelete: PFNFCIDELETE, pfnfcigtf: PFNFCIGETTEMPFILE, pccab: *const CCAB, pv: ::core::option::Option<*const ::core::ffi::c_void>) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "cabinet.dll""cdecl" fn FCICreate ( perf : *const ERF , pfnfcifp : PFNFCIFILEPLACED , pfna : PFNFCIALLOC , pfnf : PFNFCIFREE , pfnopen : PFNFCIOPEN , pfnread : PFNFCIREAD , pfnwrite : PFNFCIWRITE , pfnclose : PFNFCICLOSE , pfnseek : PFNFCISEEK , pfndelete : PFNFCIDELETE , pfnfcigtf : PFNFCIGETTEMPFILE , pccab : *const CCAB , pv : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+pub unsafe fn FCICreate(perf: *const ERF, pfnfcifp: PFNFCIFILEPLACED, pfna: PFNFCIALLOC, pfnf: PFNFCIFREE, pfnopen: PFNFCIOPEN, pfnread: PFNFCIREAD, pfnwrite: PFNFCIWRITE, pfnclose: PFNFCICLOSE, pfnseek: PFNFCISEEK, pfndelete: PFNFCIDELETE, pfnfcigtf: PFNFCIGETTEMPFILE, pccab: *const CCAB, pv: ::core::option::Option<*const ::core::ffi::c_void>) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "cabinet.dll""cdecl" fn FCICreate ( perf : *const ERF , pfnfcifp : PFNFCIFILEPLACED , pfna : PFNFCIALLOC , pfnf : PFNFCIFREE , pfnopen : PFNFCIOPEN , pfnread : PFNFCIREAD , pfnwrite : PFNFCIWRITE , pfnclose : PFNFCICLOSE , pfnseek : PFNFCISEEK , pfndelete : PFNFCIDELETE , pfnfcigtf : PFNFCIGETTEMPFILE , pccab : *const CCAB , pv : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
     FCICreate(perf, pfnfcifp, pfna, pfnf, pfnopen, pfnread, pfnwrite, pfnclose, pfnseek, pfndelete, pfnfcigtf, pccab, ::core::mem::transmute(pv.unwrap_or(::std::ptr::null())))
 }
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`, `\"Win32_Foundation\"`*"]
@@ -55,8 +55,8 @@ where
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn FDICreate(pfnalloc: PFNALLOC, pfnfree: PFNFREE, pfnopen: PFNOPEN, pfnread: PFNREAD, pfnwrite: PFNWRITE, pfnclose: PFNCLOSE, pfnseek: PFNSEEK, cputype: FDICREATE_CPU_TYPE, perf: *mut ERF) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "cabinet.dll""cdecl" fn FDICreate ( pfnalloc : PFNALLOC , pfnfree : PFNFREE , pfnopen : PFNOPEN , pfnread : PFNREAD , pfnwrite : PFNWRITE , pfnclose : PFNCLOSE , pfnseek : PFNSEEK , cputype : FDICREATE_CPU_TYPE , perf : *mut ERF ) -> *mut ::core::ffi::c_void );
+pub unsafe fn FDICreate(pfnalloc: PFNALLOC, pfnfree: PFNFREE, pfnopen: PFNOPEN, pfnread: PFNREAD, pfnwrite: PFNWRITE, pfnclose: PFNCLOSE, pfnseek: PFNSEEK, cputype: FDICREATE_CPU_TYPE, perf: *mut ERF) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "cabinet.dll""cdecl" fn FDICreate ( pfnalloc : PFNALLOC , pfnfree : PFNFREE , pfnopen : PFNOPEN , pfnread : PFNREAD , pfnwrite : PFNWRITE , pfnclose : PFNCLOSE , pfnseek : PFNSEEK , cputype : FDICREATE_CPU_TYPE , perf : *mut ERF ) -> *const ::core::ffi::c_void );
     FDICreate(pfnalloc, pfnfree, pfnopen, pfnread, pfnwrite, pfnclose, pfnseek, cputype, perf)
 }
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`, `\"Win32_Foundation\"`*"]
@@ -758,11 +758,11 @@ impl ::core::default::Default for FDISPILLFILE {
     }
 }
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`*"]
-pub type PFNALLOC = ::core::option::Option<unsafe extern "system" fn(cb: u32) -> *mut ::core::ffi::c_void>;
+pub type PFNALLOC = ::core::option::Option<unsafe extern "system" fn(cb: u32) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`*"]
 pub type PFNCLOSE = ::core::option::Option<unsafe extern "system" fn(hf: isize) -> i32>;
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`*"]
-pub type PFNFCIALLOC = ::core::option::Option<unsafe extern "system" fn(cb: u32) -> *mut ::core::ffi::c_void>;
+pub type PFNFCIALLOC = ::core::option::Option<unsafe extern "system" fn(cb: u32) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`*"]
 pub type PFNFCICLOSE = ::core::option::Option<unsafe extern "system" fn(hf: isize, err: *mut i32, pv: *mut ::core::ffi::c_void) -> i32>;
 #[doc = "*Required features: `\"Win32_Storage_Cabinets\"`*"]

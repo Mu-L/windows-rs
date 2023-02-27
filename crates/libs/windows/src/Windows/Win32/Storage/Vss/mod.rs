@@ -2215,7 +2215,7 @@ impl IVssWriterImpl {
     pub unsafe fn Uninitialize(&self) {
         (::windows::core::Vtable::vtable(self).Uninitialize)(::windows::core::Vtable::as_raw(self))
     }
-    pub unsafe fn GetCurrentVolumeArray(&self) -> *mut ::windows::core::PWSTR {
+    pub unsafe fn GetCurrentVolumeArray(&self) -> *const ::windows::core::PCWSTR {
         (::windows::core::Vtable::vtable(self).GetCurrentVolumeArray)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn GetCurrentVolumeCount(&self) -> u32 {
@@ -2266,7 +2266,7 @@ impl IVssWriterImpl {
     pub unsafe fn InstallAlternateWriter(&self, idwriter: ::windows::core::GUID, clsid: ::windows::core::GUID) -> ::windows::core::Result<()> {
         (::windows::core::Vtable::vtable(self).InstallAlternateWriter)(::windows::core::Vtable::as_raw(self), ::core::mem::transmute(idwriter), ::core::mem::transmute(clsid)).ok()
     }
-    pub unsafe fn GetIdentityInformation(&self) -> *mut IVssExamineWriterMetadata {
+    pub unsafe fn GetIdentityInformation(&self) -> *const IVssExamineWriterMetadata {
         (::windows::core::Vtable::vtable(self).GetIdentityInformation)(::windows::core::Vtable::as_raw(self))
     }
     pub unsafe fn SetWriterFailureEx<P0>(&self, hr: ::windows::core::HRESULT, hrapplication: ::windows::core::HRESULT, wszapplicationmessage: P0) -> ::windows::core::Result<()>
@@ -2314,7 +2314,7 @@ pub struct IVssWriterImpl_Vtbl {
     pub Subscribe: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, dwsubscribetimeout: u32, dweventflags: u32) -> ::windows::core::HRESULT,
     pub Unsubscribe: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::windows::core::HRESULT,
     pub Uninitialize: unsafe extern "system" fn(this: *mut ::core::ffi::c_void),
-    pub GetCurrentVolumeArray: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut ::windows::core::PWSTR,
+    pub GetCurrentVolumeArray: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const ::windows::core::PCWSTR,
     pub GetCurrentVolumeCount: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> u32,
     pub GetSnapshotDeviceName: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, wszoriginalvolume: ::windows::core::PCWSTR, ppwszsnapshotdevice: *mut ::windows::core::PWSTR) -> ::windows::core::HRESULT,
     pub GetCurrentSnapshotSetId: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, result__: *mut ::windows::core::GUID),
@@ -2328,7 +2328,7 @@ pub struct IVssWriterImpl_Vtbl {
     pub SetWriterFailure: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, hr: ::windows::core::HRESULT) -> ::windows::core::HRESULT,
     pub IsPartialFileSupportEnabled: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> bool,
     pub InstallAlternateWriter: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, idwriter: ::windows::core::GUID, clsid: ::windows::core::GUID) -> ::windows::core::HRESULT,
-    pub GetIdentityInformation: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *mut IVssExamineWriterMetadata,
+    pub GetIdentityInformation: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> *const IVssExamineWriterMetadata,
     pub SetWriterFailureEx: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, hr: ::windows::core::HRESULT, hrapplication: ::windows::core::HRESULT, wszapplicationmessage: ::windows::core::PCWSTR) -> ::windows::core::HRESULT,
     pub GetSessionId: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, idsession: *mut ::windows::core::GUID) -> ::windows::core::HRESULT,
     pub IsWriterShuttingDown: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> bool,

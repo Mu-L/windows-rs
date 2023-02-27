@@ -4670,7 +4670,7 @@ pub trait IRecordInfo_Impl: Sized {
     fn PutFieldNoCopy(&self, wflags: super::Com::INVOKEKIND, pvdata: *mut ::core::ffi::c_void, szfieldname: &::windows::core::PCWSTR, pvarfield: *const super::Com::VARIANT) -> ::windows::core::Result<()>;
     fn GetFieldNames(&self, pcnames: *mut u32, rgbstrnames: *mut ::windows::core::BSTR) -> ::windows::core::Result<()>;
     fn IsMatchingType(&self, precordinfo: ::core::option::Option<&IRecordInfo>) -> super::super::Foundation::BOOL;
-    fn RecordCreate(&self) -> *mut ::core::ffi::c_void;
+    fn RecordCreate(&self) -> *const ::core::ffi::c_void;
     fn RecordCreateCopy(&self, pvsource: *const ::core::ffi::c_void, ppvdest: *mut *mut ::core::ffi::c_void) -> ::windows::core::Result<()>;
     fn RecordDestroy(&self, pvrecord: *const ::core::ffi::c_void) -> ::windows::core::Result<()>;
 }
@@ -4774,7 +4774,7 @@ impl IRecordInfo_Vtbl {
             let this = (*this).get_impl();
             this.IsMatchingType(::windows::core::from_raw_borrowed(&precordinfo))
         }
-        unsafe extern "system" fn RecordCreate<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IRecordInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void {
+        unsafe extern "system" fn RecordCreate<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IRecordInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.RecordCreate()

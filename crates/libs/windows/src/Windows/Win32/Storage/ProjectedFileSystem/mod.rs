@@ -1,10 +1,10 @@
 #[doc = "*Required features: `\"Win32_Storage_ProjectedFileSystem\"`*"]
 #[inline]
-pub unsafe fn PrjAllocateAlignedBuffer<P0>(namespacevirtualizationcontext: P0, size: usize) -> *mut ::core::ffi::c_void
+pub unsafe fn PrjAllocateAlignedBuffer<P0>(namespacevirtualizationcontext: P0, size: usize) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT>,
 {
-    ::windows::imp::link ! ( "projectedfslib.dll""system" fn PrjAllocateAlignedBuffer ( namespacevirtualizationcontext : PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT , size : usize ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "projectedfslib.dll""system" fn PrjAllocateAlignedBuffer ( namespacevirtualizationcontext : PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT , size : usize ) -> *const ::core::ffi::c_void );
     PrjAllocateAlignedBuffer(namespacevirtualizationcontext.into(), size)
 }
 #[doc = "*Required features: `\"Win32_Storage_ProjectedFileSystem\"`*"]

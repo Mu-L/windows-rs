@@ -1,7 +1,7 @@
 #[doc = "*Required features: `\"Win32_Networking_Clustering\"`, `\"implement\"`*"]
 pub trait IGetClusterDataInfo_Impl: Sized {
     fn GetClusterName(&self, lpszname: ::windows::core::BSTR, pcchname: *mut i32) -> ::windows::core::Result<()>;
-    fn GetClusterHandle(&self) -> *mut _HCLUSTER;
+    fn GetClusterHandle(&self) -> *const _HCLUSTER;
     fn GetObjectCount(&self) -> i32;
 }
 impl ::windows::core::RuntimeName for IGetClusterDataInfo {}
@@ -12,7 +12,7 @@ impl IGetClusterDataInfo_Vtbl {
             let this = (*this).get_impl();
             this.GetClusterName(::core::mem::transmute_copy(&lpszname), ::core::mem::transmute_copy(&pcchname)).into()
         }
-        unsafe extern "system" fn GetClusterHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterDataInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut _HCLUSTER {
+        unsafe extern "system" fn GetClusterHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterDataInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const _HCLUSTER {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetClusterHandle()
@@ -35,12 +35,12 @@ impl IGetClusterDataInfo_Vtbl {
 }
 #[doc = "*Required features: `\"Win32_Networking_Clustering\"`, `\"implement\"`*"]
 pub trait IGetClusterGroupInfo_Impl: Sized {
-    fn GetGroupHandle(&self, lobjindex: i32) -> *mut _HGROUP;
+    fn GetGroupHandle(&self, lobjindex: i32) -> *const _HGROUP;
 }
 impl ::windows::core::RuntimeName for IGetClusterGroupInfo {}
 impl IGetClusterGroupInfo_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterGroupInfo_Impl, const OFFSET: isize>() -> IGetClusterGroupInfo_Vtbl {
-        unsafe extern "system" fn GetGroupHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterGroupInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *mut _HGROUP {
+        unsafe extern "system" fn GetGroupHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterGroupInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *const _HGROUP {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetGroupHandle(::core::mem::transmute_copy(&lobjindex))
@@ -53,12 +53,12 @@ impl IGetClusterGroupInfo_Vtbl {
 }
 #[doc = "*Required features: `\"Win32_Networking_Clustering\"`, `\"implement\"`*"]
 pub trait IGetClusterNetInterfaceInfo_Impl: Sized {
-    fn GetNetInterfaceHandle(&self, lobjindex: i32) -> *mut _HNETINTERFACE;
+    fn GetNetInterfaceHandle(&self, lobjindex: i32) -> *const _HNETINTERFACE;
 }
 impl ::windows::core::RuntimeName for IGetClusterNetInterfaceInfo {}
 impl IGetClusterNetInterfaceInfo_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNetInterfaceInfo_Impl, const OFFSET: isize>() -> IGetClusterNetInterfaceInfo_Vtbl {
-        unsafe extern "system" fn GetNetInterfaceHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNetInterfaceInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *mut _HNETINTERFACE {
+        unsafe extern "system" fn GetNetInterfaceHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNetInterfaceInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *const _HNETINTERFACE {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetNetInterfaceHandle(::core::mem::transmute_copy(&lobjindex))
@@ -71,12 +71,12 @@ impl IGetClusterNetInterfaceInfo_Vtbl {
 }
 #[doc = "*Required features: `\"Win32_Networking_Clustering\"`, `\"implement\"`*"]
 pub trait IGetClusterNetworkInfo_Impl: Sized {
-    fn GetNetworkHandle(&self, lobjindex: i32) -> *mut _HNETWORK;
+    fn GetNetworkHandle(&self, lobjindex: i32) -> *const _HNETWORK;
 }
 impl ::windows::core::RuntimeName for IGetClusterNetworkInfo {}
 impl IGetClusterNetworkInfo_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNetworkInfo_Impl, const OFFSET: isize>() -> IGetClusterNetworkInfo_Vtbl {
-        unsafe extern "system" fn GetNetworkHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNetworkInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *mut _HNETWORK {
+        unsafe extern "system" fn GetNetworkHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNetworkInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *const _HNETWORK {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetNetworkHandle(::core::mem::transmute_copy(&lobjindex))
@@ -89,12 +89,12 @@ impl IGetClusterNetworkInfo_Vtbl {
 }
 #[doc = "*Required features: `\"Win32_Networking_Clustering\"`, `\"implement\"`*"]
 pub trait IGetClusterNodeInfo_Impl: Sized {
-    fn GetNodeHandle(&self, lobjindex: i32) -> *mut _HNODE;
+    fn GetNodeHandle(&self, lobjindex: i32) -> *const _HNODE;
 }
 impl ::windows::core::RuntimeName for IGetClusterNodeInfo {}
 impl IGetClusterNodeInfo_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNodeInfo_Impl, const OFFSET: isize>() -> IGetClusterNodeInfo_Vtbl {
-        unsafe extern "system" fn GetNodeHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNodeInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *mut _HNODE {
+        unsafe extern "system" fn GetNodeHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterNodeInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *const _HNODE {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetNodeHandle(::core::mem::transmute_copy(&lobjindex))
@@ -136,7 +136,7 @@ impl IGetClusterObjectInfo_Vtbl {
 #[doc = "*Required features: `\"Win32_Networking_Clustering\"`, `\"Win32_Foundation\"`, `\"implement\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 pub trait IGetClusterResourceInfo_Impl: Sized {
-    fn GetResourceHandle(&self, lobjindex: i32) -> *mut _HRESOURCE;
+    fn GetResourceHandle(&self, lobjindex: i32) -> *const _HRESOURCE;
     fn GetResourceTypeName(&self, lobjindex: i32, lpszrestypename: ::windows::core::BSTR, pcchrestypename: *mut i32) -> ::windows::core::Result<()>;
     fn GetResourceNetworkName(&self, lobjindex: i32, lpsznetname: ::windows::core::BSTR, pcchnetname: *mut u32) -> super::super::Foundation::BOOL;
 }
@@ -145,7 +145,7 @@ impl ::windows::core::RuntimeName for IGetClusterResourceInfo {}
 #[cfg(feature = "Win32_Foundation")]
 impl IGetClusterResourceInfo_Vtbl {
     pub const fn new<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterResourceInfo_Impl, const OFFSET: isize>() -> IGetClusterResourceInfo_Vtbl {
-        unsafe extern "system" fn GetResourceHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterResourceInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *mut _HRESOURCE {
+        unsafe extern "system" fn GetResourceHandle<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IGetClusterResourceInfo_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, lobjindex: i32) -> *const _HRESOURCE {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetResourceHandle(::core::mem::transmute_copy(&lobjindex))

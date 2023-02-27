@@ -291,11 +291,11 @@ where
 }
 #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"]
 #[inline]
-pub unsafe fn AVIStreamGetFrame<P0>(pg: P0, lpos: i32) -> *mut ::core::ffi::c_void
+pub unsafe fn AVIStreamGetFrame<P0>(pg: P0, lpos: i32) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<IGetFrame>>,
 {
-    ::windows::imp::link ! ( "avifil32.dll""system" fn AVIStreamGetFrame ( pg : * mut::core::ffi::c_void , lpos : i32 ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "avifil32.dll""system" fn AVIStreamGetFrame ( pg : * mut::core::ffi::c_void , lpos : i32 ) -> *const ::core::ffi::c_void );
     AVIStreamGetFrame(pg.into().abi(), lpos)
 }
 #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"]
@@ -531,8 +531,8 @@ pub unsafe fn DrawDibEnd(hdd: isize) -> super::super::Foundation::BOOL {
 #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`*"]
 #[cfg(feature = "Win32_Graphics_Gdi")]
 #[inline]
-pub unsafe fn DrawDibGetBuffer(hdd: isize, lpbi: *mut super::super::Graphics::Gdi::BITMAPINFOHEADER, dwsize: u32, dwflags: u32) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "msvfw32.dll""system" fn DrawDibGetBuffer ( hdd : isize , lpbi : *mut super::super::Graphics::Gdi:: BITMAPINFOHEADER , dwsize : u32 , dwflags : u32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn DrawDibGetBuffer(hdd: isize, lpbi: *mut super::super::Graphics::Gdi::BITMAPINFOHEADER, dwsize: u32, dwflags: u32) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "msvfw32.dll""system" fn DrawDibGetBuffer ( hdd : isize , lpbi : *mut super::super::Graphics::Gdi:: BITMAPINFOHEADER , dwsize : u32 , dwflags : u32 ) -> *const ::core::ffi::c_void );
     DrawDibGetBuffer(hdd, lpbi, dwsize, dwflags)
 }
 #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`*"]
@@ -901,8 +901,8 @@ where
 #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"]
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Graphics_Gdi"))]
 #[inline]
-pub unsafe fn ICSeqCompressFrame(pc: *const COMPVARS, uiflags: u32, lpbits: *const ::core::ffi::c_void, pfkey: *mut super::super::Foundation::BOOL, plsize: ::core::option::Option<*mut i32>) -> *mut ::core::ffi::c_void {
-    ::windows::imp::link ! ( "msvfw32.dll""system" fn ICSeqCompressFrame ( pc : *const COMPVARS , uiflags : u32 , lpbits : *const ::core::ffi::c_void , pfkey : *mut super::super::Foundation:: BOOL , plsize : *mut i32 ) -> *mut ::core::ffi::c_void );
+pub unsafe fn ICSeqCompressFrame(pc: *const COMPVARS, uiflags: u32, lpbits: *const ::core::ffi::c_void, pfkey: *mut super::super::Foundation::BOOL, plsize: ::core::option::Option<*mut i32>) -> *const ::core::ffi::c_void {
+    ::windows::imp::link ! ( "msvfw32.dll""system" fn ICSeqCompressFrame ( pc : *const COMPVARS , uiflags : u32 , lpbits : *const ::core::ffi::c_void , pfkey : *mut super::super::Foundation:: BOOL , plsize : *mut i32 ) -> *const ::core::ffi::c_void );
     ICSeqCompressFrame(pc, uiflags, lpbits, pfkey, ::core::mem::transmute(plsize.unwrap_or(::std::ptr::null_mut())))
 }
 #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`*"]
@@ -1828,7 +1828,7 @@ pub struct IAVIStreaming_Vtbl {
 #[repr(transparent)]
 pub struct IGetFrame(::windows::core::IUnknown);
 impl IGetFrame {
-    pub unsafe fn GetFrame(&self, lpos: i32) -> *mut ::core::ffi::c_void {
+    pub unsafe fn GetFrame(&self, lpos: i32) -> *const ::core::ffi::c_void {
         (::windows::core::Vtable::vtable(self).GetFrame)(::windows::core::Vtable::as_raw(self), lpos)
     }
     pub unsafe fn Begin(&self, lstart: i32, lend: i32, lrate: i32) -> ::windows::core::Result<()> {
@@ -1870,7 +1870,7 @@ unsafe impl ::windows::core::Interface for IGetFrame {
 #[doc(hidden)]
 pub struct IGetFrame_Vtbl {
     pub base__: ::windows::core::IUnknown_Vtbl,
-    pub GetFrame: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, lpos: i32) -> *mut ::core::ffi::c_void,
+    pub GetFrame: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, lpos: i32) -> *const ::core::ffi::c_void,
     pub Begin: unsafe extern "system" fn(this: *mut ::core::ffi::c_void, lstart: i32, lend: i32, lrate: i32) -> ::windows::core::HRESULT,
     pub End: unsafe extern "system" fn(this: *mut ::core::ffi::c_void) -> ::windows::core::HRESULT,
     #[cfg(feature = "Win32_Graphics_Gdi")]

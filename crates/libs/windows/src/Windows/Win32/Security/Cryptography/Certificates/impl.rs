@@ -5618,7 +5618,7 @@ pub trait IEnroll_Impl: Sized {
     fn acceptFilePKCS7WStr(&self, wszpkcs7filename: &::windows::core::PCWSTR) -> ::windows::core::Result<()>;
     fn createPKCS10WStr(&self, dnname: &::windows::core::PCWSTR, usage: &::windows::core::PCWSTR, ppkcs10blob: *mut super::CRYPT_INTEGER_BLOB) -> ::windows::core::Result<()>;
     fn acceptPKCS7Blob(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> ::windows::core::Result<()>;
-    fn getCertContextFromPKCS7(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *mut super::CERT_CONTEXT;
+    fn getCertContextFromPKCS7(&self, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *const super::CERT_CONTEXT;
     fn getMyStore(&self) -> super::HCERTSTORE;
     fn getCAStore(&self) -> super::HCERTSTORE;
     fn getROOTHStore(&self) -> super::HCERTSTORE;
@@ -5710,7 +5710,7 @@ impl IEnroll_Vtbl {
             let this = (*this).get_impl();
             this.acceptPKCS7Blob(::core::mem::transmute_copy(&pblobpkcs7)).into()
         }
-        unsafe extern "system" fn getCertContextFromPKCS7<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IEnroll_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *mut super::CERT_CONTEXT {
+        unsafe extern "system" fn getCertContextFromPKCS7<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IEnroll_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void, pblobpkcs7: *mut super::CRYPT_INTEGER_BLOB) -> *const super::CERT_CONTEXT {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.getCertContextFromPKCS7(::core::mem::transmute_copy(&pblobpkcs7))
@@ -6267,7 +6267,7 @@ pub trait IEnroll4_Impl: Sized + IEnroll2_Impl {
     fn SetThumbPrintWStr(&self, thumbprintblob: &super::CRYPT_INTEGER_BLOB) -> ::windows::core::Result<()>;
     fn ThumbPrintWStr(&self, thumbprintblob: *mut super::CRYPT_INTEGER_BLOB) -> ::windows::core::Result<()>;
     fn SetPrivateKeyArchiveCertificate(&self, pprivatekeyarchivecert: *const super::CERT_CONTEXT) -> ::windows::core::Result<()>;
-    fn GetPrivateKeyArchiveCertificate(&self) -> *mut super::CERT_CONTEXT;
+    fn GetPrivateKeyArchiveCertificate(&self) -> *const super::CERT_CONTEXT;
     fn binaryBlobToString(&self, flags: i32, pblobbinary: *mut super::CRYPT_INTEGER_BLOB, ppwszstring: *mut ::windows::core::PWSTR) -> ::windows::core::Result<()>;
     fn stringToBinaryBlob(&self, flags: i32, pwszstring: &::windows::core::PCWSTR, pblobbinary: *mut super::CRYPT_INTEGER_BLOB, pdwskip: *mut i32, pdwflags: *mut i32) -> ::windows::core::Result<()>;
     fn addExtensionToRequestWStr(&self, flags: i32, pwszname: &::windows::core::PCWSTR, pblobvalue: *mut super::CRYPT_INTEGER_BLOB) -> ::windows::core::Result<()>;
@@ -6317,7 +6317,7 @@ impl IEnroll4_Vtbl {
             let this = (*this).get_impl();
             this.SetPrivateKeyArchiveCertificate(::core::mem::transmute_copy(&pprivatekeyarchivecert)).into()
         }
-        unsafe extern "system" fn GetPrivateKeyArchiveCertificate<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IEnroll4_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *mut super::CERT_CONTEXT {
+        unsafe extern "system" fn GetPrivateKeyArchiveCertificate<Identity: ::windows::core::IUnknownImpl<Impl = Impl>, Impl: IEnroll4_Impl, const OFFSET: isize>(this: *mut ::core::ffi::c_void) -> *const super::CERT_CONTEXT {
             let this = (this as *const *const ()).offset(OFFSET) as *const Identity;
             let this = (*this).get_impl();
             this.GetPrivateKeyArchiveCertificate()

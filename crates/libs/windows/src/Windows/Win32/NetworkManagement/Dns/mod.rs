@@ -272,8 +272,8 @@ pub unsafe fn DnsRecordCompare(precord1: *const DNS_RECORDA, precord2: *const DN
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn DnsRecordCopyEx(precord: *const DNS_RECORDA, charsetin: DNS_CHARSET, charsetout: DNS_CHARSET) -> *mut DNS_RECORDA {
-    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsRecordCopyEx ( precord : *const DNS_RECORDA , charsetin : DNS_CHARSET , charsetout : DNS_CHARSET ) -> *mut DNS_RECORDA );
+pub unsafe fn DnsRecordCopyEx(precord: *const DNS_RECORDA, charsetin: DNS_CHARSET, charsetout: DNS_CHARSET) -> *const DNS_RECORDA {
+    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsRecordCopyEx ( precord : *const DNS_RECORDA , charsetin : DNS_CHARSET , charsetout : DNS_CHARSET ) -> *const DNS_RECORDA );
     DnsRecordCopyEx(precord, charsetin, charsetout)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"]
@@ -286,15 +286,15 @@ pub unsafe fn DnsRecordSetCompare(prr1: *mut DNS_RECORDA, prr2: *mut DNS_RECORDA
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn DnsRecordSetCopyEx(precordset: *const DNS_RECORDA, charsetin: DNS_CHARSET, charsetout: DNS_CHARSET) -> *mut DNS_RECORDA {
-    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsRecordSetCopyEx ( precordset : *const DNS_RECORDA , charsetin : DNS_CHARSET , charsetout : DNS_CHARSET ) -> *mut DNS_RECORDA );
+pub unsafe fn DnsRecordSetCopyEx(precordset: *const DNS_RECORDA, charsetin: DNS_CHARSET, charsetout: DNS_CHARSET) -> *const DNS_RECORDA {
+    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsRecordSetCopyEx ( precordset : *const DNS_RECORDA , charsetin : DNS_CHARSET , charsetout : DNS_CHARSET ) -> *const DNS_RECORDA );
     DnsRecordSetCopyEx(precordset, charsetin, charsetout)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 #[inline]
-pub unsafe fn DnsRecordSetDetach(precordlist: *mut DNS_RECORDA) -> *mut DNS_RECORDA {
-    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsRecordSetDetach ( precordlist : *mut DNS_RECORDA ) -> *mut DNS_RECORDA );
+pub unsafe fn DnsRecordSetDetach(precordlist: *mut DNS_RECORDA) -> *const DNS_RECORDA {
+    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsRecordSetDetach ( precordlist : *mut DNS_RECORDA ) -> *const DNS_RECORDA );
     DnsRecordSetDetach(precordlist)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"]
@@ -352,18 +352,18 @@ pub unsafe fn DnsServiceBrowseCancel(pcancelhandle: *const DNS_SERVICE_CANCEL) -
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`*"]
 #[inline]
-pub unsafe fn DnsServiceConstructInstance<P0, P1>(pservicename: P0, phostname: P1, pip4: ::core::option::Option<*const u32>, pip6: ::core::option::Option<*const IP6_ADDRESS>, wport: u16, wpriority: u16, wweight: u16, dwpropertiescount: u32, keys: *const ::windows::core::PCWSTR, values: *const ::windows::core::PCWSTR) -> *mut DNS_SERVICE_INSTANCE
+pub unsafe fn DnsServiceConstructInstance<P0, P1>(pservicename: P0, phostname: P1, pip4: ::core::option::Option<*const u32>, pip6: ::core::option::Option<*const IP6_ADDRESS>, wport: u16, wpriority: u16, wweight: u16, dwpropertiescount: u32, keys: *const ::windows::core::PCWSTR, values: *const ::windows::core::PCWSTR) -> *const DNS_SERVICE_INSTANCE
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
     P1: ::std::convert::Into<::windows::core::InParam<::windows::core::PCWSTR>>,
 {
-    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsServiceConstructInstance ( pservicename : :: windows::core::PCWSTR , phostname : :: windows::core::PCWSTR , pip4 : *const u32 , pip6 : *const IP6_ADDRESS , wport : u16 , wpriority : u16 , wweight : u16 , dwpropertiescount : u32 , keys : *const :: windows::core::PCWSTR , values : *const :: windows::core::PCWSTR ) -> *mut DNS_SERVICE_INSTANCE );
+    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsServiceConstructInstance ( pservicename : :: windows::core::PCWSTR , phostname : :: windows::core::PCWSTR , pip4 : *const u32 , pip6 : *const IP6_ADDRESS , wport : u16 , wpriority : u16 , wweight : u16 , dwpropertiescount : u32 , keys : *const :: windows::core::PCWSTR , values : *const :: windows::core::PCWSTR ) -> *const DNS_SERVICE_INSTANCE );
     DnsServiceConstructInstance(pservicename.into().abi(), phostname.into().abi(), ::core::mem::transmute(pip4.unwrap_or(::std::ptr::null())), ::core::mem::transmute(pip6.unwrap_or(::std::ptr::null())), wport, wpriority, wweight, dwpropertiescount, keys, values)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`*"]
 #[inline]
-pub unsafe fn DnsServiceCopyInstance(porig: *const DNS_SERVICE_INSTANCE) -> *mut DNS_SERVICE_INSTANCE {
-    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsServiceCopyInstance ( porig : *const DNS_SERVICE_INSTANCE ) -> *mut DNS_SERVICE_INSTANCE );
+pub unsafe fn DnsServiceCopyInstance(porig: *const DNS_SERVICE_INSTANCE) -> *const DNS_SERVICE_INSTANCE {
+    ::windows::imp::link ! ( "dnsapi.dll""system" fn DnsServiceCopyInstance ( porig : *const DNS_SERVICE_INSTANCE ) -> *const DNS_SERVICE_INSTANCE );
     DnsServiceCopyInstance(porig)
 }
 #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"]

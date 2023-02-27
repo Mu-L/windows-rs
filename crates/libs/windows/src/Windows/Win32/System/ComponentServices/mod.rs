@@ -59,11 +59,11 @@ pub unsafe fn RecycleSurrogate(lreasoncode: i32) -> ::windows::core::Result<()> 
 }
 #[doc = "*Required features: `\"Win32_System_ComponentServices\"`*"]
 #[inline]
-pub unsafe fn SafeRef<P0>(rid: *const ::windows::core::GUID, punk: P0) -> *mut ::core::ffi::c_void
+pub unsafe fn SafeRef<P0>(rid: *const ::windows::core::GUID, punk: P0) -> *const ::core::ffi::c_void
 where
     P0: ::std::convert::Into<::windows::core::InParam<::windows::core::IUnknown>>,
 {
-    ::windows::imp::link ! ( "comsvcs.dll""cdecl" fn SafeRef ( rid : *const :: windows::core::GUID , punk : * mut::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+    ::windows::imp::link ! ( "comsvcs.dll""cdecl" fn SafeRef ( rid : *const :: windows::core::GUID , punk : * mut::core::ffi::c_void ) -> *const ::core::ffi::c_void );
     SafeRef(rid, punk.into().abi())
 }
 #[doc = "*Required features: `\"Win32_System_ComponentServices\"`, `\"Win32_System_Com\"`*"]
