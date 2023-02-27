@@ -113,9 +113,9 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "imm32.dll""system" #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Foundation\"`*"] fn ImmIsUIMessageW ( param0 : super::super::super::Foundation:: HWND , param1 : u32 , param2 : super::super::super::Foundation:: WPARAM , param3 : super::super::super::Foundation:: LPARAM ) -> super::super::super::Foundation:: BOOL );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Globalization", feature = "Win32_Graphics_Gdi"))]
-::windows_sys::core::link ! ( "imm32.dll""system" #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Foundation\"`, `\"Win32_Globalization\"`, `\"Win32_Graphics_Gdi\"`*"] fn ImmLockIMC ( param0 : super::super::super::Globalization:: HIMC ) -> *mut INPUTCONTEXT );
+::windows_sys::core::link ! ( "imm32.dll""system" #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Foundation\"`, `\"Win32_Globalization\"`, `\"Win32_Graphics_Gdi\"`*"] fn ImmLockIMC ( param0 : super::super::super::Globalization:: HIMC ) -> *const INPUTCONTEXT );
 #[cfg(feature = "Win32_Globalization")]
-::windows_sys::core::link ! ( "imm32.dll""system" #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Globalization\"`*"] fn ImmLockIMCC ( param0 : super::super::super::Globalization:: HIMCC ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "imm32.dll""system" #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Globalization\"`*"] fn ImmLockIMCC ( param0 : super::super::super::Globalization:: HIMCC ) -> *const ::core::ffi::c_void );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Globalization"))]
 ::windows_sys::core::link ! ( "imm32.dll""system" #[doc = "*Required features: `\"Win32_UI_Input_Ime\"`, `\"Win32_Foundation\"`, `\"Win32_Globalization\"`*"] fn ImmNotifyIME ( param0 : super::super::super::Globalization:: HIMC , dwaction : NOTIFY_IME_ACTION , dwindex : NOTIFY_IME_INDEX , dwvalue : u32 ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Globalization")]

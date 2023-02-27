@@ -129,7 +129,7 @@ pub mod HardwareCounterProfiling;
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`*"] fn PerfAddCounters ( hquery : PerfQueryHandle , pcounters : *mut PERF_COUNTER_IDENTIFIER , cbcounters : u32 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`, `\"Win32_Foundation\"`*"] fn PerfCloseQueryHandle ( hquery : super::super::Foundation:: HANDLE ) -> u32 );
-::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`*"] fn PerfCreateInstance ( providerhandle : PerfProviderHandle , countersetguid : *const :: windows_sys::core::GUID , name : :: windows_sys::core::PCWSTR , id : u32 ) -> *mut PERF_COUNTERSET_INSTANCE );
+::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`*"] fn PerfCreateInstance ( providerhandle : PerfProviderHandle , countersetguid : *const :: windows_sys::core::GUID , name : :: windows_sys::core::PCWSTR , id : u32 ) -> *const PERF_COUNTERSET_INSTANCE );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`, `\"Win32_Foundation\"`*"] fn PerfDecrementULongCounterValue ( provider : super::super::Foundation:: HANDLE , instance : *mut PERF_COUNTERSET_INSTANCE , counterid : u32 , value : u32 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
@@ -148,7 +148,7 @@ pub mod HardwareCounterProfiling;
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`*"] fn PerfQueryCounterInfo ( hquery : PerfQueryHandle , pcounters : *mut PERF_COUNTER_IDENTIFIER , cbcounters : u32 , pcbcountersactual : *mut u32 ) -> u32 );
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`*"] fn PerfQueryCounterSetRegistrationInfo ( szmachine : :: windows_sys::core::PCWSTR , pcountersetid : *const :: windows_sys::core::GUID , requestcode : PerfRegInfoType , requestlangid : u32 , pbreginfo : *mut u8 , cbreginfo : u32 , pcbreginfoactual : *mut u32 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`, `\"Win32_Foundation\"`*"] fn PerfQueryInstance ( providerhandle : super::super::Foundation:: HANDLE , countersetguid : *const :: windows_sys::core::GUID , name : :: windows_sys::core::PCWSTR , id : u32 ) -> *mut PERF_COUNTERSET_INSTANCE );
+::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`, `\"Win32_Foundation\"`*"] fn PerfQueryInstance ( providerhandle : super::super::Foundation:: HANDLE , countersetguid : *const :: windows_sys::core::GUID , name : :: windows_sys::core::PCWSTR , id : u32 ) -> *const PERF_COUNTERSET_INSTANCE );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Performance\"`, `\"Win32_Foundation\"`*"] fn PerfSetCounterRefValue ( provider : super::super::Foundation:: HANDLE , instance : *mut PERF_COUNTERSET_INSTANCE , counterid : u32 , address : *const ::core::ffi::c_void ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
@@ -1935,7 +1935,7 @@ pub type CounterPathCallBack = ::core::option::Option<unsafe extern "system" fn(
 #[doc = "*Required features: `\"Win32_System_Performance\"`*"]
 pub type PERFLIBREQUEST = ::core::option::Option<unsafe extern "system" fn(requestcode: u32, buffer: *mut ::core::ffi::c_void, buffersize: u32) -> u32>;
 #[doc = "*Required features: `\"Win32_System_Performance\"`*"]
-pub type PERF_MEM_ALLOC = ::core::option::Option<unsafe extern "system" fn(allocsize: usize, pcontext: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void>;
+pub type PERF_MEM_ALLOC = ::core::option::Option<unsafe extern "system" fn(allocsize: usize, pcontext: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_Performance\"`*"]
 pub type PERF_MEM_FREE = ::core::option::Option<unsafe extern "system" fn(pbuffer: *mut ::core::ffi::c_void, pcontext: *mut ::core::ffi::c_void) -> ()>;
 #[doc = "*Required features: `\"Win32_System_Performance\"`*"]

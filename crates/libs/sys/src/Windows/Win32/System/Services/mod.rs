@@ -48,7 +48,7 @@
 #[cfg(all(feature = "Win32_Security", feature = "Win32_System_Registry"))]
 ::windows_sys::core::link ! ( "api-ms-win-service-core-l1-1-5.dll""system" #[doc = "*Required features: `\"Win32_System_Services\"`, `\"Win32_Security\"`, `\"Win32_System_Registry\"`*"] fn GetSharedServiceRegistryStateKey ( servicehandle : super::super::Security:: SC_HANDLE , statetype : SERVICE_SHARED_REGISTRY_STATE_TYPE , accessmask : u32 , servicestatekey : *mut super::Registry:: HKEY ) -> u32 );
 #[cfg(feature = "Win32_Security")]
-::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Services\"`, `\"Win32_Security\"`*"] fn LockServiceDatabase ( hscmanager : super::super::Security:: SC_HANDLE ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Services\"`, `\"Win32_Security\"`*"] fn LockServiceDatabase ( hscmanager : super::super::Security:: SC_HANDLE ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Services\"`, `\"Win32_Foundation\"`*"] fn NotifyBootConfigStatus ( bootacceptable : super::super::Foundation:: BOOL ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Security")]

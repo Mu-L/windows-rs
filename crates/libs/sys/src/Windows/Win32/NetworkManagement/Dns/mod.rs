@@ -50,13 +50,13 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsRecordCompare ( precord1 : *const DNS_RECORDA , precord2 : *const DNS_RECORDA ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsRecordCopyEx ( precord : *const DNS_RECORDA , charsetin : DNS_CHARSET , charsetout : DNS_CHARSET ) -> *mut DNS_RECORDA );
+::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsRecordCopyEx ( precord : *const DNS_RECORDA , charsetin : DNS_CHARSET , charsetout : DNS_CHARSET ) -> *const DNS_RECORDA );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsRecordSetCompare ( prr1 : *mut DNS_RECORDA , prr2 : *mut DNS_RECORDA , ppdiff1 : *mut *mut DNS_RECORDA , ppdiff2 : *mut *mut DNS_RECORDA ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsRecordSetCopyEx ( precordset : *const DNS_RECORDA , charsetin : DNS_CHARSET , charsetout : DNS_CHARSET ) -> *mut DNS_RECORDA );
+::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsRecordSetCopyEx ( precordset : *const DNS_RECORDA , charsetin : DNS_CHARSET , charsetout : DNS_CHARSET ) -> *const DNS_RECORDA );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsRecordSetDetach ( precordlist : *mut DNS_RECORDA ) -> *mut DNS_RECORDA );
+::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsRecordSetDetach ( precordlist : *mut DNS_RECORDA ) -> *const DNS_RECORDA );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsReleaseContextHandle ( hcontext : super::super::Foundation:: HANDLE ) -> ( ) );
 #[cfg(feature = "Win32_Foundation")]
@@ -68,8 +68,8 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsServiceBrowse ( prequest : *const DNS_SERVICE_BROWSE_REQUEST , pcancel : *mut DNS_SERVICE_CANCEL ) -> i32 );
 ::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`*"] fn DnsServiceBrowseCancel ( pcancelhandle : *const DNS_SERVICE_CANCEL ) -> i32 );
-::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`*"] fn DnsServiceConstructInstance ( pservicename : :: windows_sys::core::PCWSTR , phostname : :: windows_sys::core::PCWSTR , pip4 : *const u32 , pip6 : *const IP6_ADDRESS , wport : u16 , wpriority : u16 , wweight : u16 , dwpropertiescount : u32 , keys : *const :: windows_sys::core::PCWSTR , values : *const :: windows_sys::core::PCWSTR ) -> *mut DNS_SERVICE_INSTANCE );
-::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`*"] fn DnsServiceCopyInstance ( porig : *const DNS_SERVICE_INSTANCE ) -> *mut DNS_SERVICE_INSTANCE );
+::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`*"] fn DnsServiceConstructInstance ( pservicename : :: windows_sys::core::PCWSTR , phostname : :: windows_sys::core::PCWSTR , pip4 : *const u32 , pip6 : *const IP6_ADDRESS , wport : u16 , wpriority : u16 , wweight : u16 , dwpropertiescount : u32 , keys : *const :: windows_sys::core::PCWSTR , values : *const :: windows_sys::core::PCWSTR ) -> *const DNS_SERVICE_INSTANCE );
+::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`*"] fn DnsServiceCopyInstance ( porig : *const DNS_SERVICE_INSTANCE ) -> *const DNS_SERVICE_INSTANCE );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`, `\"Win32_Foundation\"`*"] fn DnsServiceDeRegister ( prequest : *const DNS_SERVICE_REGISTER_REQUEST , pcancel : *mut DNS_SERVICE_CANCEL ) -> u32 );
 ::windows_sys::core::link ! ( "dnsapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_Dns\"`*"] fn DnsServiceFreeInstance ( pinstance : *const DNS_SERVICE_INSTANCE ) -> ( ) );

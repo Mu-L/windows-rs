@@ -24,7 +24,7 @@
 ::windows_sys::core::link ! ( "computecore.dll""system" #[doc = "*Required features: `\"Win32_System_HostComputeSystem\"`*"] fn HcsGetComputeSystemProperties ( computesystem : HCS_SYSTEM , operation : HCS_OPERATION , propertyquery : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::HRESULT );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "computestorage.dll""system" #[doc = "*Required features: `\"Win32_System_HostComputeSystem\"`, `\"Win32_Foundation\"`*"] fn HcsGetLayerVhdMountPath ( vhdhandle : super::super::Foundation:: HANDLE , mountpath : *mut :: windows_sys::core::PWSTR ) -> :: windows_sys::core::HRESULT );
-::windows_sys::core::link ! ( "computecore.dll""system" #[doc = "*Required features: `\"Win32_System_HostComputeSystem\"`*"] fn HcsGetOperationContext ( operation : HCS_OPERATION ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "computecore.dll""system" #[doc = "*Required features: `\"Win32_System_HostComputeSystem\"`*"] fn HcsGetOperationContext ( operation : HCS_OPERATION ) -> *const ::core::ffi::c_void );
 ::windows_sys::core::link ! ( "computecore.dll""system" #[doc = "*Required features: `\"Win32_System_HostComputeSystem\"`*"] fn HcsGetOperationId ( operation : HCS_OPERATION ) -> u64 );
 ::windows_sys::core::link ! ( "computecore.dll""system" #[doc = "*Required features: `\"Win32_System_HostComputeSystem\"`*"] fn HcsGetOperationResult ( operation : HCS_OPERATION , resultdocument : *mut :: windows_sys::core::PWSTR ) -> :: windows_sys::core::HRESULT );
 #[cfg(feature = "Win32_Foundation")]

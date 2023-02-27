@@ -131,7 +131,7 @@ pub mod WinWlx;
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn FindFirstFreeAce ( pacl : *const ACL , pace : *mut *mut ::core::ffi::c_void ) -> super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn FreeSid ( psid : super::Foundation:: PSID ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn FreeSid ( psid : super::Foundation:: PSID ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetAce ( pacl : *const ACL , dwaceindex : u32 , pace : *mut *mut ::core::ffi::c_void ) -> super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
@@ -163,12 +163,12 @@ pub mod WinWlx;
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetSecurityDescriptorSacl ( psecuritydescriptor : PSECURITY_DESCRIPTOR , lpbsaclpresent : *mut i32 , psacl : *mut *mut ACL , lpbsacldefaulted : *mut i32 ) -> super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetSidIdentifierAuthority ( psid : super::Foundation:: PSID ) -> *mut SID_IDENTIFIER_AUTHORITY );
+::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetSidIdentifierAuthority ( psid : super::Foundation:: PSID ) -> *const SID_IDENTIFIER_AUTHORITY );
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`*"] fn GetSidLengthRequired ( nsubauthoritycount : u8 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetSidSubAuthority ( psid : super::Foundation:: PSID , nsubauthority : u32 ) -> *mut u32 );
+::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetSidSubAuthority ( psid : super::Foundation:: PSID , nsubauthority : u32 ) -> *const u32 );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetSidSubAuthorityCount ( psid : super::Foundation:: PSID ) -> *mut u8 );
+::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetSidSubAuthorityCount ( psid : super::Foundation:: PSID ) -> *const u8 );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_Security\"`, `\"Win32_Foundation\"`*"] fn GetTokenInformation ( tokenhandle : super::Foundation:: HANDLE , tokeninformationclass : TOKEN_INFORMATION_CLASS , tokeninformation : *mut ::core::ffi::c_void , tokeninformationlength : u32 , returnlength : *mut u32 ) -> super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]

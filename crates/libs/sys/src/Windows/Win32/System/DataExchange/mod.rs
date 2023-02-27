@@ -9,7 +9,7 @@
 ::windows_sys::core::link ! ( "user32.dll""system" #[doc = "*Required features: `\"Win32_System_DataExchange\"`*"] fn CountClipboardFormats ( ) -> i32 );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "user32.dll""system" #[doc = "*Required features: `\"Win32_System_DataExchange\"`, `\"Win32_Foundation\"`*"] fn DdeAbandonTransaction ( idinst : u32 , hconv : HCONV , idtransaction : u32 ) -> super::super::Foundation:: BOOL );
-::windows_sys::core::link ! ( "user32.dll""system" #[doc = "*Required features: `\"Win32_System_DataExchange\"`*"] fn DdeAccessData ( hdata : HDDEDATA , pcbdatasize : *mut u32 ) -> *mut u8 );
+::windows_sys::core::link ! ( "user32.dll""system" #[doc = "*Required features: `\"Win32_System_DataExchange\"`*"] fn DdeAccessData ( hdata : HDDEDATA , pcbdatasize : *mut u32 ) -> *const u8 );
 ::windows_sys::core::link ! ( "user32.dll""system" #[doc = "*Required features: `\"Win32_System_DataExchange\"`*"] fn DdeAddData ( hdata : HDDEDATA , psrc : *const u8 , cb : u32 , cboff : u32 ) -> HDDEDATA );
 ::windows_sys::core::link ! ( "user32.dll""system" #[doc = "*Required features: `\"Win32_System_DataExchange\"`*"] fn DdeClientTransaction ( pdata : *const u8 , cbdata : u32 , hconv : HCONV , hszitem : HSZ , wfmt : u32 , wtype : DDE_CLIENT_TRANSACTION_TYPE , dwtimeout : u32 , pdwresult : *mut u32 ) -> HDDEDATA );
 ::windows_sys::core::link ! ( "user32.dll""system" #[doc = "*Required features: `\"Win32_System_DataExchange\"`*"] fn DdeCmpStringHandles ( hsz1 : HSZ , hsz2 : HSZ ) -> i32 );

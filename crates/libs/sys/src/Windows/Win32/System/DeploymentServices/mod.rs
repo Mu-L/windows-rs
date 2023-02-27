@@ -19,7 +19,7 @@
 ::windows_sys::core::link ! ( "wdspxe.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`*"] fn PxeGetServerInfo ( uinfotype : u32 , pbuffer : *mut ::core::ffi::c_void , ubufferlen : u32 ) -> u32 );
 ::windows_sys::core::link ! ( "wdspxe.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`*"] fn PxeGetServerInfoEx ( uinfotype : u32 , pbuffer : *mut ::core::ffi::c_void , ubufferlen : u32 , pubufferused : *mut u32 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "wdspxe.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`, `\"Win32_Foundation\"`*"] fn PxePacketAllocate ( hprovider : super::super::Foundation:: HANDLE , hclientrequest : super::super::Foundation:: HANDLE , usize : u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "wdspxe.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`, `\"Win32_Foundation\"`*"] fn PxePacketAllocate ( hprovider : super::super::Foundation:: HANDLE , hclientrequest : super::super::Foundation:: HANDLE , usize : u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "wdspxe.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`, `\"Win32_Foundation\"`*"] fn PxePacketFree ( hprovider : super::super::Foundation:: HANDLE , hclientrequest : super::super::Foundation:: HANDLE , ppacket : *const ::core::ffi::c_void ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
@@ -151,7 +151,7 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "wdstptc.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`, `\"Win32_Foundation\"`*"] fn WdsTransportClientWaitForCompletion ( hsessionkey : super::super::Foundation:: HANDLE , utimeout : u32 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "wdsmc.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`, `\"Win32_Foundation\"`*"] fn WdsTransportServerAllocateBuffer ( hprovider : super::super::Foundation:: HANDLE , ulbuffersize : u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "wdsmc.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`, `\"Win32_Foundation\"`*"] fn WdsTransportServerAllocateBuffer ( hprovider : super::super::Foundation:: HANDLE , ulbuffersize : u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "wdsmc.dll""system" #[doc = "*Required features: `\"Win32_System_DeploymentServices\"`, `\"Win32_Foundation\"`*"] fn WdsTransportServerCompleteRead ( hprovider : super::super::Foundation:: HANDLE , ulbytesread : u32 , pvuserdata : *const ::core::ffi::c_void , hreadresult : :: windows_sys::core::HRESULT ) -> :: windows_sys::core::HRESULT );
 #[cfg(feature = "Win32_Foundation")]

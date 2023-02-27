@@ -77,7 +77,7 @@
 ::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn FreeInterfaceDnsSettings ( settings : *mut DNS_INTERFACE_SETTINGS ) -> ( ) );
 ::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn FreeMibTable ( memory : *const ::core::ffi::c_void ) -> ( ) );
 ::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn GetAdapterIndex ( adaptername : :: windows_sys::core::PCWSTR , ifindex : *mut u32 ) -> u32 );
-::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn GetAdapterOrderMap ( ) -> *mut IP_ADAPTER_ORDER_MAP );
+::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn GetAdapterOrderMap ( ) -> *const IP_ADAPTER_ORDER_MAP );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_NetworkManagement_Ndis", feature = "Win32_Networking_WinSock"))]
 ::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`, `\"Win32_Foundation\"`, `\"Win32_NetworkManagement_Ndis\"`, `\"Win32_Networking_WinSock\"`*"] fn GetAdaptersAddresses ( family : u32 , flags : GET_ADAPTERS_ADDRESSES_FLAGS , reserved : *const ::core::ffi::c_void , adapteraddresses : *mut IP_ADAPTER_ADDRESSES_LH , sizepointer : *mut u32 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
@@ -311,7 +311,7 @@
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_IO"))]
 ::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`, `\"Win32_Foundation\"`, `\"Win32_System_IO\"`*"] fn UnenableRouter ( poverlapped : *const super::super::System::IO:: OVERLAPPED , lpdwenablecount : *mut u32 ) -> u32 );
 ::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn UnregisterInterfaceTimestampConfigChange ( notificationhandle : HIFTIMESTAMPCHANGE ) -> ( ) );
-::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn if_indextoname ( interfaceindex : u32 , interfacename : :: windows_sys::core::PSTR ) -> :: windows_sys::core::PSTR );
+::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn if_indextoname ( interfaceindex : u32 , interfacename : :: windows_sys::core::PSTR ) -> :: windows_sys::core::PCSTR );
 ::windows_sys::core::link ! ( "iphlpapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"] fn if_nametoindex ( interfacename : :: windows_sys::core::PCSTR ) -> u32 );
 #[doc = "*Required features: `\"Win32_NetworkManagement_IpHelper\"`*"]
 pub const ANY_SIZE: u32 = 1u32;

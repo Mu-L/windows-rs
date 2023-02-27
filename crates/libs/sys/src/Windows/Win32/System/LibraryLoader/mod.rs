@@ -1,4 +1,4 @@
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`*"] fn AddDllDirectory ( newdirectory : :: windows_sys::core::PCWSTR ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`*"] fn AddDllDirectory ( newdirectory : :: windows_sys::core::PCWSTR ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`, `\"Win32_Foundation\"`*"] fn BeginUpdateResourceA ( pfilename : :: windows_sys::core::PCSTR , bdeleteexistingresources : super::super::Foundation:: BOOL ) -> super::super::Foundation:: HANDLE );
 #[cfg(feature = "Win32_Foundation")]
@@ -76,7 +76,7 @@
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`, `\"Win32_Foundation\"`*"] fn LoadPackagedLibrary ( lpwlibfilename : :: windows_sys::core::PCWSTR , reserved : u32 ) -> super::super::Foundation:: HINSTANCE );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`, `\"Win32_Foundation\"`*"] fn LoadResource ( hmodule : super::super::Foundation:: HINSTANCE , hresinfo : super::super::Foundation:: HRSRC ) -> isize );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`*"] fn LockResource ( hresdata : isize ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`*"] fn LockResource ( hresdata : isize ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_LibraryLoader\"`, `\"Win32_Foundation\"`*"] fn RemoveDllDirectory ( cookie : *const ::core::ffi::c_void ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]

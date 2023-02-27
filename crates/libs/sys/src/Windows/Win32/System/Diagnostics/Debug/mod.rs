@@ -1,7 +1,7 @@
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Kernel"))]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`*"] fn AddVectoredContinueHandler ( first : u32 , handler : PVECTORED_EXCEPTION_HANDLER ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`*"] fn AddVectoredContinueHandler ( first : u32 , handler : PVECTORED_EXCEPTION_HANDLER ) -> *const ::core::ffi::c_void );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Kernel"))]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`*"] fn AddVectoredExceptionHandler ( first : u32 , handler : PVECTORED_EXCEPTION_HANDLER ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`*"] fn AddVectoredExceptionHandler ( first : u32 , handler : PVECTORED_EXCEPTION_HANDLER ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn Beep ( dwfreq : u32 , dwduration : u32 ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
@@ -12,10 +12,10 @@
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn CheckRemoteDebuggerPresent ( hprocess : super::super::super::Foundation:: HANDLE , pbdebuggerpresent : *mut super::super::super::Foundation:: BOOL ) -> super::super::super::Foundation:: BOOL );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 #[cfg(feature = "Win32_System_SystemInformation")]
-::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn CheckSumMappedFile ( baseaddress : *const ::core::ffi::c_void , filelength : u32 , headersum : *mut u32 , checksum : *mut u32 ) -> *mut IMAGE_NT_HEADERS64 );
+::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn CheckSumMappedFile ( baseaddress : *const ::core::ffi::c_void , filelength : u32 , headersum : *mut u32 , checksum : *mut u32 ) -> *const IMAGE_NT_HEADERS64 );
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_System_SystemInformation")]
-::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn CheckSumMappedFile ( baseaddress : *const ::core::ffi::c_void , filelength : u32 , headersum : *mut u32 , checksum : *mut u32 ) -> *mut IMAGE_NT_HEADERS32 );
+::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn CheckSumMappedFile ( baseaddress : *const ::core::ffi::c_void , filelength : u32 , headersum : *mut u32 , checksum : *mut u32 ) -> *const IMAGE_NT_HEADERS32 );
 ::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn CloseThreadWaitChainSession ( wcthandle : *const ::core::ffi::c_void ) -> ( ) );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn ContinueDebugEvent ( dwprocessid : u32 , dwthreadid : u32 , dwcontinuestatus : super::super::super::Foundation:: NTSTATUS ) -> super::super::super::Foundation:: BOOL );
@@ -39,14 +39,14 @@
 ::windows_sys::core::link ! ( "dbgeng.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn DebugCreateEx ( interfaceid : *const :: windows_sys::core::GUID , dbgengoptions : u32 , interface : *mut *mut ::core::ffi::c_void ) -> :: windows_sys::core::HRESULT );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn DebugSetProcessKillOnExit ( killonexit : super::super::super::Foundation:: BOOL ) -> super::super::super::Foundation:: BOOL );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn DecodePointer ( ptr : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn DecodePointer ( ptr : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "api-ms-win-core-util-l1-1-1.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn DecodeRemotePointer ( processhandle : super::super::super::Foundation:: HANDLE , ptr : *const ::core::ffi::c_void , decodedptr : *mut *mut ::core::ffi::c_void ) -> :: windows_sys::core::HRESULT );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn DecodeSystemPointer ( ptr : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn EncodePointer ( ptr : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn DecodeSystemPointer ( ptr : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn EncodePointer ( ptr : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "api-ms-win-core-util-l1-1-1.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn EncodeRemotePointer ( processhandle : super::super::super::Foundation:: HANDLE , ptr : *const ::core::ffi::c_void , encodedptr : *mut *mut ::core::ffi::c_void ) -> :: windows_sys::core::HRESULT );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn EncodeSystemPointer ( ptr : *const ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn EncodeSystemPointer ( ptr : *const ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn EnumDirTree ( hprocess : super::super::super::Foundation:: HANDLE , rootpath : :: windows_sys::core::PCSTR , inputpathname : :: windows_sys::core::PCSTR , outputpathbuffer : :: windows_sys::core::PSTR , cb : PENUMDIRTREE_CALLBACK , data : *const ::core::ffi::c_void ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
@@ -112,9 +112,9 @@
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Security_WinTrust"))]
 ::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_Security_WinTrust\"`*"] fn ImageAddCertificate ( filehandle : super::super::super::Foundation:: HANDLE , certificate : *const super::super::super::Security::WinTrust:: WIN_CERTIFICATE , index : *mut u32 ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn ImageDirectoryEntryToData ( base : *const ::core::ffi::c_void , mappedasimage : super::super::super::Foundation:: BOOLEAN , directoryentry : IMAGE_DIRECTORY_ENTRY , size : *mut u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn ImageDirectoryEntryToData ( base : *const ::core::ffi::c_void , mappedasimage : super::super::super::Foundation:: BOOLEAN , directoryentry : IMAGE_DIRECTORY_ENTRY , size : *mut u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn ImageDirectoryEntryToDataEx ( base : *const ::core::ffi::c_void , mappedasimage : super::super::super::Foundation:: BOOLEAN , directoryentry : IMAGE_DIRECTORY_ENTRY , size : *mut u32 , foundheader : *mut *mut IMAGE_SECTION_HEADER ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn ImageDirectoryEntryToDataEx ( base : *const ::core::ffi::c_void , mappedasimage : super::super::super::Foundation:: BOOLEAN , directoryentry : IMAGE_DIRECTORY_ENTRY , size : *mut u32 , foundheader : *mut *mut IMAGE_SECTION_HEADER ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn ImageEnumerateCertificates ( filehandle : super::super::super::Foundation:: HANDLE , typefilter : u16 , certificatecount : *mut u32 , indices : *mut u32 , indexcount : u32 ) -> super::super::super::Foundation:: BOOL );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Security_WinTrust"))]
@@ -124,31 +124,31 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn ImageGetDigestStream ( filehandle : super::super::super::Foundation:: HANDLE , digestlevel : u32 , digestfunction : DIGEST_FUNCTION , digesthandle : *const ::core::ffi::c_void ) -> super::super::super::Foundation:: BOOL );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Kernel", feature = "Win32_System_SystemInformation"))]
-::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageLoad ( dllname : :: windows_sys::core::PCSTR , dllpath : :: windows_sys::core::PCSTR ) -> *mut LOADED_IMAGE );
+::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageLoad ( dllname : :: windows_sys::core::PCSTR , dllpath : :: windows_sys::core::PCSTR ) -> *const LOADED_IMAGE );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 #[cfg(feature = "Win32_System_SystemInformation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageNtHeader ( base : *const ::core::ffi::c_void ) -> *mut IMAGE_NT_HEADERS64 );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageNtHeader ( base : *const ::core::ffi::c_void ) -> *const IMAGE_NT_HEADERS64 );
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_System_SystemInformation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageNtHeader ( base : *const ::core::ffi::c_void ) -> *mut IMAGE_NT_HEADERS32 );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageNtHeader ( base : *const ::core::ffi::c_void ) -> *const IMAGE_NT_HEADERS32 );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn ImageRemoveCertificate ( filehandle : super::super::super::Foundation:: HANDLE , index : u32 ) -> super::super::super::Foundation:: BOOL );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 #[cfg(feature = "Win32_System_SystemInformation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageRvaToSection ( ntheaders : *const IMAGE_NT_HEADERS64 , base : *const ::core::ffi::c_void , rva : u32 ) -> *mut IMAGE_SECTION_HEADER );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageRvaToSection ( ntheaders : *const IMAGE_NT_HEADERS64 , base : *const ::core::ffi::c_void , rva : u32 ) -> *const IMAGE_SECTION_HEADER );
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_System_SystemInformation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageRvaToSection ( ntheaders : *const IMAGE_NT_HEADERS32 , base : *const ::core::ffi::c_void , rva : u32 ) -> *mut IMAGE_SECTION_HEADER );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageRvaToSection ( ntheaders : *const IMAGE_NT_HEADERS32 , base : *const ::core::ffi::c_void , rva : u32 ) -> *const IMAGE_SECTION_HEADER );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 #[cfg(feature = "Win32_System_SystemInformation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageRvaToVa ( ntheaders : *const IMAGE_NT_HEADERS64 , base : *const ::core::ffi::c_void , rva : u32 , lastrvasection : *const *const IMAGE_SECTION_HEADER ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageRvaToVa ( ntheaders : *const IMAGE_NT_HEADERS64 , base : *const ::core::ffi::c_void , rva : u32 , lastrvasection : *const *const IMAGE_SECTION_HEADER ) -> *const ::core::ffi::c_void );
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_System_SystemInformation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageRvaToVa ( ntheaders : *const IMAGE_NT_HEADERS32 , base : *const ::core::ffi::c_void , rva : u32 , lastrvasection : *const *const IMAGE_SECTION_HEADER ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageRvaToVa ( ntheaders : *const IMAGE_NT_HEADERS32 , base : *const ::core::ffi::c_void , rva : u32 , lastrvasection : *const *const IMAGE_SECTION_HEADER ) -> *const ::core::ffi::c_void );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Kernel", feature = "Win32_System_SystemInformation"))]
 ::windows_sys::core::link ! ( "imagehlp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`, `\"Win32_System_SystemInformation\"`*"] fn ImageUnload ( loadedimage : *mut LOADED_IMAGE ) -> super::super::super::Foundation:: BOOL );
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn ImagehlpApiVersion ( ) -> *mut API_VERSION );
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn ImagehlpApiVersionEx ( appversion : *const API_VERSION ) -> *mut API_VERSION );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn ImagehlpApiVersion ( ) -> *const API_VERSION );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn ImagehlpApiVersionEx ( appversion : *const API_VERSION ) -> *const API_VERSION );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Kernel"))]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`*"] fn InitializeContext ( buffer : *mut ::core::ffi::c_void , contextflags : u32 , context : *mut *mut CONTEXT , contextlength : *mut u32 ) -> super::super::super::Foundation:: BOOL );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Kernel"))]
@@ -157,7 +157,7 @@
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn IsDebuggerPresent ( ) -> super::super::super::Foundation:: BOOL );
 #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
 #[cfg(feature = "Win32_System_Kernel")]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_Kernel\"`*"] fn LocateXStateFeature ( context : *const CONTEXT , featureid : u32 , length : *mut u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_Kernel\"`*"] fn LocateXStateFeature ( context : *const CONTEXT , featureid : u32 , length : *mut u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn MakeSureDirectoryPathExists ( dirpath : :: windows_sys::core::PCSTR ) -> super::super::super::Foundation:: BOOL );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Kernel", feature = "Win32_System_SystemInformation"))]
@@ -171,7 +171,7 @@
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Storage_FileSystem", feature = "Win32_System_Kernel", feature = "Win32_System_Memory"))]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_Storage_FileSystem\"`, `\"Win32_System_Kernel\"`, `\"Win32_System_Memory\"`*"] fn MiniDumpWriteDump ( hprocess : super::super::super::Foundation:: HANDLE , processid : u32 , hfile : super::super::super::Foundation:: HANDLE , dumptype : MINIDUMP_TYPE , exceptionparam : *const MINIDUMP_EXCEPTION_INFORMATION , userstreamparam : *const MINIDUMP_USER_STREAM_INFORMATION , callbackparam : *const MINIDUMP_CALLBACK_INFORMATION ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn OpenThreadWaitChainSession ( flags : OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS , callback : PWAITCHAINCALLBACK ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "advapi32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn OpenThreadWaitChainSession ( flags : OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS , callback : PWAITCHAINCALLBACK ) -> *const ::core::ffi::c_void );
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn OutputDebugStringA ( lpoutputstring : :: windows_sys::core::PCSTR ) -> ( ) );
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn OutputDebugStringW ( lpoutputstring : :: windows_sys::core::PCWSTR ) -> ( ) );
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RaiseException ( dwexceptioncode : u32 , dwexceptionflags : u32 , nnumberofarguments : u32 , lparguments : *const usize ) -> ( ) );
@@ -179,7 +179,7 @@
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`, `\"Win32_System_Kernel\"`*"] fn RaiseFailFastException ( pexceptionrecord : *const EXCEPTION_RECORD , pcontextrecord : *const CONTEXT , dwflags : u32 ) -> ( ) );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn RangeMapAddPeImageSections ( rmaphandle : *const ::core::ffi::c_void , imagename : :: windows_sys::core::PCWSTR , mappedimage : *const ::core::ffi::c_void , mappingbytes : u32 , imagebase : u64 , usertag : u64 , mappingflags : u32 ) -> super::super::super::Foundation:: BOOL );
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RangeMapCreate ( ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RangeMapCreate ( ) -> *const ::core::ffi::c_void );
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RangeMapFree ( rmaphandle : *const ::core::ffi::c_void ) -> ( ) );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn RangeMapRead ( rmaphandle : *const ::core::ffi::c_void , offset : u64 , buffer : *mut ::core::ffi::c_void , requestbytes : u32 , flags : u32 , donebytes : *mut u32 ) -> super::super::super::Foundation:: BOOL );
@@ -233,10 +233,10 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn RtlInstallFunctionTableCallback ( tableidentifier : u64 , baseaddress : u64 , length : u32 , callback : PGET_RUNTIME_FUNCTION_CALLBACK , context : *const ::core::ffi::c_void , outofprocesscallbackdll : :: windows_sys::core::PCWSTR ) -> super::super::super::Foundation:: BOOLEAN );
 #[cfg(target_arch = "aarch64")]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RtlLookupFunctionEntry ( controlpc : usize , imagebase : *mut usize , historytable : *mut UNWIND_HISTORY_TABLE ) -> *mut IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RtlLookupFunctionEntry ( controlpc : usize , imagebase : *mut usize , historytable : *mut UNWIND_HISTORY_TABLE ) -> *const IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY );
 #[cfg(target_arch = "x86_64")]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RtlLookupFunctionEntry ( controlpc : u64 , imagebase : *mut u64 , historytable : *mut UNWIND_HISTORY_TABLE ) -> *mut IMAGE_RUNTIME_FUNCTION_ENTRY );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RtlPcToFileHeader ( pcvalue : *const ::core::ffi::c_void , baseofimage : *mut *mut ::core::ffi::c_void ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RtlLookupFunctionEntry ( controlpc : u64 , imagebase : *mut u64 , historytable : *mut UNWIND_HISTORY_TABLE ) -> *const IMAGE_RUNTIME_FUNCTION_ENTRY );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn RtlPcToFileHeader ( pcvalue : *const ::core::ffi::c_void , baseofimage : *mut *mut ::core::ffi::c_void ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn RtlRaiseException ( exceptionrecord : *const EXCEPTION_RECORD ) -> ( ) );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Kernel"))]
@@ -390,17 +390,17 @@
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymFromTokenW ( hprocess : super::super::super::Foundation:: HANDLE , base : u64 , token : u32 , symbol : *mut SYMBOL_INFOW ) -> super::super::super::Foundation:: BOOL );
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymFunctionTableAccess ( hprocess : super::super::super::Foundation:: HANDLE , addrbase : u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymFunctionTableAccess ( hprocess : super::super::super::Foundation:: HANDLE , addrbase : u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymFunctionTableAccess64 ( hprocess : super::super::super::Foundation:: HANDLE , addrbase : u64 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymFunctionTableAccess64 ( hprocess : super::super::super::Foundation:: HANDLE , addrbase : u64 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymFunctionTableAccess64AccessRoutines ( hprocess : super::super::super::Foundation:: HANDLE , addrbase : u64 , readmemoryroutine : PREAD_PROCESS_MEMORY_ROUTINE64 , getmodulebaseroutine : PGET_MODULE_BASE_ROUTINE64 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymFunctionTableAccess64AccessRoutines ( hprocess : super::super::super::Foundation:: HANDLE , addrbase : u64 , readmemoryroutine : PREAD_PROCESS_MEMORY_ROUTINE64 , getmodulebaseroutine : PGET_MODULE_BASE_ROUTINE64 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymGetExtendedOption ( option : IMAGEHLP_EXTENDED_OPTIONS ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymGetFileLineOffsets64 ( hprocess : super::super::super::Foundation:: HANDLE , modulename : :: windows_sys::core::PCSTR , filename : :: windows_sys::core::PCSTR , buffer : *mut u64 , bufferlines : u32 ) -> u32 );
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn SymGetHomeDirectory ( r#type : IMAGEHLP_HD_TYPE , dir : :: windows_sys::core::PSTR , size : usize ) -> :: windows_sys::core::PSTR );
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn SymGetHomeDirectoryW ( r#type : IMAGEHLP_HD_TYPE , dir : :: windows_sys::core::PWSTR , size : usize ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn SymGetHomeDirectory ( r#type : IMAGEHLP_HD_TYPE , dir : :: windows_sys::core::PSTR , size : usize ) -> :: windows_sys::core::PCSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn SymGetHomeDirectoryW ( r#type : IMAGEHLP_HD_TYPE , dir : :: windows_sys::core::PWSTR , size : usize ) -> :: windows_sys::core::PCWSTR );
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymGetLineFromAddr ( hprocess : super::super::super::Foundation:: HANDLE , dwaddr : u32 , pdwdisplacement : *mut u32 , line : *mut IMAGEHLP_LINE ) -> super::super::super::Foundation:: BOOL );
@@ -577,9 +577,9 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSetExtendedOption ( option : IMAGEHLP_EXTENDED_OPTIONS , value : super::super::super::Foundation:: BOOL ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSetHomeDirectory ( hprocess : super::super::super::Foundation:: HANDLE , dir : :: windows_sys::core::PCSTR ) -> :: windows_sys::core::PSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSetHomeDirectory ( hprocess : super::super::super::Foundation:: HANDLE , dir : :: windows_sys::core::PCSTR ) -> :: windows_sys::core::PCSTR );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSetHomeDirectoryW ( hprocess : super::super::super::Foundation:: HANDLE , dir : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSetHomeDirectoryW ( hprocess : super::super::super::Foundation:: HANDLE , dir : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::PCWSTR );
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"] fn SymSetOptions ( symoptions : u32 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSetParentWindow ( hwnd : super::super::super::Foundation:: HWND ) -> super::super::super::Foundation:: BOOL );
@@ -594,9 +594,9 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSetSearchPathW ( hprocess : super::super::super::Foundation:: HANDLE , searchpatha : :: windows_sys::core::PCWSTR ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvDeltaName ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCSTR , r#type : :: windows_sys::core::PCSTR , file1 : :: windows_sys::core::PCSTR , file2 : :: windows_sys::core::PCSTR ) -> :: windows_sys::core::PSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvDeltaName ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCSTR , r#type : :: windows_sys::core::PCSTR , file1 : :: windows_sys::core::PCSTR , file2 : :: windows_sys::core::PCSTR ) -> :: windows_sys::core::PCSTR );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvDeltaNameW ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCWSTR , r#type : :: windows_sys::core::PCWSTR , file1 : :: windows_sys::core::PCWSTR , file2 : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvDeltaNameW ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCWSTR , r#type : :: windows_sys::core::PCWSTR , file1 : :: windows_sys::core::PCWSTR , file2 : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::PCWSTR );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvGetFileIndexInfo ( file : :: windows_sys::core::PCSTR , info : *mut SYMSRV_INDEX_INFO , flags : u32 ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
@@ -610,21 +610,21 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvGetFileIndexesW ( file : :: windows_sys::core::PCWSTR , id : *mut :: windows_sys::core::GUID , val1 : *mut u32 , val2 : *mut u32 , flags : u32 ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvGetSupplement ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCSTR , node : :: windows_sys::core::PCSTR , file : :: windows_sys::core::PCSTR ) -> :: windows_sys::core::PSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvGetSupplement ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCSTR , node : :: windows_sys::core::PCSTR , file : :: windows_sys::core::PCSTR ) -> :: windows_sys::core::PCSTR );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvGetSupplementW ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCWSTR , node : :: windows_sys::core::PCWSTR , file : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvGetSupplementW ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCWSTR , node : :: windows_sys::core::PCWSTR , file : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::PCWSTR );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvIsStore ( hprocess : super::super::super::Foundation:: HANDLE , path : :: windows_sys::core::PCSTR ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvIsStoreW ( hprocess : super::super::super::Foundation:: HANDLE , path : :: windows_sys::core::PCWSTR ) -> super::super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvStoreFile ( hprocess : super::super::super::Foundation:: HANDLE , srvpath : :: windows_sys::core::PCSTR , file : :: windows_sys::core::PCSTR , flags : SYM_SRV_STORE_FILE_FLAGS ) -> :: windows_sys::core::PSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvStoreFile ( hprocess : super::super::super::Foundation:: HANDLE , srvpath : :: windows_sys::core::PCSTR , file : :: windows_sys::core::PCSTR , flags : SYM_SRV_STORE_FILE_FLAGS ) -> :: windows_sys::core::PCSTR );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvStoreFileW ( hprocess : super::super::super::Foundation:: HANDLE , srvpath : :: windows_sys::core::PCWSTR , file : :: windows_sys::core::PCWSTR , flags : SYM_SRV_STORE_FILE_FLAGS ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvStoreFileW ( hprocess : super::super::super::Foundation:: HANDLE , srvpath : :: windows_sys::core::PCWSTR , file : :: windows_sys::core::PCWSTR , flags : SYM_SRV_STORE_FILE_FLAGS ) -> :: windows_sys::core::PCWSTR );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvStoreSupplement ( hprocess : super::super::super::Foundation:: HANDLE , srvpath : :: windows_sys::core::PCSTR , node : :: windows_sys::core::PCSTR , file : :: windows_sys::core::PCSTR , flags : u32 ) -> :: windows_sys::core::PSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvStoreSupplement ( hprocess : super::super::super::Foundation:: HANDLE , srvpath : :: windows_sys::core::PCSTR , node : :: windows_sys::core::PCSTR , file : :: windows_sys::core::PCSTR , flags : u32 ) -> :: windows_sys::core::PCSTR );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvStoreSupplementW ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCWSTR , node : :: windows_sys::core::PCWSTR , file : :: windows_sys::core::PCWSTR , flags : u32 ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymSrvStoreSupplementW ( hprocess : super::super::super::Foundation:: HANDLE , sympath : :: windows_sys::core::PCWSTR , node : :: windows_sys::core::PCWSTR , file : :: windows_sys::core::PCWSTR , flags : u32 ) -> :: windows_sys::core::PCWSTR );
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "dbghelp.dll""system" #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"] fn SymUnDName ( sym : *const IMAGEHLP_SYMBOL , undecname : :: windows_sys::core::PSTR , undecnamelength : u32 ) -> super::super::super::Foundation:: BOOL );
@@ -14393,10 +14393,10 @@ pub type PFIND_EXE_FILE_CALLBACKW = ::core::option::Option<unsafe extern "system
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"]
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_Foundation")]
-pub type PFUNCTION_TABLE_ACCESS_ROUTINE = ::core::option::Option<unsafe extern "system" fn(hprocess: super::super::super::Foundation::HANDLE, addrbase: u32) -> *mut ::core::ffi::c_void>;
+pub type PFUNCTION_TABLE_ACCESS_ROUTINE = ::core::option::Option<unsafe extern "system" fn(hprocess: super::super::super::Foundation::HANDLE, addrbase: u32) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
-pub type PFUNCTION_TABLE_ACCESS_ROUTINE64 = ::core::option::Option<unsafe extern "system" fn(ahprocess: super::super::super::Foundation::HANDLE, addrbase: u64) -> *mut ::core::ffi::c_void>;
+pub type PFUNCTION_TABLE_ACCESS_ROUTINE64 = ::core::option::Option<unsafe extern "system" fn(ahprocess: super::super::super::Foundation::HANDLE, addrbase: u64) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"]
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_Foundation")]
@@ -14406,10 +14406,10 @@ pub type PGET_MODULE_BASE_ROUTINE = ::core::option::Option<unsafe extern "system
 pub type PGET_MODULE_BASE_ROUTINE64 = ::core::option::Option<unsafe extern "system" fn(hprocess: super::super::super::Foundation::HANDLE, address: u64) -> u64>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"]
 #[cfg(target_arch = "aarch64")]
-pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<unsafe extern "system" fn(controlpc: u64, context: *const ::core::ffi::c_void) -> *mut IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>;
+pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<unsafe extern "system" fn(controlpc: u64, context: *const ::core::ffi::c_void) -> *const IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"]
 #[cfg(target_arch = "x86_64")]
-pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<unsafe extern "system" fn(controlpc: u64, context: *const ::core::ffi::c_void) -> *mut IMAGE_RUNTIME_FUNCTION_ENTRY>;
+pub type PGET_RUNTIME_FUNCTION_CALLBACK = ::core::option::Option<unsafe extern "system" fn(controlpc: u64, context: *const ::core::ffi::c_void) -> *const IMAGE_RUNTIME_FUNCTION_ENTRY>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 pub type PIMAGEHLP_STATUS_ROUTINE = ::core::option::Option<unsafe extern "system" fn(reason: IMAGEHLP_STATUS_REASON, imagename: ::windows_sys::core::PCSTR, dllname: ::windows_sys::core::PCSTR, va: usize, parameter: usize) -> super::super::super::Foundation::BOOL>;
@@ -14528,10 +14528,10 @@ pub type PSYMBOLSERVERVERSION = ::core::option::Option<unsafe extern "system" fn
 pub type PSYMBOLSERVERWEXPROC = ::core::option::Option<unsafe extern "system" fn(param0: ::windows_sys::core::PCWSTR, param1: ::windows_sys::core::PCWSTR, param2: *mut ::core::ffi::c_void, param3: u32, param4: u32, param5: ::windows_sys::core::PCWSTR, param6: *mut SYMSRV_EXTENDED_OUTPUT_DATA) -> super::super::super::Foundation::BOOL>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
-pub type PSYMBOL_FUNCENTRY_CALLBACK = ::core::option::Option<unsafe extern "system" fn(hprocess: super::super::super::Foundation::HANDLE, addrbase: u32, usercontext: *const ::core::ffi::c_void) -> *mut ::core::ffi::c_void>;
+pub type PSYMBOL_FUNCENTRY_CALLBACK = ::core::option::Option<unsafe extern "system" fn(hprocess: super::super::super::Foundation::HANDLE, addrbase: u32, usercontext: *const ::core::ffi::c_void) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
-pub type PSYMBOL_FUNCENTRY_CALLBACK64 = ::core::option::Option<unsafe extern "system" fn(hprocess: super::super::super::Foundation::HANDLE, addrbase: u64, usercontext: u64) -> *mut ::core::ffi::c_void>;
+pub type PSYMBOL_FUNCENTRY_CALLBACK64 = ::core::option::Option<unsafe extern "system" fn(hprocess: super::super::super::Foundation::HANDLE, addrbase: u64, usercontext: u64) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_Foundation\"`*"]
 #[cfg(target_arch = "x86")]
 #[cfg(feature = "Win32_Foundation")]
@@ -14610,7 +14610,7 @@ pub type PWINDBG_DISASM32 = ::core::option::Option<unsafe extern "system" fn(lpo
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"]
 pub type PWINDBG_DISASM64 = ::core::option::Option<unsafe extern "system" fn(lpoffset: *mut u64, lpbuffer: ::windows_sys::core::PCSTR, fshoweffectiveaddress: u32) -> u32>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`*"]
-pub type PWINDBG_EXTENSION_API_VERSION = ::core::option::Option<unsafe extern "system" fn() -> *mut EXT_API_VERSION>;
+pub type PWINDBG_EXTENSION_API_VERSION = ::core::option::Option<unsafe extern "system" fn() -> *const EXT_API_VERSION>;
 #[doc = "*Required features: `\"Win32_System_Diagnostics_Debug\"`, `\"Win32_System_Kernel\"`*"]
 #[cfg(feature = "Win32_System_Kernel")]
 pub type PWINDBG_EXTENSION_DLL_INIT = ::core::option::Option<unsafe extern "system" fn(lpextensionapis: *mut WINDBG_EXTENSION_APIS, majorversion: u16, minorversion: u16) -> ()>;

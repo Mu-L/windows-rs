@@ -11,7 +11,7 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "wlanapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_WiFi\"`, `\"Win32_Foundation\"`*"] fn WFDStartOpenSession ( hclienthandle : super::super::Foundation:: HANDLE , pdeviceaddress : *const *const u8 , pvcontext : *const ::core::ffi::c_void , pfncallback : WFD_OPEN_SESSION_COMPLETE_CALLBACK , phsessionhandle : *mut super::super::Foundation:: HANDLE ) -> u32 );
 ::windows_sys::core::link ! ( "wlanapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_WiFi\"`*"] fn WFDUpdateDeviceVisibility ( pdeviceaddress : *const *const u8 ) -> u32 );
-::windows_sys::core::link ! ( "wlanapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_WiFi\"`*"] fn WlanAllocateMemory ( dwmemorysize : u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "wlanapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_WiFi\"`*"] fn WlanAllocateMemory ( dwmemorysize : u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "wlanapi.dll""system" #[doc = "*Required features: `\"Win32_NetworkManagement_WiFi\"`, `\"Win32_Foundation\"`*"] fn WlanCloseHandle ( hclienthandle : super::super::Foundation:: HANDLE , preserved : *const ::core::ffi::c_void ) -> u32 );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_NetworkManagement_Ndis"))]

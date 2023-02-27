@@ -336,10 +336,10 @@ pub mod PrintTicket;
 ::windows_sys::core::link ! ( "winspool.drv""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"] fn ResetPrinterW ( hprinter : super::super::Foundation:: HANDLE , pdefault : *const PRINTER_DEFAULTSW ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "spoolss.dll""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`, `\"Win32_Foundation\"`*"] fn RevertToPrinterSelf ( ) -> super::super::Foundation:: HANDLE );
-::windows_sys::core::link ! ( "spoolss.dll""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`*"] fn RouterAllocBidiMem ( numbytes : usize ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "spoolss.dll""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`*"] fn RouterAllocBidiMem ( numbytes : usize ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "spoolss.dll""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`, `\"Win32_Foundation\"`*"] fn RouterAllocBidiResponseContainer ( count : u32 ) -> *mut BIDI_RESPONSE_CONTAINER );
-::windows_sys::core::link ! ( "spoolss.dll""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`*"] fn RouterAllocPrinterNotifyInfo ( cprinternotifyinfodata : u32 ) -> *mut PRINTER_NOTIFY_INFO );
+::windows_sys::core::link ! ( "spoolss.dll""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`, `\"Win32_Foundation\"`*"] fn RouterAllocBidiResponseContainer ( count : u32 ) -> *const BIDI_RESPONSE_CONTAINER );
+::windows_sys::core::link ! ( "spoolss.dll""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`*"] fn RouterAllocPrinterNotifyInfo ( cprinternotifyinfodata : u32 ) -> *const PRINTER_NOTIFY_INFO );
 ::windows_sys::core::link ! ( "spoolss.dll""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`*"] fn RouterFreeBidiMem ( pmempointer : *const ::core::ffi::c_void ) -> ( ) );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "winspool.drv""system" #[doc = "*Required features: `\"Win32_Graphics_Printing\"`, `\"Win32_Foundation\"`*"] fn RouterFreeBidiResponseContainer ( pdata : *const BIDI_RESPONSE_CONTAINER ) -> u32 );

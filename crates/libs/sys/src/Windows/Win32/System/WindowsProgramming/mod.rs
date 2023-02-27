@@ -127,7 +127,7 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`, `\"Win32_Foundation\"`*"] fn GlobalUnWire ( hmem : isize ) -> super::super::Foundation:: BOOL );
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn GlobalUnfix ( hmem : isize ) -> ( ) );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn GlobalWire ( hmem : isize ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn GlobalWire ( hmem : isize ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "user32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`, `\"Win32_Foundation\"`*"] fn IMPGetIMEA ( param0 : super::super::Foundation:: HWND , param1 : *mut IMEPROA ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
@@ -372,15 +372,15 @@
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_lstrlenW ( string : *const u16 ) -> i32 );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_wcschr ( string : *const u16 , character : u16 ) -> *mut u16 );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_wcschr ( string : *const u16 , character : u16 ) -> *const u16 );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_wcscpy ( destination : *mut u16 , source : *const u16 ) -> *mut u16 );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_wcscpy ( destination : *mut u16 , source : *const u16 ) -> *const u16 );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_wcsicmp ( string1 : *const u16 , string2 : *const u16 ) -> i32 );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_wcslen ( string : *const u16 ) -> usize );
 #[cfg(any(target_arch = "aarch64", target_arch = "x86_64"))]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_wcsrchr ( string : *const u16 , character : u16 ) -> *mut u16 );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"] fn uaw_wcsrchr ( string : *const u16 , character : u16 ) -> *const u16 );
 pub type ICameraUIControl = *mut ::core::ffi::c_void;
 pub type ICameraUIControlEventCallback = *mut ::core::ffi::c_void;
 pub type IClipServiceNotificationHelper = *mut ::core::ffi::c_void;
@@ -3107,11 +3107,11 @@ pub type APPLICATION_RECOVERY_CALLBACK = ::core::option::Option<unsafe extern "s
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
 pub type ENUM_CALLBACK = ::core::option::Option<unsafe extern "system" fn(lpsurfaceinfo: *mut DCISURFACEINFO, lpcontext: *mut ::core::ffi::c_void) -> ()>;
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
-pub type PDELAYLOAD_FAILURE_DLL_CALLBACK = ::core::option::Option<unsafe extern "system" fn(notificationreason: u32, delayloadinfo: *const DELAYLOAD_INFO) -> *mut ::core::ffi::c_void>;
+pub type PDELAYLOAD_FAILURE_DLL_CALLBACK = ::core::option::Option<unsafe extern "system" fn(notificationreason: u32, delayloadinfo: *const DELAYLOAD_INFO) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
 pub type PFEATURE_STATE_CHANGE_CALLBACK = ::core::option::Option<unsafe extern "system" fn(context: *const ::core::ffi::c_void) -> ()>;
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`*"]
-pub type PFIBER_CALLOUT_ROUTINE = ::core::option::Option<unsafe extern "system" fn(lpparameter: *mut ::core::ffi::c_void) -> *mut ::core::ffi::c_void>;
+pub type PFIBER_CALLOUT_ROUTINE = ::core::option::Option<unsafe extern "system" fn(lpparameter: *mut ::core::ffi::c_void) -> *const ::core::ffi::c_void>;
 #[doc = "*Required features: `\"Win32_System_WindowsProgramming\"`, `\"Win32_Foundation\"`*"]
 #[cfg(feature = "Win32_Foundation")]
 pub type PIO_APC_ROUTINE = ::core::option::Option<unsafe extern "system" fn(apccontext: *mut ::core::ffi::c_void, iostatusblock: *mut IO_STATUS_BLOCK, reserved: u32) -> ()>;

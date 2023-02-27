@@ -1,7 +1,7 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "vertdll.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`, `\"Win32_Foundation\"`*"] fn CallEnclave ( lproutine : isize , lpparameter : *const ::core::ffi::c_void , fwaitforthread : super::super::Foundation:: BOOL , lpreturnvalue : *mut *mut ::core::ffi::c_void ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`, `\"Win32_Foundation\"`*"] fn CreateEnclave ( hprocess : super::super::Foundation:: HANDLE , lpaddress : *const ::core::ffi::c_void , dwsize : usize , dwinitialcommitment : usize , flenclavetype : u32 , lpenclaveinformation : *const ::core::ffi::c_void , dwinfolength : u32 , lpenclaveerror : *mut u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`, `\"Win32_Foundation\"`*"] fn CreateEnclave ( hprocess : super::super::Foundation:: HANDLE , lpaddress : *const ::core::ffi::c_void , dwsize : usize , dwinitialcommitment : usize , flenclavetype : u32 , lpenclaveinformation : *const ::core::ffi::c_void , dwinfolength : u32 , lpenclaveerror : *mut u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "userenv.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`, `\"Win32_Foundation\"`*"] fn CreateEnvironmentBlock ( lpenvironment : *mut *mut ::core::ffi::c_void , htoken : super::super::Foundation:: HANDLE , binherit : super::super::Foundation:: BOOL ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
@@ -23,12 +23,12 @@
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`, `\"Win32_Foundation\"`*"] fn FreeEnvironmentStringsA ( penv : :: windows_sys::core::PCSTR ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`, `\"Win32_Foundation\"`*"] fn FreeEnvironmentStringsW ( penv : :: windows_sys::core::PCWSTR ) -> super::super::Foundation:: BOOL );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetCommandLineA ( ) -> :: windows_sys::core::PSTR );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetCommandLineW ( ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetCommandLineA ( ) -> :: windows_sys::core::PCSTR );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetCommandLineW ( ) -> :: windows_sys::core::PCWSTR );
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetCurrentDirectoryA ( nbufferlength : u32 , lpbuffer : :: windows_sys::core::PSTR ) -> u32 );
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetCurrentDirectoryW ( nbufferlength : u32 , lpbuffer : :: windows_sys::core::PWSTR ) -> u32 );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetEnvironmentStrings ( ) -> :: windows_sys::core::PSTR );
-::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetEnvironmentStringsW ( ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetEnvironmentStrings ( ) -> :: windows_sys::core::PCSTR );
+::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetEnvironmentStringsW ( ) -> :: windows_sys::core::PCWSTR );
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetEnvironmentVariableA ( lpname : :: windows_sys::core::PCSTR , lpbuffer : :: windows_sys::core::PSTR , nsize : u32 ) -> u32 );
 ::windows_sys::core::link ! ( "kernel32.dll""system" #[doc = "*Required features: `\"Win32_System_Environment\"`*"] fn GetEnvironmentVariableW ( lpname : :: windows_sys::core::PCWSTR , lpbuffer : :: windows_sys::core::PWSTR , nsize : u32 ) -> u32 );
 #[cfg(feature = "Win32_Foundation")]

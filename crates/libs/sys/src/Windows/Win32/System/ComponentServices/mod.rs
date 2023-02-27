@@ -7,7 +7,7 @@
 ::windows_sys::core::link ! ( "comsvcs.dll""system" #[doc = "*Required features: `\"Win32_System_ComponentServices\"`*"] fn GetManagedExtensions ( dwexts : *mut u32 ) -> :: windows_sys::core::HRESULT );
 ::windows_sys::core::link ! ( "comsvcs.dll""system" #[doc = "*Required features: `\"Win32_System_ComponentServices\"`*"] fn MTSCreateActivity ( riid : *const :: windows_sys::core::GUID , ppobj : *mut *mut ::core::ffi::c_void ) -> :: windows_sys::core::HRESULT );
 ::windows_sys::core::link ! ( "comsvcs.dll""cdecl" #[doc = "*Required features: `\"Win32_System_ComponentServices\"`*"] fn RecycleSurrogate ( lreasoncode : i32 ) -> :: windows_sys::core::HRESULT );
-::windows_sys::core::link ! ( "comsvcs.dll""cdecl" #[doc = "*Required features: `\"Win32_System_ComponentServices\"`*"] fn SafeRef ( rid : *const :: windows_sys::core::GUID , punk : :: windows_sys::core::IUnknown ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "comsvcs.dll""cdecl" #[doc = "*Required features: `\"Win32_System_ComponentServices\"`*"] fn SafeRef ( rid : *const :: windows_sys::core::GUID , punk : :: windows_sys::core::IUnknown ) -> *const ::core::ffi::c_void );
 pub type ContextInfo = *mut ::core::ffi::c_void;
 pub type ContextInfo2 = *mut ::core::ffi::c_void;
 pub type IAppDomainHelper = *mut ::core::ffi::c_void;

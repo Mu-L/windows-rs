@@ -42,7 +42,7 @@
 ::windows_sys::core::link ! ( "avifil32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"] fn AVIStreamCreate ( ppavi : *mut IAVIStream , lparam1 : i32 , lparam2 : i32 , pclsidhandler : *const :: windows_sys::core::GUID ) -> :: windows_sys::core::HRESULT );
 ::windows_sys::core::link ! ( "avifil32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"] fn AVIStreamEndStreaming ( pavi : IAVIStream ) -> :: windows_sys::core::HRESULT );
 ::windows_sys::core::link ! ( "avifil32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"] fn AVIStreamFindSample ( pavi : IAVIStream , lpos : i32 , lflags : i32 ) -> i32 );
-::windows_sys::core::link ! ( "avifil32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"] fn AVIStreamGetFrame ( pg : IGetFrame , lpos : i32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "avifil32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"] fn AVIStreamGetFrame ( pg : IGetFrame , lpos : i32 ) -> *const ::core::ffi::c_void );
 ::windows_sys::core::link ! ( "avifil32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"] fn AVIStreamGetFrameClose ( pg : IGetFrame ) -> :: windows_sys::core::HRESULT );
 #[cfg(feature = "Win32_Graphics_Gdi")]
 ::windows_sys::core::link ! ( "avifil32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`*"] fn AVIStreamGetFrameOpen ( pavi : IAVIStream , lpbiwanted : *const super::super::Graphics::Gdi:: BITMAPINFOHEADER ) -> IGetFrame );
@@ -79,7 +79,7 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Foundation\"`*"] fn DrawDibEnd ( hdd : isize ) -> super::super::Foundation:: BOOL );
 #[cfg(feature = "Win32_Graphics_Gdi")]
-::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`*"] fn DrawDibGetBuffer ( hdd : isize , lpbi : *mut super::super::Graphics::Gdi:: BITMAPINFOHEADER , dwsize : u32 , dwflags : u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`*"] fn DrawDibGetBuffer ( hdd : isize , lpbi : *mut super::super::Graphics::Gdi:: BITMAPINFOHEADER , dwsize : u32 , dwflags : u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Graphics_Gdi")]
 ::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`*"] fn DrawDibGetPalette ( hdd : isize ) -> super::super::Graphics::Gdi:: HPALETTE );
 ::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`*"] fn DrawDibOpen ( ) -> isize );
@@ -154,7 +154,7 @@
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Foundation\"`*"] fn ICSendMessage ( hic : HIC , msg : u32 , dw1 : usize , dw2 : usize ) -> super::super::Foundation:: LRESULT );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Graphics_Gdi"))]
-::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"] fn ICSeqCompressFrame ( pc : *const COMPVARS , uiflags : u32 , lpbits : *const ::core::ffi::c_void , pfkey : *mut super::super::Foundation:: BOOL , plsize : *mut i32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Foundation\"`, `\"Win32_Graphics_Gdi\"`*"] fn ICSeqCompressFrame ( pc : *const COMPVARS , uiflags : u32 , lpbits : *const ::core::ffi::c_void , pfkey : *mut super::super::Foundation:: BOOL , plsize : *mut i32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Graphics_Gdi")]
 ::windows_sys::core::link ! ( "msvfw32.dll""system" #[doc = "*Required features: `\"Win32_Media_Multimedia\"`, `\"Win32_Graphics_Gdi\"`*"] fn ICSeqCompressFrameEnd ( pc : *const COMPVARS ) -> ( ) );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Graphics_Gdi"))]

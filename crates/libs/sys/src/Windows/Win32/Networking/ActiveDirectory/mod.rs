@@ -32,8 +32,8 @@
 ::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`, `\"Win32_Foundation\"`*"] fn AdsFreeAdsValues ( padsvalues : *mut ADSVALUE , dwnumvalues : u32 ) -> ( ) );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Com", feature = "Win32_System_Ole"))]
 ::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`, `\"Win32_Foundation\"`, `\"Win32_System_Com\"`, `\"Win32_System_Ole\"`*"] fn AdsTypeToPropVariant ( padsvalues : *mut ADSVALUE , dwnumvalues : u32 , pvariant : *mut super::super::System::Com:: VARIANT ) -> :: windows_sys::core::HRESULT );
-::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"] fn AllocADsMem ( cb : u32 ) -> *mut ::core::ffi::c_void );
-::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"] fn AllocADsStr ( pstr : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::PWSTR );
+::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"] fn AllocADsMem ( cb : u32 ) -> *const ::core::ffi::c_void );
+::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"] fn AllocADsStr ( pstr : :: windows_sys::core::PCWSTR ) -> :: windows_sys::core::PCWSTR );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Security", feature = "Win32_System_Com", feature = "Win32_System_Ole"))]
 ::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`, `\"Win32_Foundation\"`, `\"Win32_Security\"`, `\"Win32_System_Com\"`, `\"Win32_System_Ole\"`*"] fn BinarySDToSecurityDescriptor ( psecuritydescriptor : super::super::Security:: PSECURITY_DESCRIPTOR , pvarsec : *mut super::super::System::Com:: VARIANT , pszservername : :: windows_sys::core::PCWSTR , username : :: windows_sys::core::PCWSTR , password : :: windows_sys::core::PCWSTR , dwflags : u32 ) -> :: windows_sys::core::HRESULT );
 #[cfg(feature = "Win32_Foundation")]
@@ -252,7 +252,7 @@
 ::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`, `\"Win32_Foundation\"`*"] fn FreeADsStr ( pstr : :: windows_sys::core::PCWSTR ) -> super::super::Foundation:: BOOL );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_System_Com", feature = "Win32_System_Ole"))]
 ::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`, `\"Win32_Foundation\"`, `\"Win32_System_Com\"`, `\"Win32_System_Ole\"`*"] fn PropVariantToAdsType ( pvariant : *mut super::super::System::Com:: VARIANT , dwnumvariant : u32 , ppadsvalues : *mut *mut ADSVALUE , pdwnumvalues : *mut u32 ) -> :: windows_sys::core::HRESULT );
-::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"] fn ReallocADsMem ( poldmem : *mut ::core::ffi::c_void , cbold : u32 , cbnew : u32 ) -> *mut ::core::ffi::c_void );
+::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`*"] fn ReallocADsMem ( poldmem : *mut ::core::ffi::c_void , cbold : u32 , cbnew : u32 ) -> *const ::core::ffi::c_void );
 #[cfg(feature = "Win32_Foundation")]
 ::windows_sys::core::link ! ( "activeds.dll""system" #[doc = "*Required features: `\"Win32_Networking_ActiveDirectory\"`, `\"Win32_Foundation\"`*"] fn ReallocADsStr ( ppstr : *mut :: windows_sys::core::PWSTR , pstr : :: windows_sys::core::PCWSTR ) -> super::super::Foundation:: BOOL );
 #[cfg(all(feature = "Win32_Foundation", feature = "Win32_Security", feature = "Win32_System_Com", feature = "Win32_System_Ole"))]
