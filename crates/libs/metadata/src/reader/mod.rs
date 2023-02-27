@@ -564,7 +564,7 @@ impl<'a> Reader<'a> {
         blob.read_usize();
         blob.read_usize();
 
-        let return_type = self.type_from_blob(&mut blob, None, generics);
+        let return_type = self.type_from_blob(&mut blob, None, generics).and_then(|ty| Some(ty.to_const()));
         let mut params: Vec<SignatureParam> = self
             .method_def_params(row)
             .filter_map(|param| {
