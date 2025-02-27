@@ -1,0 +1,13 @@
+// These will use `windows-sys` style bindings.
+
+--in default
+--out crates/libs/strings/src/bindings.rs
+--flat --sys --no-deps --no-comment
+
+--filter
+    GetProcessHeap
+    HeapAlloc
+    HeapFree
+    SysAllocStringLen
+    SysFreeString
+    SysStringLen

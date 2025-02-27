@@ -1,16 +1,22 @@
 
 [package]
 name = "windows"
-version = "0.52.0"
+version = "0.60.0"
 authors = ["Microsoft"]
 edition = "2021"
-rust-version = "1.62"
+rust-version = "1.74"
 license = "MIT OR Apache-2.0"
 description = "Rust for Windows"
 repository = "https://github.com/microsoft/windows-rs"
 documentation = "https://microsoft.github.io/windows-docs-rs/"
 readme = "readme.md"
 categories = ["os::windows-apis"]
+exclude = ["features.json"]
+
+[lib]
+# This crate does not contain tests. All tests are in separate crates.
+test = false
+doctest = false
 
 [lints]
 workspace = true
@@ -20,17 +26,35 @@ default-target = "x86_64-pc-windows-msvc"
 targets = []
 rustdoc-args = ["--cfg", "docsrs"]
 
-[dependencies]
-windows-core = { path = "../core", version = "0.52.0" }
-windows-targets = { path = "../targets", version = "0.52.0" }
-windows-implement = { path = "../implement",  version = "0.52.0", optional = true }
-windows-interface = { path = "../interface",  version = "0.52.0", optional = true }
+[dependencies.windows-core]
+version = "0.60.1"
+path = "../core"
+default-features = false
+
+[dependencies.windows-link]
+version = "0.1.0"
+path = "../link"
+
+[dependencies.windows-collections]
+version = "0.1.1"
+path = "../collections"
+default-features = false
+
+[dependencies.windows-numerics]
+version = "0.1.1"
+path = "../numerics"
+default-features = false
+
+[dependencies.windows-future]
+version = "0.1.1"
+path = "../future"
+default-features = false
 
 [features]
-default = []
+default = ["std"]
 docs = []
 deprecated = []
-implement = ["windows-implement", "windows-interface", "windows-core/implement"]
+std = ["windows-core/std"]
 # generated features
 AI = ["Foundation"]
 AI_MachineLearning = ["AI"]
@@ -62,6 +86,7 @@ ApplicationModel_ExtendedExecution = ["ApplicationModel"]
 ApplicationModel_ExtendedExecution_Foreground = ["ApplicationModel_ExtendedExecution"]
 ApplicationModel_Holographic = ["ApplicationModel"]
 ApplicationModel_LockScreen = ["ApplicationModel"]
+ApplicationModel_PackageExtensions = ["ApplicationModel"]
 ApplicationModel_Payments = ["ApplicationModel"]
 ApplicationModel_Payments_Provider = ["ApplicationModel_Payments"]
 ApplicationModel_Preview = ["ApplicationModel"]
@@ -73,10 +98,6 @@ ApplicationModel_Resources_Core = ["ApplicationModel_Resources"]
 ApplicationModel_Resources_Management = ["ApplicationModel_Resources"]
 ApplicationModel_Search = ["ApplicationModel"]
 ApplicationModel_Search_Core = ["ApplicationModel_Search"]
-ApplicationModel_Store = ["ApplicationModel"]
-ApplicationModel_Store_LicenseManagement = ["ApplicationModel_Store"]
-ApplicationModel_Store_Preview = ["ApplicationModel_Store"]
-ApplicationModel_Store_Preview_InstallControl = ["ApplicationModel_Store_Preview"]
 ApplicationModel_UserActivities = ["ApplicationModel"]
 ApplicationModel_UserActivities_Core = ["ApplicationModel_UserActivities"]
 ApplicationModel_UserDataAccounts = ["ApplicationModel"]
@@ -187,6 +208,7 @@ Management_Core = ["Management"]
 Management_Deployment = ["Management"]
 Management_Deployment_Preview = ["Management_Deployment"]
 Management_Policies = ["Management"]
+Management_Setup = ["Management"]
 Management_Update = ["Management"]
 Management_Workplace = ["Management"]
 Media = ["Foundation"]
@@ -362,6 +384,7 @@ UI_WindowManagement = ["UI"]
 UI_WindowManagement_Preview = ["UI_WindowManagement"]
 Wdk = ["Win32_Foundation"]
 Wdk_Devices = ["Wdk"]
+Wdk_Devices_Bluetooth = ["Wdk_Devices"]
 Wdk_Devices_HumanInterfaceDevice = ["Wdk_Devices"]
 Wdk_Foundation = ["Wdk"]
 Wdk_Graphics = ["Wdk"]
@@ -374,6 +397,7 @@ Wdk_Storage_FileSystem = ["Wdk_Storage"]
 Wdk_Storage_FileSystem_Minifilters = ["Wdk_Storage_FileSystem"]
 Wdk_System = ["Wdk"]
 Wdk_System_IO = ["Wdk_System"]
+Wdk_System_Memory = ["Wdk_System"]
 Wdk_System_OfflineRegistry = ["Wdk_System"]
 Wdk_System_Registry = ["Wdk_System"]
 Wdk_System_SystemInformation = ["Wdk_System"]
@@ -401,13 +425,16 @@ Win32_Data_Xml_MsXml = ["Win32_Data_Xml"]
 Win32_Data_Xml_XmlLite = ["Win32_Data_Xml"]
 Win32_Devices = ["Win32"]
 Win32_Devices_AllJoyn = ["Win32_Devices"]
+Win32_Devices_Beep = ["Win32_Devices"]
 Win32_Devices_BiometricFramework = ["Win32_Devices"]
 Win32_Devices_Bluetooth = ["Win32_Devices"]
+Win32_Devices_Cdrom = ["Win32_Devices"]
 Win32_Devices_Communication = ["Win32_Devices"]
 Win32_Devices_DeviceAccess = ["Win32_Devices"]
 Win32_Devices_DeviceAndDriverInstallation = ["Win32_Devices"]
 Win32_Devices_DeviceQuery = ["Win32_Devices"]
 Win32_Devices_Display = ["Win32_Devices"]
+Win32_Devices_Dvd = ["Win32_Devices"]
 Win32_Devices_Enumeration = ["Win32_Devices"]
 Win32_Devices_Enumeration_Pnp = ["Win32_Devices_Enumeration"]
 Win32_Devices_Fax = ["Win32_Devices"]
@@ -415,6 +442,8 @@ Win32_Devices_FunctionDiscovery = ["Win32_Devices"]
 Win32_Devices_Geolocation = ["Win32_Devices"]
 Win32_Devices_HumanInterfaceDevice = ["Win32_Devices"]
 Win32_Devices_ImageAcquisition = ["Win32_Devices"]
+Win32_Devices_Nfc = ["Win32_Devices"]
+Win32_Devices_Nfp = ["Win32_Devices"]
 Win32_Devices_PortableDevices = ["Win32_Devices"]
 Win32_Devices_Properties = ["Win32_Devices"]
 Win32_Devices_Pwm = ["Win32_Devices"]
@@ -600,6 +629,7 @@ Win32_System_Diagnostics_Debug_Extensions = ["Win32_System_Diagnostics_Debug"]
 Win32_System_Diagnostics_Etw = ["Win32_System_Diagnostics"]
 Win32_System_Diagnostics_ProcessSnapshotting = ["Win32_System_Diagnostics"]
 Win32_System_Diagnostics_ToolHelp = ["Win32_System_Diagnostics"]
+Win32_System_Diagnostics_TraceLogging = ["Win32_System_Diagnostics"]
 Win32_System_DistributedTransactionCoordinator = ["Win32_System"]
 Win32_System_Environment = ["Win32_System"]
 Win32_System_ErrorReporting = ["Win32_System"]

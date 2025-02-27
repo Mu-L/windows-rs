@@ -1,11 +1,10 @@
 [package]
 name = "windows-bindgen"
-version = "0.52.0"
-authors = ["Microsoft"]
+version = "0.60.0"
 edition = "2021"
-rust-version = "1.70"
+rust-version = "1.74"
 license = "MIT OR Apache-2.0"
-description = "Windows metadata compiler"
+description = "Code generator for Windows metadata"
 repository = "https://github.com/microsoft/windows-rs"
 readme = "readme.md"
 
@@ -16,18 +15,7 @@ workspace = true
 default-target = "x86_64-pc-windows-msvc"
 targets = []
 
-[features]
-default = ["metadata"]
-metadata = []
-
 [dependencies]
-windows-metadata = { path = "../metadata", version = "0.52.0" }
-rayon = "1.7"
-
-[dependencies.syn]
-version = "2.0"
-features = ["full", "extra-traits"]
-
-[dependencies.proc-macro2]
-version = "1.0"
-features = ["span-locations"]
+rayon = "1.10"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

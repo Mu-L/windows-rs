@@ -1,6 +1,5 @@
 use windows::{
     core::*,
-    Foundation::Numerics::*,
     Win32::{
         Foundation::*, Graphics::Direct2D::Common::*, Graphics::Direct2D::*, Graphics::Direct3D::*,
         Graphics::Direct3D11::*, Graphics::DirectComposition::*, Graphics::DirectWrite::*,
@@ -9,6 +8,8 @@ use windows::{
         UI::HiDpi::*, UI::Shell::*, UI::WindowsAndMessaging::*,
     },
 };
+
+use windows_numerics::*;
 
 const CARD_ROWS: usize = 3;
 const CARD_COLUMNS: usize = 6;
@@ -20,7 +21,7 @@ const WINDOW_HEIGHT: f32 = CARD_ROWS as f32 * (CARD_HEIGHT + CARD_MARGIN) + CARD
 
 fn main() -> Result<()> {
     unsafe {
-        CoInitializeEx(None, COINIT_MULTITHREADED)?;
+        CoInitializeEx(None, COINIT_MULTITHREADED).ok()?;
         SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2)?;
     }
     let mut window = Window::new()?;
@@ -103,7 +104,7 @@ impl Window {
                 CoCreateInstance(&UIAnimationTransitionLibrary2, None, CLSCTX_INPROC_SERVER)?;
 
             Ok(Window {
-                handle: HWND(0),
+                handle: Default::default(),
                 dpi: (0.0, 0.0),
                 format: create_text_format()?,
                 image: create_image()?,
@@ -145,7 +146,7 @@ impl Window {
                 None,
             )?;
 
-            let bitmap = dc.CreateBitmapFromWicBitmap2(&self.image, None)?;
+            let bitmap = dc.CreateBitmapFromWicBitmap(&self.image, None)?;
             let width = logical_to_physical(CARD_WIDTH, self.dpi.0);
             let height = logical_to_physical(CARD_HEIGHT, self.dpi.1);
 
@@ -261,8 +262,7 @@ impl Window {
                 }
 
                 let desktop = self.desktop.as_ref().expect("IDCompositionDesktopDevice");
-                let mut stats = Default::default();
-                desktop.GetFrameStatistics(&mut stats)?;
+                let stats = desktop.GetFrameStatistics()?;
 
                 let next_frame: f64 =
                     stats.nextEstimatedFrameTime as f64 / stats.timeFrequency as f64;
@@ -332,7 +332,7 @@ impl Window {
                 self.create_device_resources()?;
             }
 
-            ValidateRect(self.handle, None).ok()
+            ValidateRect(Some(self.handle), None).ok()
         }
     }
 
@@ -444,15 +444,15 @@ impl Window {
                 CW_USEDEFAULT,
                 None,
                 None,
-                instance,
+                None,
                 Some(self as *mut _ as _),
-            );
+            )?;
 
-            debug_assert!(handle.0 != 0);
+            debug_assert!(!handle.is_invalid());
             debug_assert!(handle == self.handle);
             let mut message = MSG::default();
 
-            while GetMessageA(&mut message, HWND(0), 0, 0).into() {
+            while GetMessageA(&mut message, None, 0, 0).into() {
                 DispatchMessageA(&message);
             }
 
@@ -548,7 +548,7 @@ fn create_device_3d() -> Result<ID3D11Device> {
         D3D11CreateDevice(
             None,
             D3D_DRIVER_TYPE_HARDWARE,
-            None,
+            HMODULE::default(),
             D3D11_CREATE_DEVICE_BGRA_SUPPORT,
             None,
             D3D11_SDK_VERSION,
@@ -732,13 +732,14 @@ fn draw_card_back(
             bitmap,
             None,
             1.0,
-            D2D1_BITMAP_INTERPOLATION_MODE_LINEAR,
+            D2D1_INTERPOLATION_MODE_LINEAR,
             Some(&D2D_RECT_F {
                 left,
                 top,
                 right: left + CARD_WIDTH,
                 bottom: top + CARD_HEIGHT,
             }),
+            None,
         );
 
         surface.EndDraw()

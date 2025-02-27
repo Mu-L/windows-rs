@@ -4,7 +4,7 @@ use windows::{
 
 fn main() -> Result<()> {
     unsafe {
-        CoInitializeEx(None, COINIT_MULTITHREADED)?;
+        CoInitializeEx(None, COINIT_MULTITHREADED).ok()?;
 
         let manager: IBackgroundCopyManager =
             CoCreateInstance(&BackgroundCopyManager, None, CLSCTX_LOCAL_SERVER)?;
@@ -38,8 +38,8 @@ fn main() -> Result<()> {
 #[implement(IBackgroundCopyCallback)]
 struct Callback;
 
-impl IBackgroundCopyCallback_Impl for Callback {
-    fn JobTransferred(&self, job: Option<&IBackgroundCopyJob>) -> Result<()> {
+impl IBackgroundCopyCallback_Impl for Callback_Impl {
+    fn JobTransferred(&self, job: Ref<IBackgroundCopyJob>) -> Result<()> {
         let job = job.unwrap();
         unsafe { job.Complete()? };
         println!("done");
@@ -48,8 +48,8 @@ impl IBackgroundCopyCallback_Impl for Callback {
 
     fn JobError(
         &self,
-        job: Option<&IBackgroundCopyJob>,
-        error: Option<&IBackgroundCopyError>,
+        job: Ref<IBackgroundCopyJob>,
+        error: Ref<IBackgroundCopyError>,
     ) -> Result<()> {
         let job = job.unwrap();
         let error = error.unwrap();
@@ -60,7 +60,7 @@ impl IBackgroundCopyCallback_Impl for Callback {
         std::process::exit(0);
     }
 
-    fn JobModification(&self, _: Option<&IBackgroundCopyJob>, _: u32) -> Result<()> {
+    fn JobModification(&self, _: Ref<IBackgroundCopyJob>, _: u32) -> Result<()> {
         Ok(())
     }
 }

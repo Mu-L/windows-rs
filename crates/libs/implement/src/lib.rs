@@ -1,9 +1,22 @@
+//! Implement COM interfaces for Rust types.
+//!
+//! Take a look at [macro@implement] for an example.
+//!
+//! Learn more about Rust for Windows here: <https://github.com/microsoft/windows-rs>
+
 use quote::{quote, ToTokens};
+
+mod gen;
+
+#[cfg(test)]
+mod tests;
 
 /// Implements one or more COM interfaces.
 ///
 /// # Example
-/// ```rust,ignore
+/// ```rust,no_run
+/// use windows_core::*;
+///
 /// #[interface("094d70d6-5202-44b8-abb8-43860da5aca2")]
 /// unsafe trait IValue: IUnknown {
 ///     fn GetValue(&self, value: *mut i32) -> HRESULT;
@@ -12,223 +25,124 @@ use quote::{quote, ToTokens};
 /// #[implement(IValue)]
 /// struct Value(i32);
 ///
-/// impl IValue_Impl for Value {
+/// impl IValue_Impl for Value_Impl {
 ///     unsafe fn GetValue(&self, value: *mut i32) -> HRESULT {
 ///         *value = self.0;
 ///         HRESULT(0)
 ///     }
 /// }
 ///
-/// fn main() {
-///     let object: IValue = Value(123).into();
-///     // Call interface methods...
-/// }
+/// let object: IValue = Value(123).into();
+/// // Call interface methods...
 /// ```
 #[proc_macro_attribute]
-pub fn implement(attributes: proc_macro::TokenStream, original_type: proc_macro::TokenStream) -> proc_macro::TokenStream {
-    let attributes = syn::parse_macro_input!(attributes as ImplementAttributes);
-    let interfaces_len = proc_macro2::Literal::usize_unsuffixed(attributes.implement.len());
+pub fn implement(
+    attributes: proc_macro::TokenStream,
+    type_tokens: proc_macro::TokenStream,
+) -> proc_macro::TokenStream {
+    implement_core(attributes.into(), type_tokens.into()).into()
+}
 
-    let identity_type = if let Some(first) = attributes.implement.first() {
-        first.to_ident()
-    } else {
-        quote! { ::windows::core::IInspectable }
+fn implement_core(
+    attributes: proc_macro2::TokenStream,
+    item_tokens: proc_macro2::TokenStream,
+) -> proc_macro2::TokenStream {
+    let attributes = syn::parse2::<ImplementAttributes>(attributes).unwrap();
+    let original_type = syn::parse2::<syn::ItemStruct>(item_tokens).unwrap();
+
+    // Do a little thinking and assemble ImplementInputs.  We pass ImplementInputs to
+    // all of our gen_* function.
+    let inputs = ImplementInputs {
+        original_ident: original_type.ident.clone(),
+        interface_chains: convert_implements_to_interface_chains(attributes.implement),
+        trust_level: attributes.trust_level,
+        impl_ident: quote::format_ident!("{}_Impl", &original_type.ident),
+        constraints: {
+            if let Some(where_clause) = &original_type.generics.where_clause {
+                where_clause.predicates.to_token_stream()
+            } else {
+                quote!()
+            }
+        },
+        generics: if !original_type.generics.params.is_empty() {
+            let mut params = quote! {};
+            original_type.generics.params.to_tokens(&mut params);
+            quote! { <#params> }
+        } else {
+            quote! { <> }
+        },
+        is_generic: !original_type.generics.params.is_empty(),
+        original_type,
     };
 
-    let original_type2 = original_type.clone();
-    let original_type2 = syn::parse_macro_input!(original_type2 as syn::ItemStruct);
-    let original_ident = original_type2.ident;
-    let mut constraints = quote! {};
-
-    if let Some(where_clause) = original_type2.generics.where_clause {
-        where_clause.predicates.to_tokens(&mut constraints);
+    let items = gen::gen_all(&inputs);
+    let mut tokens = inputs.original_type.into_token_stream();
+    for item in items {
+        tokens.extend(item.into_token_stream());
     }
 
-    let generics = if original_type2.generics.lt_token.is_some() {
-        let mut params = quote! {};
-        original_type2.generics.params.to_tokens(&mut params);
-        quote! { <#params> }
-    } else {
-        quote! { <> }
-    };
-
-    let impl_ident = quote::format_ident!("{}_Impl", original_ident);
-    let vtbl_idents = attributes.implement.iter().map(|implement| implement.to_vtbl_ident());
-    let vtbl_idents2 = vtbl_idents.clone();
-
-    let vtable_news = attributes.implement.iter().enumerate().map(|(enumerate, implement)| {
-        let vtbl_ident = implement.to_vtbl_ident();
-        let offset = proc_macro2::Literal::isize_unsuffixed(-1 - enumerate as isize);
-        quote! { #vtbl_ident::new::<Self, #original_ident::#generics, #offset>() }
-    });
-
-    let offset = attributes.implement.iter().enumerate().map(|(offset, _)| proc_macro2::Literal::usize_unsuffixed(offset));
-
-    let queries = attributes.implement.iter().enumerate().map(|(count, implement)| {
-        let vtbl_ident = implement.to_vtbl_ident();
-        let offset = proc_macro2::Literal::usize_unsuffixed(count);
-        quote! {
-            else if #vtbl_ident::matches(iid) {
-                &self.vtables.#offset as *const _ as *mut _
-            }
-        }
-    });
-
-    let trust_level = proc_macro2::Literal::usize_unsuffixed(attributes.trust_level);
-
-    let conversions = attributes.implement.iter().enumerate().map(|(enumerate, implement)| {
-        let interface_ident = implement.to_ident();
-        let offset = proc_macro2::Literal::usize_unsuffixed(enumerate);
-        quote! {
-            impl #generics ::core::convert::From<#original_ident::#generics> for #interface_ident where #constraints {
-                fn from(this: #original_ident::#generics) -> Self {
-                    let this = #impl_ident::#generics::new(this);
-                    let mut this = ::core::mem::ManuallyDrop::new(::std::boxed::Box::new(this));
-                    let vtable_ptr = &this.vtables.#offset;
-                    // SAFETY: interfaces are in-memory equivalent to pointers to their vtables.
-                    unsafe { ::core::mem::transmute(vtable_ptr) }
-                }
-            }
-            impl #generics ::windows::core::AsImpl<#original_ident::#generics> for #interface_ident where #constraints {
-                // SAFETY: the offset is guranteed to be in bounds, and the implementation struct
-                // is guaranteed to live at least as long as `self`.
-                unsafe fn as_impl(&self) -> &#original_ident::#generics {
-                    let this = ::windows::core::Interface::as_raw(self);
-                    // Subtract away the vtable offset plus 1, for the `identity` field, to get
-                    // to the impl struct which contains that original implementation type.
-                    let this = (this as *mut *mut ::core::ffi::c_void).sub(1 + #offset) as *mut #impl_ident::#generics;
-                    &(*this).this
-                }
-            }
-        }
-    });
-
-    let tokens = quote! {
-        #[repr(C)]
-        struct #impl_ident #generics where #constraints {
-            identity: *const ::windows::core::IInspectable_Vtbl,
-            vtables: (#(*const #vtbl_idents,)*),
-             this: #original_ident::#generics,
-            count: ::windows::core::imp::WeakRefCount,
-        }
-        impl #generics #impl_ident::#generics where #constraints {
-            const VTABLES: (#(#vtbl_idents2,)*) = (#(#vtable_news,)*);
-            const IDENTITY: ::windows::core::IInspectable_Vtbl = ::windows::core::IInspectable_Vtbl::new::<Self, #identity_type, 0>();
-            fn new(this: #original_ident::#generics) -> Self {
-                Self {
-                    identity: &Self::IDENTITY,
-                    vtables:(#(&Self::VTABLES.#offset,)*),
-                    this,
-                    count: ::windows::core::imp::WeakRefCount::new(),
-                }
-            }
-        }
-         impl #generics ::windows::core::IUnknownImpl for #impl_ident::#generics where #constraints {
-            type Impl = #original_ident::#generics;
-            fn get_impl(&self) -> &Self::Impl {
-                &self.this
-            }
-            unsafe fn QueryInterface(&self, iid: *const ::windows::core::GUID, interface: *mut *mut ::core::ffi::c_void) -> ::windows::core::HRESULT {
-                if iid.is_null() || interface.is_null() {
-                    return ::windows::core::HRESULT(-2147467261); // E_POINTER
-                }
-
-                let iid = &*iid;
-
-                *interface = if iid == &<::windows::core::IUnknown as ::windows::core::Interface>::IID
-                    || iid == &<::windows::core::IInspectable as ::windows::core::Interface>::IID
-                    || iid == &<::windows::core::imp::IAgileObject as ::windows::core::Interface>::IID {
-                        &self.identity as *const _ as *mut _
-                } #(#queries)* else {
-                    ::core::ptr::null_mut()
-                };
-
-                if !(*interface).is_null() {
-                    self.count.add_ref();
-                    return ::windows::core::HRESULT(0);
-                }
-
-                *interface = self.count.query(iid, &self.identity as *const _ as *mut _);
-
-                if (*interface).is_null() {
-                    ::windows::core::HRESULT(-2147467262) // E_NOINTERFACE
-                } else {
-                    ::windows::core::HRESULT(0)
-                }
-            }
-            fn AddRef(&self) -> u32 {
-                self.count.add_ref()
-            }
-            unsafe fn Release(&self) -> u32 {
-                let remaining = self.count.release();
-                if remaining == 0 {
-                    _ = ::std::boxed::Box::from_raw(self as *const Self as *mut Self);
-                }
-                remaining
-            }
-            unsafe fn GetTrustLevel(&self, value: *mut i32) -> ::windows::core::HRESULT {
-                if value.is_null() {
-                    return ::windows::core::HRESULT(-2147467261); // E_POINTER
-                }
-                *value = #trust_level;
-                ::windows::core::HRESULT(0)
-            }
-         }
-        impl #generics #original_ident::#generics where #constraints {
-            /// Try casting as the provided interface
-            ///
-            /// # Safety
-            ///
-            /// This function can only be safely called if `self` has been heap allocated and pinned using
-            /// the mechanisms provided by `implement` macro.
-            unsafe fn cast<I: ::windows::core::Interface>(&self) -> ::windows::core::Result<I> {
-                let boxed = (self as *const _ as *const *mut ::core::ffi::c_void).sub(1 + #interfaces_len) as *mut #impl_ident::#generics;
-                let mut result = None;
-                <#impl_ident::#generics as ::windows::core::IUnknownImpl>::QueryInterface(&*boxed, &I::IID, &mut result as *mut _ as _).and_some(result)
-            }
-        }
-        impl #generics ::core::convert::From<#original_ident::#generics> for ::windows::core::IUnknown where #constraints {
-            fn from(this: #original_ident::#generics) -> Self {
-                let this = #impl_ident::#generics::new(this);
-                let boxed = ::core::mem::ManuallyDrop::new(::std::boxed::Box::new(this));
-                unsafe {
-                    ::core::mem::transmute(&boxed.identity)
-                }
-            }
-        }
-        impl #generics ::core::convert::From<#original_ident::#generics> for ::windows::core::IInspectable where #constraints {
-            fn from(this: #original_ident::#generics) -> Self {
-                let this = #impl_ident::#generics::new(this);
-                let boxed = ::core::mem::ManuallyDrop::new(::std::boxed::Box::new(this));
-                unsafe {
-                    ::core::mem::transmute(&boxed.identity)
-                }
-            }
-        }
-        #(#conversions)*
-    };
-
-    let mut tokens: proc_macro::TokenStream = tokens.into();
-    tokens.extend(core::iter::once(original_type));
     tokens
 }
 
-#[derive(Default)]
+/// This provides the inputs to the `gen_*` functions, which generate the proc macro output.
+struct ImplementInputs {
+    /// The user's type that was marked with `#[implement]`.
+    original_type: syn::ItemStruct,
+
+    /// The identifier for the user's original type definition.
+    original_ident: syn::Ident,
+
+    /// The list of interface chains that this type implements.
+    interface_chains: Vec<InterfaceChain>,
+
+    /// The "trust level", which is returned by `IInspectable::GetTrustLevel`.
+    trust_level: usize,
+
+    /// The identifier of the `Foo_Impl` type.
+    impl_ident: syn::Ident,
+
+    /// The list of constraints needed for this `Foo_Impl` type.
+    constraints: proc_macro2::TokenStream,
+
+    /// The list of generic parameters for this `Foo_Impl` type, including `<` and `>`.
+    /// If there are no generics, this contains `<>`.
+    generics: proc_macro2::TokenStream,
+
+    /// True if the user type has any generic parameters.
+    is_generic: bool,
+}
+
+/// Describes one COM interface chain.
+struct InterfaceChain {
+    /// The name of the field for the vtable chain, e.g. `interface4_ifoo`.
+    field_ident: syn::Ident,
+
+    /// The name of the associated constant item for the vtable chain's initializer,
+    /// e.g. `INTERFACE4_IFOO_VTABLE`.
+    vtable_const_ident: syn::Ident,
+
+    implement: ImplementType,
+}
+
 struct ImplementType {
     type_name: String,
     generics: Vec<ImplementType>,
+
+    /// The best span for diagnostics.
+    span: proc_macro2::Span,
 }
 
 impl ImplementType {
     fn to_ident(&self) -> proc_macro2::TokenStream {
-        let type_name = syn::parse_str::<proc_macro2::TokenStream>(&self.type_name).expect("Invalid token stream");
+        let type_name = syn::parse_str::<proc_macro2::TokenStream>(&self.type_name)
+            .expect("Invalid token stream");
         let generics = self.generics.iter().map(|g| g.to_ident());
         quote! { #type_name<#(#generics,)*> }
     }
     fn to_vtbl_ident(&self) -> proc_macro2::TokenStream {
         let ident = self.to_ident();
         quote! {
-            <#ident as ::windows::core::Interface>::Vtable
+            <#ident as ::windows_core::Interface>::Vtable
         }
     }
 }
@@ -263,7 +177,11 @@ impl ImplementAttributes {
         Ok(())
     }
 
-    fn walk_implement(&mut self, tree: &UseTree2, namespace: &mut String) -> syn::parse::Result<()> {
+    fn walk_implement(
+        &mut self,
+        tree: &UseTree2,
+        namespace: &mut String,
+    ) -> syn::parse::Result<()> {
         match tree {
             UseTree2::Path(input) => {
                 if !namespace.is_empty() {
@@ -308,6 +226,7 @@ impl UseTree2 {
             }
             UseTree2::Name(input) => {
                 let mut type_name = input.ident.to_string();
+                let span = input.ident.span();
 
                 if !namespace.is_empty() {
                     type_name = format!("{namespace}::{type_name}");
@@ -319,9 +238,16 @@ impl UseTree2 {
                     generics.push(g.to_element_type(&mut String::new())?);
                 }
 
-                Ok(ImplementType { type_name, generics })
+                Ok(ImplementType {
+                    type_name,
+                    generics,
+                    span,
+                })
             }
-            UseTree2::Group(input) => Err(syn::parse::Error::new(input.brace_token.span.join(), "Syntax not supported")),
+            UseTree2::Group(input) => Err(syn::parse::Error::new(
+                input.brace_token.span.join(),
+                "Syntax not supported",
+            )),
             _ => unimplemented!(),
         }
     }
@@ -350,10 +276,16 @@ impl syn::parse::Parse for UseTree2 {
             let ident = input.call(syn::Ident::parse_any)?;
             if input.peek(syn::Token![::]) {
                 input.parse::<syn::Token![::]>()?;
-                Ok(UseTree2::Path(UsePath2 { ident, tree: Box::new(input.parse()?) }))
+                Ok(UseTree2::Path(UsePath2 {
+                    ident,
+                    tree: Box::new(input.parse()?),
+                }))
             } else if input.peek(syn::Token![=]) {
                 if ident != "TrustLevel" {
-                    return Err(syn::parse::Error::new(ident.span(), "Unrecognized key-value pair"));
+                    return Err(syn::parse::Error::new(
+                        ident.span(),
+                        "Unrecognized key-value pair",
+                    ));
                 }
                 input.parse::<syn::Token![=]>()?;
                 let span = input.span();
@@ -361,7 +293,10 @@ impl syn::parse::Parse for UseTree2 {
                 match value.to_string().as_str() {
                     "Partial" => Ok(UseTree2::TrustLevel(1)),
                     "Full" => Ok(UseTree2::TrustLevel(2)),
-                    _ => Err(syn::parse::Error::new(span, "`TrustLevel` must be `Partial` or `Full`")),
+                    _ => Err(syn::parse::Error::new(
+                        span,
+                        "`TrustLevel` must be `Partial` or `Full`",
+                    )),
                 }
             } else {
                 let generics = if input.peek(syn::Token![<]) {
@@ -392,4 +327,56 @@ impl syn::parse::Parse for UseTree2 {
             Err(lookahead.error())
         }
     }
+}
+
+fn convert_implements_to_interface_chains(implements: Vec<ImplementType>) -> Vec<InterfaceChain> {
+    let mut chains = Vec::with_capacity(implements.len());
+
+    for (i, implement) in implements.into_iter().enumerate() {
+        // Create an identifier for this interface chain.
+        // We only use this for naming fields; it is never visible to the developer.
+        // This helps with debugging.
+        //
+        // We use i + 1 so that it matches the numbering of our interface offsets. Interface 0
+        // is the "identity" interface.
+
+        let mut ident_string = format!("interface{}", i + 1);
+
+        let suffix = get_interface_ident_suffix(&implement.type_name);
+        if !suffix.is_empty() {
+            ident_string.push('_');
+            ident_string.push_str(&suffix);
+        }
+        let field_ident = syn::Ident::new(&ident_string, implement.span);
+
+        let mut vtable_const_string = ident_string.clone();
+        vtable_const_string.make_ascii_uppercase();
+        vtable_const_string.insert_str(0, "VTABLE_");
+        let vtable_const_ident = syn::Ident::new(&vtable_const_string, implement.span);
+
+        chains.push(InterfaceChain {
+            implement,
+            field_ident,
+            vtable_const_ident,
+        });
+    }
+
+    chains
+}
+
+fn get_interface_ident_suffix(type_name: &str) -> String {
+    let mut suffix = String::new();
+    for c in type_name.chars() {
+        let c = c.to_ascii_lowercase();
+
+        if suffix.len() >= 20 {
+            break;
+        }
+
+        if c.is_ascii_alphanumeric() {
+            suffix.push(c);
+        }
+    }
+
+    suffix
 }

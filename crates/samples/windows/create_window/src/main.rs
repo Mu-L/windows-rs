@@ -6,8 +6,6 @@ use windows::{
 fn main() -> Result<()> {
     unsafe {
         let instance = GetModuleHandleA(None)?;
-        debug_assert!(instance.0 != 0);
-
         let window_class = s!("window");
 
         let wc = WNDCLASSA {
@@ -34,9 +32,9 @@ fn main() -> Result<()> {
             CW_USEDEFAULT,
             None,
             None,
-            instance,
             None,
-        );
+            None,
+        )?;
 
         let mut message = MSG::default();
 
@@ -53,7 +51,7 @@ extern "system" fn wndproc(window: HWND, message: u32, wparam: WPARAM, lparam: L
         match message {
             WM_PAINT => {
                 println!("WM_PAINT");
-                ValidateRect(window, None);
+                _ = ValidateRect(Some(window), None);
                 LRESULT(0)
             }
             WM_DESTROY => {

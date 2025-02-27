@@ -1,14 +1,19 @@
 [package]
 name = "windows-sys"
-version = "0.52.0"
+version = "0.59.0"
 authors = ["Microsoft"]
 edition = "2021"
-rust-version = "1.56"
+rust-version = "1.60"
 license = "MIT OR Apache-2.0"
 description = "Rust for Windows"
 repository = "https://github.com/microsoft/windows-rs"
 readme = "readme.md"
 categories = ["os::windows-apis"]
+
+[lib]
+# This crate does not contain tests. All tests are in separate crates.
+test = false
+doctest = false
 
 [lints]
 workspace = true
@@ -19,7 +24,7 @@ targets = []
 all-features = true
 
 [dependencies.windows-targets]
-version = "0.52.0"
+version = "0.53.0"
 path = "../targets"
 
 [features]
@@ -28,6 +33,7 @@ docs = []
 # generated features
 Wdk = ["Win32_Foundation"]
 Wdk_Devices = ["Wdk"]
+Wdk_Devices_Bluetooth = ["Wdk_Devices"]
 Wdk_Devices_HumanInterfaceDevice = ["Wdk_Devices"]
 Wdk_Foundation = ["Wdk"]
 Wdk_Graphics = ["Wdk"]
@@ -40,6 +46,7 @@ Wdk_Storage_FileSystem = ["Wdk_Storage"]
 Wdk_Storage_FileSystem_Minifilters = ["Wdk_Storage_FileSystem"]
 Wdk_System = ["Wdk"]
 Wdk_System_IO = ["Wdk_System"]
+Wdk_System_Memory = ["Wdk_System"]
 Wdk_System_OfflineRegistry = ["Wdk_System"]
 Wdk_System_Registry = ["Wdk_System"]
 Wdk_System_SystemInformation = ["Wdk_System"]
@@ -51,16 +58,21 @@ Win32_Data_HtmlHelp = ["Win32_Data"]
 Win32_Data_RightsManagement = ["Win32_Data"]
 Win32_Devices = ["Win32"]
 Win32_Devices_AllJoyn = ["Win32_Devices"]
+Win32_Devices_Beep = ["Win32_Devices"]
 Win32_Devices_BiometricFramework = ["Win32_Devices"]
 Win32_Devices_Bluetooth = ["Win32_Devices"]
+Win32_Devices_Cdrom = ["Win32_Devices"]
 Win32_Devices_Communication = ["Win32_Devices"]
 Win32_Devices_DeviceAndDriverInstallation = ["Win32_Devices"]
 Win32_Devices_DeviceQuery = ["Win32_Devices"]
 Win32_Devices_Display = ["Win32_Devices"]
+Win32_Devices_Dvd = ["Win32_Devices"]
 Win32_Devices_Enumeration = ["Win32_Devices"]
 Win32_Devices_Enumeration_Pnp = ["Win32_Devices_Enumeration"]
 Win32_Devices_Fax = ["Win32_Devices"]
 Win32_Devices_HumanInterfaceDevice = ["Win32_Devices"]
+Win32_Devices_Nfc = ["Win32_Devices"]
+Win32_Devices_Nfp = ["Win32_Devices"]
 Win32_Devices_PortableDevices = ["Win32_Devices"]
 Win32_Devices_Properties = ["Win32_Devices"]
 Win32_Devices_Pwm = ["Win32_Devices"]
@@ -185,6 +197,7 @@ Win32_System_Diagnostics_Debug_Extensions = ["Win32_System_Diagnostics_Debug"]
 Win32_System_Diagnostics_Etw = ["Win32_System_Diagnostics"]
 Win32_System_Diagnostics_ProcessSnapshotting = ["Win32_System_Diagnostics"]
 Win32_System_Diagnostics_ToolHelp = ["Win32_System_Diagnostics"]
+Win32_System_Diagnostics_TraceLogging = ["Win32_System_Diagnostics"]
 Win32_System_DistributedTransactionCoordinator = ["Win32_System"]
 Win32_System_Environment = ["Win32_System"]
 Win32_System_ErrorReporting = ["Win32_System"]
@@ -256,6 +269,7 @@ Win32_UI_Input_XboxController = ["Win32_UI_Input"]
 Win32_UI_InteractionContext = ["Win32_UI"]
 Win32_UI_Magnification = ["Win32_UI"]
 Win32_UI_Shell = ["Win32_UI"]
+Win32_UI_Shell_Common = ["Win32_UI_Shell"]
 Win32_UI_Shell_PropertiesSystem = ["Win32_UI_Shell"]
 Win32_UI_TabletPC = ["Win32_UI"]
 Win32_UI_TextServices = ["Win32_UI"]

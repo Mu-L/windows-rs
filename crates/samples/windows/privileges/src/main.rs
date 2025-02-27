@@ -11,7 +11,7 @@ fn main() -> Result<()> {
         let mut bytes_required = 0;
         _ = GetTokenInformation(token, TokenPrivileges, None, 0, &mut bytes_required);
 
-        let buffer = LocalAlloc(LPTR, bytes_required as usize)?;
+        let buffer = Owned::new(LocalAlloc(LPTR, bytes_required as usize)?);
 
         GetTokenInformation(
             token,
@@ -28,16 +28,15 @@ fn main() -> Result<()> {
 
         for privilege in privileges {
             let mut name_len = 0;
-            _ = LookupPrivilegeNameW(None, &privilege.Luid, PWSTR::null(), &mut name_len);
+            _ = LookupPrivilegeNameW(None, &privilege.Luid, None, &mut name_len);
 
             let mut name = vec![0u16; (name_len + 1) as usize];
             let name = PWSTR(name.as_mut_ptr());
-            LookupPrivilegeNameW(None, &privilege.Luid, name, &mut name_len)?;
+            LookupPrivilegeNameW(None, &privilege.Luid, Some(name), &mut name_len)?;
 
             println!("{}", name.display())
         }
 
-        _ = LocalFree(buffer);
         Ok(())
     }
 }

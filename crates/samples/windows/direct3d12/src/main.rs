@@ -5,8 +5,6 @@ use windows::{
     Win32::UI::WindowsAndMessaging::*,
 };
 
-use std::mem::transmute;
-
 trait DXSample {
     fn new(command_line: &SampleCommandLine) -> Result<Self>
     where
@@ -97,20 +95,20 @@ where
             window_rect.bottom - window_rect.top,
             None, // no parent window
             None, // no menus
-            instance,
+            None,
             Some(&mut sample as *mut _ as _),
         )
-    };
+    }?;
 
     sample.bind_to_window(&hwnd)?;
-    unsafe { ShowWindow(hwnd, SW_SHOW) };
+    unsafe { _ = ShowWindow(hwnd, SW_SHOW) };
 
     loop {
         let mut message = MSG::default();
 
         if unsafe { PeekMessageA(&mut message, None, 0, 0, PM_REMOVE) }.into() {
             unsafe {
-                TranslateMessage(&message);
+                _ = TranslateMessage(&message);
                 DispatchMessageA(&message);
             }
 
@@ -151,7 +149,7 @@ extern "system" fn wndproc<S: DXSample>(
     match message {
         WM_CREATE => {
             unsafe {
-                let create_struct: &CREATESTRUCTA = transmute(lparam);
+                let create_struct: &CREATESTRUCTA = &*(lparam.0 as *const CREATESTRUCTA);
                 SetWindowLongPtrA(window, GWLP_USERDATA, create_struct.lpCreateParams as _);
             }
             LRESULT::default()
@@ -163,9 +161,8 @@ extern "system" fn wndproc<S: DXSample>(
         _ => {
             let user_data = unsafe { GetWindowLongPtrA(window, GWLP_USERDATA) };
             let sample = std::ptr::NonNull::<S>::new(user_data as _);
-            let handled = sample.map_or(false, |mut s| {
-                sample_wndproc(unsafe { s.as_mut() }, message, wparam)
-            });
+            let handled =
+                sample.is_some_and(|mut s| sample_wndproc(unsafe { s.as_mut() }, message, wparam));
 
             if handled {
                 LRESULT::default()
@@ -179,11 +176,9 @@ extern "system" fn wndproc<S: DXSample>(
 fn get_hardware_adapter(factory: &IDXGIFactory4) -> Result<IDXGIAdapter1> {
     for i in 0.. {
         let adapter = unsafe { factory.EnumAdapters1(i)? };
+        let desc = unsafe { adapter.GetDesc1()? };
 
-        let mut desc = Default::default();
-        unsafe { adapter.GetDesc1(&mut desc)? };
-
-        if (DXGI_ADAPTER_FLAG(desc.Flags as i32) & DXGI_ADAPTER_FLAG_SOFTWARE)
+        if (DXGI_ADAPTER_FLAG(desc.Flags as _) & DXGI_ADAPTER_FLAG_SOFTWARE)
             != DXGI_ADAPTER_FLAG_NONE
         {
             // Don't select the Basic Render Driver adapter. If you want a
@@ -415,7 +410,9 @@ mod d3d12_hello_triangle {
                 unsafe { resources.command_queue.ExecuteCommandLists(&[command_list]) };
 
                 // Present the frame.
-                unsafe { resources.swap_chain.Present(1, 0) }.ok().unwrap();
+                unsafe { resources.swap_chain.Present(1, DXGI_PRESENT(0)) }
+                    .ok()
+                    .unwrap();
 
                 wait_for_previous_frame(resources);
             }
@@ -515,7 +512,7 @@ mod d3d12_hello_triangle {
         let dxgi_factory_flags = if cfg!(debug_assertions) {
             DXGI_CREATE_FACTORY_DEBUG
         } else {
-            0
+            DXGI_CREATE_FACTORY_FLAGS(0)
         };
 
         let dxgi_factory: IDXGIFactory4 = unsafe { CreateDXGIFactory2(dxgi_factory_flags) }?;
@@ -669,7 +666,7 @@ mod d3d12_hello_triangle {
                 ],
             },
             DepthStencilState: D3D12_DEPTH_STENCIL_DESC::default(),
-            SampleMask: u32::max_value(),
+            SampleMask: u32::MAX,
             PrimitiveTopologyType: D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE,
             NumRenderTargets: 1,
             SampleDesc: DXGI_SAMPLE_DESC {

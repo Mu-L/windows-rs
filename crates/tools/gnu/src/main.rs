@@ -1,15 +1,17 @@
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::{BTreeMap, HashSet};
 use std::io::prelude::*;
 use std::process::{Command, Stdio};
+use windows_bindgen::*;
 
 fn main() {
-    const ALL_PLATFORMS: [&str; 4] = [
+    const ALL_PLATFORMS: [&str; 5] = [
         "x86_64_gnu",
         "i686_gnu",
         "x86_64_gnullvm",
         "aarch64_gnullvm",
+        "i686_gnullvm",
     ];
-    let mut platforms = BTreeSet::new();
+    let mut platforms = HashSet::new();
     for platform in std::env::args().skip(1) {
         if ALL_PLATFORMS.contains(&&*platform) {
             platforms.insert(platform);
@@ -50,7 +52,7 @@ fn main() {
 fn build_platform(platform: &str, dlltool: &str, ar: &str) {
     println!("Platform: {platform}");
 
-    let libraries = lib::libraries();
+    let libraries = libraries();
     let output = std::path::PathBuf::from(format!("crates/targets/{platform}/lib"));
     std::fs::create_dir_all(&output).unwrap();
     std::fs::create_dir_all(&output).unwrap();
@@ -70,7 +72,7 @@ fn build_library(
     output: &std::path::Path,
     dlltool: &str,
     library: &str,
-    functions: &BTreeMap<String, lib::CallingConvention>,
+    functions: &BTreeMap<String, CallingConvention>,
     platform: &str,
 ) {
     println!("{library}");
@@ -93,7 +95,7 @@ EXPORTS
 
     for (function, calling_convention) in functions {
         match calling_convention {
-            lib::CallingConvention::Stdcall(params) if platform.eq("i686_gnu") => def
+            CallingConvention::Stdcall(params) if platform.starts_with("i686_gnu") => def
                 .write_all(format!("{function}@{params} @ 0\n").as_bytes())
                 .unwrap(),
             _ => def
@@ -107,7 +109,7 @@ EXPORTS
     let mut cmd = Command::new(dlltool);
     cmd.current_dir(output);
 
-    if platform.eq("i686_gnu") {
+    if platform.starts_with("i686_gnu") {
         cmd.arg("-k");
     }
 
@@ -117,7 +119,7 @@ EXPORTS
     cmd.arg(format!("lib{library}.a"));
     cmd.arg("-m");
     cmd.arg(match platform {
-        "i686_gnu" => "i386",
+        "i686_gnu" | "i686_gnullvm" => "i386",
         "x86_64_gnu" | "x86_64_gnullvm" => "i386:x86-64",
         "aarch64_gnullvm" => "arm64",
         _ => unreachable!(),
@@ -167,7 +169,7 @@ EXPORTS
 fn build_mri(
     output: &std::path::Path,
     ar: &str,
-    libraries: &BTreeMap<String, BTreeMap<String, lib::CallingConvention>>,
+    libraries: &BTreeMap<String, BTreeMap<String, CallingConvention>>,
 ) {
     let mri_path = output.join("unified.mri");
     let mut mri = std::fs::File::create(&mri_path).unwrap();

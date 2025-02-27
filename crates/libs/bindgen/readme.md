@@ -1,38 +1,40 @@
-## Generate Rust bindings for Windows
+## Code generator for Windows metadata
 
 The [windows-bindgen](https://crates.io/crates/windows-bindgen) crate automatically generates Rust bindings from Windows metadata.
 
 * [Getting started](https://kennykerr.ca/rust-getting-started/)
-* [Samples](https://github.com/microsoft/windows-rs/tree/0.52.0/crates/samples) <!-- link to samples for upcoming release -->
+* [Samples](https://github.com/microsoft/windows-rs/tree/master/crates/samples)
 * [Releases](https://github.com/microsoft/windows-rs/releases)
 
 Start by adding the following to your Cargo.toml file:
 
 ```toml
-[dependencies.windows-targets]
-version = "0.52"
+[dependencies.windows-link]
+version = "0.1"
 
-[dev-dependencies.windows-bindgen]
-version = "0.52"
+[build-dependencies.windows-bindgen]
+version = "0.60"
 ```
 
-Generates Rust bindings in a build script or test as needed:
+Generate Rust bindings in a build script as follows:
 
 ```rust,no_run
-#[test]
-fn bindgen() {
+fn main() {
     let args = [
         "--out",
         "src/bindings.rs",
-        "--config",
-        "flatten",
+        "--flat",
         "--filter",
-        "Windows.Win32.System.SystemInformation.GetTickCount",
+        "GetTickCount",
     ];
 
-    windows_bindgen::bindgen(args).unwrap();
+    windows_bindgen::bindgen(args);
 }
+```
 
+And then use the bindings as follows:
+
+```rust,ignore
 mod bindings;
 
 fn main() {

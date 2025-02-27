@@ -14,9 +14,8 @@ use windows::{
 struct CoreApp();
 
 #[allow(non_snake_case)]
-impl IFrameworkViewSource_Impl for CoreApp {
+impl IFrameworkViewSource_Impl for CoreApp_Impl {
     fn CreateView(&self) -> Result<IFrameworkView> {
-        // TODO: need self query `self.into()` to support implementing both IFrameworkViewSource and IFrameworkView on the same object.
         Ok(CoreAppView().into())
     }
 }
@@ -25,8 +24,8 @@ impl IFrameworkViewSource_Impl for CoreApp {
 struct CoreAppView();
 
 #[allow(non_snake_case)]
-impl IFrameworkView_Impl for CoreAppView {
-    fn Initialize(&self, _: Option<&CoreApplicationView>) -> Result<()> {
+impl IFrameworkView_Impl for CoreAppView_Impl {
+    fn Initialize(&self, _: Ref<CoreApplicationView>) -> Result<()> {
         Ok(())
     }
 
@@ -48,14 +47,14 @@ impl IFrameworkView_Impl for CoreAppView {
         Ok(())
     }
 
-    fn SetWindow(&self, _: Option<&CoreWindow>) -> Result<()> {
+    fn SetWindow(&self, _: Ref<CoreWindow>) -> Result<()> {
         Ok(())
     }
 }
 
 fn main() -> Result<()> {
     unsafe {
-        CoInitializeEx(None, COINIT_MULTITHREADED)?;
+        CoInitializeEx(None, COINIT_MULTITHREADED).ok()?;
 
         if let Err(result) = Package::Current() {
             MessageBoxW(
